@@ -1,0 +1,24 @@
+import { Component, inject } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+
+import { NavigationService } from '../../../core/services/navigation.service';
+import { NavigationItem } from '../../../core/models/navigation-item.model';
+
+@Component({
+  selector: 'app-sidebar',
+  standalone: true,
+  imports: [
+    RouterLink,
+    RouterLinkActive
+  ],
+  templateUrl: './sidebar.component.html',
+  styleUrl: './sidebar.component.scss'
+})
+export class SidebarComponent {
+
+  private readonly navigationService = inject(NavigationService);
+
+  readonly navigationItems: NavigationItem[] =
+    this.navigationService.getNavigationItems();
+
+}

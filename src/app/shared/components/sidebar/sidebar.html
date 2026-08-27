@@ -1,1 +1,36 @@
-<p>sidebar works!</p>
+<aside class="sidebar">
+
+  <nav class="sidebar__navigation" aria-label="Main navigation">
+
+    @for (item of navigationItems; track item.route) {
+
+      <a
+        class="sidebar__link"
+        [routerLink]="item.route"
+        routerLinkActive="sidebar__link--active"
+        [routerLinkActiveOptions]="{ exact: item.exact ?? false }"
+      >
+
+        <span class="sidebar__icon">
+          {{ item.icon }}
+        </span>
+
+        <span class="sidebar__label">
+          {{ item.label }}
+        </span>
+
+      </a>
+
+    }
+
+  </nav>
+
+  <div class="sidebar__footer">
+
+    <p>DPS v3.0</p>
+
+    <span>Angular Edition</span>
+
+  </div>
+
+</aside>

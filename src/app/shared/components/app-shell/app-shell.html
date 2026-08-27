@@ -1,11 +1,15 @@
 <div class="app-shell">
 
-  <header class="app-shell__header">
-    <h1>Developer Productivity Suite</h1>
-  </header>
+  <app-navbar />
 
-  <main class="app-shell__content">
-    <router-outlet />
-  </main>
+  <div class="app-shell__body">
+
+    <app-sidebar />
+
+    <main class="app-shell__main">
+      <router-outlet />
+    </main>
+
+  </div>
 
 </div>
