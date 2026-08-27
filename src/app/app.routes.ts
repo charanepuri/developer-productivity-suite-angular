@@ -4,61 +4,58 @@ export const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    redirectTo: 'dashboard'
   },
 
   {
     path: 'dashboard',
-    loadComponent: () =>
-      import(
-        './features/dashboard/pages/dashboard/dashboard'
-      ).then(m => m.Dashboard)
+    loadChildren: () =>
+      import('./features/dashboard/dashboard.routes')
+        .then(m => m.DASHBOARD_ROUTES)
   },
 
   {
     path: 'tools',
-    loadComponent: () =>
-      import(
-        './features/tools/pages/tools/tools'
-      ).then(m => m.Tools)
+    loadChildren: () =>
+      import('./features/tools/tools.routes')
+        .then(m => m.TOOLS_ROUTES)
   },
 
   {
     path: 'categories',
-    loadComponent: () =>
-      import(
-        './features/categories/pages/categories/categories'
-      ).then(m => m.Categories)
+    loadChildren: () =>
+      import('./features/categories/categories.routes')
+        .then(m => m.CATEGORIES_ROUTES)
   },
 
   {
     path: 'search',
-    loadComponent: () =>
-      import(
-        './features/search/pages/search/search'
-      ).then(m => m.Search)
+    loadChildren: () =>
+      import('./features/search/search.routes')
+        .then(m => m.SEARCH_ROUTES)
   },
 
   {
     path: 'favorites',
-    loadComponent: () =>
-      import(
-        './features/favorites/pages/favorites/favorites'
-      ).then(m => m.Favorites)
+    loadChildren: () =>
+      import('./features/favorites/favorites.routes')
+        .then(m => m.FAVORITES_ROUTES)
   },
 
   {
     path: 'settings',
-    loadComponent: () =>
-      import(
-        './features/settings/pages/settings/settings'
-      ).then(m => m.Settings)
+    loadChildren: () =>
+      import('./features/settings/settings.routes')
+        .then(m => m.SETTINGS_ROUTES)
   },
 
   {
     path: '**',
-    redirectTo: 'dashboard'
+    loadComponent: () =>
+      import('./shared/components/not-found/not-found')
+        .then(m => m.NotFound),
+    title: 'Page Not Found | Developer Productivity Suite'
   }
 
 ];
