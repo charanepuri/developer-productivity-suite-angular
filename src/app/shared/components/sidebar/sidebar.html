@@ -1,6 +1,9 @@
 <aside class="sidebar">
 
-  <nav class="sidebar__navigation" aria-label="Main navigation">
+  <nav
+    class="sidebar__navigation"
+    aria-label="Main navigation"
+  >
 
     @for (item of navigationItems; track item.route) {
 
@@ -8,7 +11,9 @@
         class="sidebar__link"
         [routerLink]="item.route"
         routerLinkActive="sidebar__link--active"
-        [routerLinkActiveOptions]="{ exact: item.exact ?? false }"
+        [routerLinkActiveOptions]="{
+          exact: item.exact ?? false
+        }"
       >
 
         <span class="sidebar__icon">
