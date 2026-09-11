@@ -1,7 +1,9 @@
 export type ToolCategory =
-  | 'Text'
-  | 'JSON'
-  | 'Security'
-  | 'CSS'
-  | 'Color'
-  | 'Markdown';
+  | 'Text Tools'
+  | 'JSON Tools'
+  | 'Security Tools'
+  | 'CSS Tools'
+  | 'Color Tools'
+  | 'Markdown Tools'
+  | 'Developer Tools'
+  | 'Date & Time Tools';

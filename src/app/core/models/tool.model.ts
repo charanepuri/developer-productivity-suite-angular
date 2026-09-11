@@ -8,5 +8,4 @@ export interface Tool {
   icon: string;
   route: string;
   tags: string[];
-  isFavorite: boolean;
 }
