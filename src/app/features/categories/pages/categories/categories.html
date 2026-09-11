@@ -1,1 +1,72 @@
-<p>categories works!</p>
+<section class="categories">
+
+  <header class="categories__header">
+
+    <div>
+      <span class="categories__eyebrow">
+        DEVELOPER PRODUCTIVITY SUITE
+      </span>
+
+      <h1>Categories</h1>
+
+      <p>
+        Explore productivity tools organized by category.
+      </p>
+    </div>
+
+    <div class="categories__count">
+      <strong>{{ categories.length }}</strong>
+      <span>Categories</span>
+    </div>
+
+  </header>
+
+
+  <section
+    class="categories__grid"
+    aria-label="Tool categories"
+  >
+
+    @for (category of categories; track category.id) {
+
+      <article class="category-card">
+
+        <div class="category-card__top">
+
+          <div class="category-card__icon">
+            {{ category.icon }}
+          </div>
+
+          <span class="category-card__count">
+            {{ category.toolCount }} tools
+          </span>
+
+        </div>
+
+
+        <div class="category-card__content">
+
+          <h2>{{ category.name }}</h2>
+
+          <p>
+            {{ category.description }}
+          </p>
+
+        </div>
+
+
+        <a
+          class="category-card__link"
+          [routerLink]="category.route"
+        >
+          Explore tools
+          <span aria-hidden="true">→</span>
+        </a>
+
+      </article>
+
+    }
+
+  </section>
+
+</section>
