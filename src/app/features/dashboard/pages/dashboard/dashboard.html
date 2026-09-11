@@ -1,65 +1,145 @@
 <section class="dashboard">
 
-  <div class="dashboard__header">
-
+  <header class="dashboard__header">
     <div>
       <span class="dashboard__eyebrow">
-        Developer Productivity Suite
+        DEVELOPER PRODUCTIVITY SUITE
       </span>
 
-      <h1>
-        Dashboard
-      </h1>
+      <h1>Dashboard</h1>
 
       <p>
         Your centralized workspace for developer productivity tools.
       </p>
     </div>
+  </header>
 
-  </div>
 
-  <div class="dashboard__grid">
+  <section class="dashboard__stats" aria-label="Application statistics">
 
-    <article class="dashboard__card">
-      <span class="dashboard__card-label">
-        Tools
+    <article class="stat-card">
+      <span class="stat-card__label">Tools</span>
+
+      <strong class="stat-card__value">
+        {{ toolCount }}
+      </strong>
+
+      <span class="stat-card__description">
+        Available tools
       </span>
-
-      <strong>0</strong>
-
-      <span>Available tools</span>
     </article>
 
-    <article class="dashboard__card">
-      <span class="dashboard__card-label">
-        Categories
+
+    <article class="stat-card">
+      <span class="stat-card__label">Categories</span>
+
+      <strong class="stat-card__value">
+        {{ categoryCount }}
+      </strong>
+
+      <span class="stat-card__description">
+        Tool categories
       </span>
-
-      <strong>6</strong>
-
-      <span>Tool categories</span>
     </article>
 
-    <article class="dashboard__card">
-      <span class="dashboard__card-label">
-        Favorites
+
+    <article class="stat-card">
+      <span class="stat-card__label">Favorites</span>
+
+      <strong class="stat-card__value">
+        {{ favoritesCount$ | async }}
+      </strong>
+
+      <span class="stat-card__description">
+        Saved tools
       </span>
-
-      <strong>0</strong>
-
-      <span>Saved tools</span>
     </article>
 
-    <article class="dashboard__card">
-      <span class="dashboard__card-label">
-        Recently Used
+
+    <article class="stat-card">
+      <span class="stat-card__label">Recently Used</span>
+
+      <strong class="stat-card__value">
+        {{ recentToolsCount$ | async }}
+      </strong>
+
+      <span class="stat-card__description">
+        Recent tools
       </span>
-
-      <strong>0</strong>
-
-      <span>Recent tools</span>
     </article>
 
-  </div>
+  </section>
+
+
+  <section class="dashboard__recent">
+
+    <div class="section-heading">
+      <div>
+        <span class="section-heading__eyebrow">
+          ACTIVITY
+        </span>
+
+        <h2>Recently Used</h2>
+
+        <p>
+          Your most recently used productivity tools.
+        </p>
+      </div>
+    </div>
+
+
+    @if (recentTools$ | async; as recentTools) {
+
+      @if (recentTools.length > 0) {
+
+        <div class="recent-tools">
+
+          @for (tool of recentTools; track tool.id) {
+
+            <article class="recent-tool">
+
+              <div class="recent-tool__icon">
+                {{ tool.icon }}
+              </div>
+
+              <div class="recent-tool__content">
+
+                <h3>{{ tool.name }}</h3>
+
+                <p>{{ tool.description }}</p>
+
+                <span class="recent-tool__category">
+                  {{ tool.category }}
+                </span>
+
+              </div>
+
+            </article>
+
+          }
+
+        </div>
+
+      } @else {
+
+        <div class="empty-state">
+
+          <div class="empty-state__icon">
+            ◷
+          </div>
+
+          <h3>No recently used tools</h3>
+
+          <p>
+            Tools you use will appear here.
+          </p>
+
+        </div>
+
+      }
+
+    }
+
+  </section>
 
 </section>
