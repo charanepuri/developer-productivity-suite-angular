@@ -55,13 +55,14 @@
         </div>
 
 
-        <a
-          class="category-card__link"
-          [routerLink]="category.route"
-        >
-          Explore tools
-          <span aria-hidden="true">→</span>
-        </a>
+<a
+  class="category-card__link"
+  [routerLink]="category.route"
+  [queryParams]="{ category: category.name }"
+>
+  Explore tools
+  <span aria-hidden="true">→</span>
+</a>
 
       </article>
 

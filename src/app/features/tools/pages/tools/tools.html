@@ -1,1 +1,197 @@
-<p>tools works!</p>
+<section class="tools">
+
+  <header class="tools__header">
+
+    <div>
+      <span class="tools__eyebrow">
+        DEVELOPER PRODUCTIVITY SUITE
+      </span>
+
+      <h1>Tools</h1>
+
+      <p>
+        Explore the complete collection of developer productivity tools.
+      </p>
+    </div>
+
+    <div class="tools__count">
+      <strong>{{ totalTools }}</strong>
+      <span>Total Tools</span>
+    </div>
+
+  </header>
+
+
+  <section class="tools__toolbar">
+
+    <a
+      class="filter-link"
+      routerLink="/tools"
+      [class.filter-link--active]="(selectedCategory$ | async) === null"
+    >
+      All Tools
+    </a>
+
+    <a
+      class="filter-link"
+      routerLink="/tools"
+      [queryParams]="{ category: 'Text Tools' }"
+      [class.filter-link--active]="(selectedCategory$ | async) === 'Text Tools'"
+    >
+      Text
+    </a>
+
+    <a
+      class="filter-link"
+      routerLink="/tools"
+      [queryParams]="{ category: 'JSON Tools' }"
+      [class.filter-link--active]="(selectedCategory$ | async) === 'JSON Tools'"
+    >
+      JSON
+    </a>
+
+    <a
+      class="filter-link"
+      routerLink="/tools"
+      [queryParams]="{ category: 'Security Tools' }"
+      [class.filter-link--active]="(selectedCategory$ | async) === 'Security Tools'"
+    >
+      Security
+    </a>
+
+    <a
+      class="filter-link"
+      routerLink="/tools"
+      [queryParams]="{ category: 'CSS Tools' }"
+      [class.filter-link--active]="(selectedCategory$ | async) === 'CSS Tools'"
+    >
+      CSS
+    </a>
+
+    <a
+      class="filter-link"
+      routerLink="/tools"
+      [queryParams]="{ category: 'Color Tools' }"
+      [class.filter-link--active]="(selectedCategory$ | async) === 'Color Tools'"
+    >
+      Color
+    </a>
+
+    <a
+      class="filter-link"
+      routerLink="/tools"
+      [queryParams]="{ category: 'Markdown Tools' }"
+      [class.filter-link--active]="(selectedCategory$ | async) === 'Markdown Tools'"
+    >
+      Markdown
+    </a>
+
+    <a
+      class="filter-link"
+      routerLink="/tools"
+      [queryParams]="{ category: 'Developer Tools' }"
+      [class.filter-link--active]="(selectedCategory$ | async) === 'Developer Tools'"
+    >
+      Developer
+    </a>
+
+    <a
+      class="filter-link"
+      routerLink="/tools"
+      [queryParams]="{ category: 'Date & Time Tools' }"
+      [class.filter-link--active]="(selectedCategory$ | async) === 'Date & Time Tools'"
+    >
+      Date & Time
+    </a>
+
+  </section>
+
+
+  <section
+    class="tools__grid"
+    aria-label="Productivity tools"
+  >
+
+    @if (tools$ | async; as tools) {
+
+      @if (tools.length > 0) {
+
+        @for (tool of tools; track tool.id) {
+
+          <article class="tool-card">
+
+            <div class="tool-card__top">
+
+              <div class="tool-card__icon">
+                {{ tool.icon }}
+              </div>
+
+              <span class="tool-card__category">
+                {{ tool.category }}
+              </span>
+
+            </div>
+
+
+            <div class="tool-card__content">
+
+              <h2>{{ tool.name }}</h2>
+
+              <p>
+                {{ tool.description }}
+              </p>
+
+            </div>
+
+
+            <div class="tool-card__tags">
+
+              @for (tag of tool.tags; track tag) {
+                <span>{{ tag }}</span>
+              }
+
+            </div>
+
+
+            <a
+              class="tool-card__link"
+              [routerLink]="tool.route"
+            >
+              Open Tool
+              <span aria-hidden="true">→</span>
+            </a>
+
+          </article>
+
+        }
+
+      } @else {
+
+        <div class="tools__empty">
+
+          <div class="tools__empty-icon">
+            ?
+          </div>
+
+          <h2>No tools found</h2>
+
+          <p>
+            No tools are available for the selected category.
+          </p>
+
+          <a
+            routerLink="/tools"
+            class="tools__empty-link"
+          >
+            View all tools
+          </a>
+
+        </div>
+
+      }
+
+    }
+
+  </section>
+
+</section>
