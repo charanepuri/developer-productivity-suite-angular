@@ -1,0 +1,80 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>TEXT TOOL</span>
+
+    <h1>Case Converter</h1>
+
+    <p>
+      Convert text between different letter and naming conventions.
+    </p>
+  </header>
+
+
+  <div class="tool-page__workspace">
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+        <label for="case-input">
+          Input
+        </label>
+
+        <button
+          type="button"
+          (click)="clear()"
+        >
+          Clear
+        </button>
+      </div>
+
+      <textarea
+        id="case-input"
+        [(ngModel)]="inputText"
+        placeholder="Enter your text here..."
+        rows="12"
+      ></textarea>
+
+    </div>
+
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+        <label for="case-select">
+          Conversion
+        </label>
+
+        <select
+          id="case-select"
+          [(ngModel)]="selectedCase"
+        >
+          @for (option of caseOptions; track option.value) {
+            <option [value]="option.value">
+              {{ option.label }}
+            </option>
+          }
+        </select>
+      </div>
+
+      <textarea
+        [value]="outputText"
+        readonly
+        placeholder="Converted text will appear here..."
+        rows="12"
+      ></textarea>
+
+      <button
+        type="button"
+        class="tool-action"
+        [disabled]="!outputText"
+        (click)="copyOutput()"
+      >
+        Copy Output
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
