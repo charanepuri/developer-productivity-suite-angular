@@ -1,0 +1,155 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>TEXT TOOL</span>
+
+    <h1>Word Counter</h1>
+
+    <p>
+      Analyze your text with detailed word, character,
+      sentence, line, paragraph, and reading-time statistics.
+    </p>
+  </header>
+
+
+  <div class="tool-page__workspace">
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+        <label for="word-counter-input">
+          Input
+        </label>
+
+        <button
+          type="button"
+          (click)="clear()"
+          [disabled]="!inputText"
+        >
+          Clear
+        </button>
+      </div>
+
+      <textarea
+        id="word-counter-input"
+        [(ngModel)]="inputText"
+        placeholder="Type or paste your text here..."
+        rows="16"
+      ></textarea>
+
+      <div class="tool-panel__actions">
+
+        <button
+          type="button"
+          class="tool-action"
+          [disabled]="!inputText"
+          (click)="copyInput()"
+        >
+          Copy Text
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+        <label>
+          Text Statistics
+        </label>
+
+        <span class="live-indicator">
+          Live
+        </span>
+      </div>
+
+
+      <div class="stats-grid">
+
+        <article class="stat-card">
+          <span class="stat-card__label">
+            Words
+          </span>
+
+          <strong>
+            {{ wordCount }}
+          </strong>
+        </article>
+
+
+        <article class="stat-card">
+          <span class="stat-card__label">
+            Characters
+          </span>
+
+          <strong>
+            {{ characterCount }}
+          </strong>
+        </article>
+
+
+        <article class="stat-card">
+          <span class="stat-card__label">
+            Without Spaces
+          </span>
+
+          <strong>
+            {{ characterCountWithoutSpaces }}
+          </strong>
+        </article>
+
+
+        <article class="stat-card">
+          <span class="stat-card__label">
+            Lines
+          </span>
+
+          <strong>
+            {{ lineCount }}
+          </strong>
+        </article>
+
+
+        <article class="stat-card">
+          <span class="stat-card__label">
+            Sentences
+          </span>
+
+          <strong>
+            {{ sentenceCount }}
+          </strong>
+        </article>
+
+
+        <article class="stat-card">
+          <span class="stat-card__label">
+            Paragraphs
+          </span>
+
+          <strong>
+            {{ paragraphCount }}
+          </strong>
+        </article>
+
+      </div>
+
+
+      <div class="reading-time">
+
+        <span>
+          Estimated Reading Time
+        </span>
+
+        <strong>
+          {{ readingTime }}
+        </strong>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
