@@ -1,0 +1,164 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>TEXT TOOL</span>
+
+    <h1>Duplicate Line Remover</h1>
+
+    <p>
+      Remove duplicate lines from your text while preserving
+      the order of the first occurrence.
+    </p>
+  </header>
+
+
+  <div class="tool-page__workspace">
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+        <label for="duplicate-input">
+          Input
+        </label>
+
+        <button
+          type="button"
+          (click)="clear()"
+          [disabled]="!inputText"
+        >
+          Clear
+        </button>
+      </div>
+
+      <textarea
+        id="duplicate-input"
+        [(ngModel)]="inputText"
+        placeholder="Paste your lines here..."
+        rows="16"
+      ></textarea>
+
+    </div>
+
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+        <label for="duplicate-output">
+          Result
+        </label>
+
+        <span class="result-badge">
+          {{ uniqueLineCount }} unique
+        </span>
+      </div>
+
+      <textarea
+        id="duplicate-output"
+        [value]="outputText"
+        readonly
+        placeholder="Unique lines will appear here..."
+        rows="16"
+      ></textarea>
+
+      <button
+        type="button"
+        class="tool-action"
+        [disabled]="!outputText"
+        (click)="copyOutput()"
+      >
+        Copy Output
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <section class="options-panel">
+
+    <div class="options-panel__header">
+      <h2>Options</h2>
+
+      <span>
+        Customize duplicate detection
+      </span>
+    </div>
+
+
+    <div class="options-grid">
+
+      <label class="option">
+
+        <input
+          type="checkbox"
+          [(ngModel)]="caseSensitive"
+        />
+
+        <span>
+          <strong>Case Sensitive</strong>
+          <small>
+            Treat uppercase and lowercase text as different.
+          </small>
+        </span>
+
+      </label>
+
+
+      <label class="option">
+
+        <input
+          type="checkbox"
+          [(ngModel)]="trimWhitespace"
+        />
+
+        <span>
+          <strong>Trim Whitespace</strong>
+          <small>
+            Remove leading and trailing spaces from each line.
+          </small>
+        </span>
+
+      </label>
+
+
+      <label class="option">
+
+        <input
+          type="checkbox"
+          [(ngModel)]="removeEmptyLines"
+        />
+
+        <span>
+          <strong>Remove Empty Lines</strong>
+          <small>
+            Exclude blank lines from the result.
+          </small>
+        </span>
+
+      </label>
+
+    </div>
+
+  </section>
+
+
+  <section class="statistics">
+
+    <article class="stat-card">
+      <span>Original Lines</span>
+      <strong>{{ originalLineCount }}</strong>
+    </article>
+
+    <article class="stat-card">
+      <span>Unique Lines</span>
+      <strong>{{ uniqueLineCount }}</strong>
+    </article>
+
+    <article class="stat-card">
+      <span>Duplicates Removed</span>
+      <strong>{{ duplicateCount }}</strong>
+    </article>
+
+  </section>
+
+</section>

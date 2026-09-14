@@ -16,6 +16,13 @@ export const TOOLS_ROUTES: Routes = [
     title: 'Word Counter | Developer Productivity Suite'
   },
   {
+    path: 'duplicate-line-remover',
+    loadComponent: () =>
+      import('./implementations/text/duplicate-line-remover/duplicate-line-remover')
+        .then(m => m.DuplicateLineRemover),
+    title: 'Duplicate Line Remover | Developer Productivity Suite'
+  },
+  {
     path: '',
     loadComponent: () =>
       import('./pages/tools/tools')
