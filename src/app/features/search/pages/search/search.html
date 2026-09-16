@@ -1,1 +1,185 @@
-<p>search works!</p>
+<section class="search-page">
+
+  <header class="search-page__header">
+
+    <div>
+      <span class="eyebrow">
+        TOOL DISCOVERY
+      </span>
+
+      <h1>Search Tools</h1>
+
+      <p>
+        Find the right productivity tool
+        across the entire Developer Productivity Suite.
+      </p>
+    </div>
+
+  </header>
+
+  <form
+    class="search-panel"
+    [formGroup]="searchForm"
+    (ngSubmit)="updateUrl()"
+  >
+
+    <div class="search-field">
+
+      <label for="tool-search">
+        Search
+      </label>
+
+      <input
+        id="tool-search"
+        type="search"
+        formControlName="query"
+        placeholder="Try JSON, color, password, regex..."
+      />
+
+    </div>
+
+    <div class="search-field">
+
+      <label for="tool-category">
+        Category
+      </label>
+
+      <select
+        id="tool-category"
+        formControlName="category"
+      >
+
+        <option value="">
+          All Categories
+        </option>
+
+        @for (category of categories; track category) {
+          <option [value]="category">
+            {{ category }}
+          </option>
+        }
+
+      </select>
+
+    </div>
+
+    <div class="search-actions">
+
+      <button
+        type="submit"
+        class="primary-button"
+      >
+        Apply Filters
+      </button>
+
+      <button
+        type="button"
+        class="secondary-button"
+        (click)="clearFilters()"
+      >
+        Clear
+      </button>
+
+    </div>
+
+  </form>
+
+  @if (results$ | async; as results) {
+
+    <section class="results-section">
+
+      <div class="results-header">
+
+        <div>
+          <h2>Search Results</h2>
+
+          <p>
+            {{ results.length }}
+            {{ results.length === 1 ? 'tool' : 'tools' }}
+            found
+          </p>
+        </div>
+
+      </div>
+
+      @if (results.length > 0) {
+
+        <div class="tool-grid">
+
+          @for (
+            tool of results;
+            track trackByTool($index, tool)
+          ) {
+
+            <a
+              class="tool-card"
+              [routerLink]="tool.route"
+            >
+
+              <div class="tool-card__icon">
+                {{ tool.icon }}
+              </div>
+
+              <div class="tool-card__content">
+
+                <span class="tool-card__category">
+                  {{ tool.category }}
+                </span>
+
+                <h3>
+                  {{ tool.name }}
+                </h3>
+
+                <p>
+                  {{ tool.description }}
+                </p>
+
+              </div>
+
+              <span
+                class="tool-card__arrow"
+                aria-hidden="true"
+              >
+                →
+              </span>
+
+            </a>
+
+          }
+
+        </div>
+
+      } @else {
+
+        <div class="empty-state">
+
+          <div class="empty-state__icon">
+            ⌕
+          </div>
+
+          <h3>
+            No tools found
+          </h3>
+
+          <p>
+            Try another keyword or remove the
+            category filter.
+          </p>
+
+          <button
+            type="button"
+            class="secondary-button"
+            (click)="clearFilters()"
+          >
+            Clear Filters
+          </button>
+
+        </div>
+
+      }
+
+    </section>
+
+  }
+
+</section>

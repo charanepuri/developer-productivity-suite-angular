@@ -1,10 +1,5 @@
-import {
-  Injectable
-} from '@angular/core';
-
-import {
-  BehaviorSubject
-} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +13,7 @@ export class AppStateService {
     this.searchQuerySubject.asObservable();
 
   setSearchQuery(query: string): void {
-    this.searchQuerySubject.next(query);
+    this.searchQuerySubject.next(query.trim());
   }
 
   getSearchQuery(): string {
