@@ -51,6 +51,14 @@ export const routes: Routes = [
   },
 
   {
+  path: 'about',
+  loadChildren: () =>
+    import('./features/about/about.routes')
+      .then(m => m.ABOUT_ROUTES)
+},
+
+
+  {
     path: '**',
     loadComponent: () =>
       import('./shared/components/not-found/not-found')

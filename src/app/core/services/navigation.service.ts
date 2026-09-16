@@ -38,7 +38,12 @@ export class NavigationService {
       label: 'Settings',
       route: '/settings',
       icon: '⚙'
-    }
+    },
+    {
+  label: 'About',
+  route: '/about',
+  icon: 'ⓘ'
+}
   ];
 
   getNavigationItems(): NavigationItem[] {
