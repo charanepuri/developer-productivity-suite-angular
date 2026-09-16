@@ -1,0 +1,159 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>SECURITY TOOL</span>
+
+    <h1>Base64 Encoder / Decoder</h1>
+
+    <p>
+      Encode text into Base64 or decode Base64 data
+      directly in your browser.
+    </p>
+  </header>
+
+
+  <section class="options-panel">
+
+    <div class="options-panel__header">
+      <h2>Operation</h2>
+      <p>Select whether you want to encode or decode.</p>
+    </div>
+
+    <div class="control">
+
+      <label for="base64-mode">
+        Mode
+      </label>
+
+      <select
+        id="base64-mode"
+        [(ngModel)]="mode"
+      >
+        <option value="encode">
+          Encode
+        </option>
+
+        <option value="decode">
+          Decode
+        </option>
+      </select>
+
+    </div>
+
+  </section>
+
+
+  <div class="tool-page__workspace">
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label for="base64-input">
+          Input
+        </label>
+
+        <button
+          type="button"
+          (click)="clear()"
+          [disabled]="!inputText"
+        >
+          Clear
+        </button>
+
+      </div>
+
+      <textarea
+        id="base64-input"
+        [(ngModel)]="inputText"
+        rows="15"
+        placeholder="Enter text or Base64 data..."
+      ></textarea>
+
+    </div>
+
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label>
+          Output
+        </label>
+
+        @if (!errorMessage && outputText) {
+          <span class="status-badge status-badge--success">
+            Success
+          </span>
+        }
+
+      </div>
+
+      <div class="result-box">
+        {{ outputText || 'Output will appear here...' }}
+      </div>
+
+      <div class="button-row">
+
+        <button
+          type="button"
+          class="tool-action"
+          [disabled]="!outputText"
+          (click)="copyOutput()"
+        >
+          Copy Output
+        </button>
+
+        <button
+          type="button"
+          class="tool-action tool-action--secondary"
+          [disabled]="!outputText"
+          (click)="swap()"
+        >
+          Swap
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  @if (errorMessage) {
+
+    <section class="error-panel">
+
+      <strong>
+        Processing Error
+      </strong>
+
+      <p>
+        {{ errorMessage }}
+      </p>
+
+    </section>
+
+  }
+
+
+  <section class="statistics">
+
+    <article class="stat-card">
+      <span>Input Length</span>
+      <strong>{{ inputLength }}</strong>
+    </article>
+
+    <article class="stat-card">
+      <span>Output Length</span>
+      <strong>{{ outputLength }}</strong>
+    </article>
+
+    <article class="stat-card">
+      <span>Mode</span>
+      <strong>{{ mode }}</strong>
+    </article>
+
+  </section>
+
+</section>

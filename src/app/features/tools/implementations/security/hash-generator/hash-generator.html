@@ -1,0 +1,114 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>SECURITY TOOL</span>
+
+    <h1>Hash Generator</h1>
+
+    <p>
+      Generate cryptographic hashes locally using the
+      browser's Web Crypto API.
+    </p>
+  </header>
+
+
+  <section class="options-panel">
+
+    <div class="control">
+
+      <label for="hash-algorithm">
+        Algorithm
+      </label>
+
+      <select
+        id="hash-algorithm"
+        [(ngModel)]="algorithm"
+      >
+        @for (
+          option of algorithms;
+          track option
+        ) {
+          <option [value]="option">
+            {{ option }}
+          </option>
+        }
+      </select>
+
+    </div>
+
+  </section>
+
+
+  <div class="tool-panel">
+
+    <div class="tool-panel__header">
+
+      <label for="hash-input">
+        Input Text
+      </label>
+
+      <button
+        type="button"
+        (click)="clear()"
+        [disabled]="!inputText"
+      >
+        Clear
+      </button>
+
+    </div>
+
+    <textarea
+      id="hash-input"
+      [(ngModel)]="inputText"
+      rows="9"
+      placeholder="Enter text to hash..."
+    ></textarea>
+
+    <button
+      type="button"
+      class="tool-action"
+      [disabled]="!inputText || isGenerating"
+      (click)="generateHash()"
+    >
+      @if (isGenerating) {
+        Generating...
+      } @else {
+        Generate Hash
+      }
+    </button>
+
+  </div>
+
+
+  <section class="tool-panel output-panel">
+
+    <div class="tool-panel__header">
+
+      <label>
+        Hash Result
+      </label>
+
+      @if (hash) {
+        <span class="status-badge status-badge--success">
+          {{ algorithm }}
+        </span>
+      }
+
+    </div>
+
+    <div class="result-box">
+      {{ hash || 'Generated hash will appear here...' }}
+    </div>
+
+    <button
+      type="button"
+      class="tool-action"
+      [disabled]="!hash"
+      (click)="copyHash()"
+    >
+      Copy Hash
+    </button>
+
+  </section>
+
+</section>

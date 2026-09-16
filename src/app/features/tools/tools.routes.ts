@@ -85,6 +85,48 @@ export const TOOLS_ROUTES: Routes = [
       .then(m => m.JsonKeyExtractor),
   title: 'JSON Key Extractor | Developer Productivity Suite'
 },
+{
+  path: 'base64-tool',
+  loadComponent: () =>
+    import('./implementations/security/base64-tool/base64-tool')
+      .then(m => m.Base64Tool),
+  title: 'Base64 Encoder / Decoder | Developer Productivity Suite'
+},
+{
+  path: 'url-encoder',
+  loadComponent: () =>
+    import('./implementations/security/url-encoder/url-encoder')
+      .then(m => m.UrlEncoder),
+  title: 'URL Encoder / Decoder | Developer Productivity Suite'
+},
+{
+  path: 'hash-generator',
+  loadComponent: () =>
+    import('./implementations/security/hash-generator/hash-generator')
+      .then(m => m.HashGenerator),
+  title: 'Hash Generator | Developer Productivity Suite'
+},
+{
+  path: 'password-generator',
+  loadComponent: () =>
+    import('./implementations/security/password-generator/password-generator')
+      .then(m => m.PasswordGenerator),
+  title: 'Password Generator | Developer Productivity Suite'
+},
+{
+  path: 'uuid-generator',
+  loadComponent: () =>
+    import('./implementations/security/uuid-generator/uuid-generator')
+      .then(m => m.UuidGenerator),
+  title: 'UUID Generator | Developer Productivity Suite'
+},
+{
+  path: 'jwt-decoder',
+  loadComponent: () =>
+    import('./implementations/security/jwt-decoder/jwt-decoder')
+      .then(m => m.JwtDecoder),
+  title: 'JWT Decoder | Developer Productivity Suite'
+},
   {
     path: '',
     loadComponent: () =>

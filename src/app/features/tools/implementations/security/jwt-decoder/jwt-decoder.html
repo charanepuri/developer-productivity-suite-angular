@@ -1,0 +1,180 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>SECURITY TOOL</span>
+
+    <h1>JWT Decoder</h1>
+
+    <p>
+      Decode JWT header and payload data locally.
+      This tool does not verify JWT signatures.
+    </p>
+  </header>
+
+
+  <section class="tool-panel">
+
+    <div class="tool-panel__header">
+
+      <label for="jwt-input">
+        JWT Token
+      </label>
+
+      <button
+        type="button"
+        (click)="clear()"
+        [disabled]="!token"
+      >
+        Clear
+      </button>
+
+    </div>
+
+    <textarea
+      id="jwt-input"
+      [(ngModel)]="token"
+      rows="7"
+      placeholder="Paste your JWT token here..."
+    ></textarea>
+
+  </section>
+
+
+  <section class="statistics">
+
+    <article class="stat-card">
+
+      <span>
+        Structure
+      </span>
+
+      <strong>
+        {{ isStructureValid ? '3 Parts' : 'Invalid' }}
+      </strong>
+
+    </article>
+
+
+    <article class="stat-card">
+
+      <span>
+        Header
+      </span>
+
+      <strong>
+        {{ header.valid ? 'Valid' : 'Error' }}
+      </strong>
+
+    </article>
+
+
+    <article class="stat-card">
+
+      <span>
+        Payload
+      </span>
+
+      <strong>
+        {{ payload.valid ? 'Valid' : 'Error' }}
+      </strong>
+
+    </article>
+
+  </section>
+
+
+  <div class="tool-page__workspace">
+
+    <section class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label>
+          Header
+        </label>
+
+        @if (header.valid) {
+          <span class="status-badge status-badge--success">
+            Decoded
+          </span>
+        }
+
+      </div>
+
+
+      @if (header.valid) {
+
+        <div class="result-box">
+          {{ header.data | json }}
+        </div>
+
+      } @else {
+
+        <div class="result-box">
+          {{ header.error }}
+        </div>
+
+      }
+
+    </section>
+
+
+    <section class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label>
+          Payload
+        </label>
+
+        @if (payload.valid) {
+          <span class="status-badge status-badge--success">
+            Decoded
+          </span>
+        }
+
+      </div>
+
+
+      @if (payload.valid) {
+
+        <div class="result-box">
+          {{ payload.data | json }}
+        </div>
+
+      } @else {
+
+        <div class="result-box">
+          {{ payload.error }}
+        </div>
+
+      }
+
+    </section>
+
+  </div>
+
+
+  @if (signature) {
+
+    <section class="tool-panel">
+
+      <div class="tool-panel__header">
+        <label>
+          Signature
+        </label>
+
+        <span class="status-badge">
+          Not Verified
+        </span>
+      </div>
+
+      <div class="result-box">
+        {{ signature }}
+      </div>
+
+    </section>
+
+  }
+
+</section>

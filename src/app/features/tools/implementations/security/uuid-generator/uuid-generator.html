@@ -1,0 +1,60 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>SECURITY TOOL</span>
+
+    <h1>UUID Generator</h1>
+
+    <p>
+      Generate standards-compliant random UUIDs directly
+      in your browser.
+    </p>
+  </header>
+
+
+  <section class="tool-panel">
+
+    <div class="tool-panel__header">
+
+      <label>
+        Generated UUID
+      </label>
+
+      @if (uuid) {
+        <span class="status-badge status-badge--success">
+          UUID v4
+        </span>
+      }
+
+    </div>
+
+
+    <div class="result-box">
+      {{ uuid || 'Click Generate UUID...' }}
+    </div>
+
+
+    <div class="button-row">
+
+      <button
+        type="button"
+        class="tool-action"
+        (click)="generate()"
+      >
+        Generate UUID
+      </button>
+
+      <button
+        type="button"
+        class="tool-action tool-action--secondary"
+        [disabled]="!uuid"
+        (click)="copyUuid()"
+      >
+        Copy UUID
+      </button>
+
+    </div>
+
+  </section>
+
+</section>

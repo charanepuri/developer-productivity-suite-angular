@@ -1,0 +1,134 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>SECURITY TOOL</span>
+
+    <h1>URL Encoder / Decoder</h1>
+
+    <p>
+      Safely encode special characters for URLs or
+      decode percent-encoded URL components.
+    </p>
+  </header>
+
+
+  <section class="options-panel">
+
+    <div class="control">
+
+      <label for="url-mode">
+        Mode
+      </label>
+
+      <select
+        id="url-mode"
+        [(ngModel)]="mode"
+      >
+        <option value="encode">
+          Encode
+        </option>
+
+        <option value="decode">
+          Decode
+        </option>
+      </select>
+
+    </div>
+
+  </section>
+
+
+  <div class="tool-page__workspace">
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label for="url-input">
+          Input
+        </label>
+
+        <button
+          type="button"
+          (click)="clear()"
+          [disabled]="!inputText"
+        >
+          Clear
+        </button>
+
+      </div>
+
+      <textarea
+        id="url-input"
+        [(ngModel)]="inputText"
+        rows="15"
+        placeholder="https://example.com/search?q=hello world"
+      ></textarea>
+
+    </div>
+
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label>
+          Output
+        </label>
+
+        @if (outputText) {
+          <span class="status-badge status-badge--success">
+            Success
+          </span>
+        }
+
+      </div>
+
+      <div class="result-box">
+        {{ outputText || 'Output will appear here...' }}
+      </div>
+
+      <div class="button-row">
+
+        <button
+          type="button"
+          class="tool-action"
+          [disabled]="!outputText"
+          (click)="copyOutput()"
+        >
+          Copy Output
+        </button>
+
+        <button
+          type="button"
+          class="tool-action tool-action--secondary"
+          [disabled]="!outputText"
+          (click)="swap()"
+        >
+          Swap
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  @if (errorMessage) {
+
+    <section class="error-panel">
+
+      <strong>
+        URL Processing Error
+      </strong>
+
+      <p>
+        {{ errorMessage }}
+      </p>
+
+    </section>
+
+  }
+
+</section>
