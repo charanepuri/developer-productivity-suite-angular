@@ -1,5 +1,9 @@
 import { Routes } from '@angular/router';
 
+import {
+  appReadinessGuard
+} from './core/guards/app-readiness.guard';
+
 export const routes: Routes = [
 
   {
@@ -10,6 +14,7 @@ export const routes: Routes = [
 
   {
     path: 'dashboard',
+    canActivate: [appReadinessGuard],
     loadChildren: () =>
       import('./features/dashboard/dashboard.routes')
         .then(m => m.DASHBOARD_ROUTES)
@@ -17,6 +22,7 @@ export const routes: Routes = [
 
   {
     path: 'tools',
+    canActivate: [appReadinessGuard],
     loadChildren: () =>
       import('./features/tools/tools.routes')
         .then(m => m.TOOLS_ROUTES)
@@ -24,6 +30,7 @@ export const routes: Routes = [
 
   {
     path: 'categories',
+    canActivate: [appReadinessGuard],
     loadChildren: () =>
       import('./features/categories/categories.routes')
         .then(m => m.CATEGORIES_ROUTES)
@@ -31,6 +38,7 @@ export const routes: Routes = [
 
   {
     path: 'search',
+    canActivate: [appReadinessGuard],
     loadChildren: () =>
       import('./features/search/search.routes')
         .then(m => m.SEARCH_ROUTES)
@@ -38,6 +46,7 @@ export const routes: Routes = [
 
   {
     path: 'favorites',
+    canActivate: [appReadinessGuard],
     loadChildren: () =>
       import('./features/favorites/favorites.routes')
         .then(m => m.FAVORITES_ROUTES)
@@ -45,6 +54,7 @@ export const routes: Routes = [
 
   {
   path: 'recent',
+  canActivate: [appReadinessGuard],
   loadChildren: () =>
     import('./features/recent/recent.routes')
       .then(m => m.RECENT_ROUTES)
@@ -52,6 +62,7 @@ export const routes: Routes = [
 
   {
     path: 'settings',
+    canActivate: [appReadinessGuard],
     loadChildren: () =>
       import('./features/settings/settings.routes')
         .then(m => m.SETTINGS_ROUTES)
@@ -59,6 +70,7 @@ export const routes: Routes = [
 
   {
   path: 'about',
+  canActivate: [appReadinessGuard],
   loadChildren: () =>
     import('./features/about/about.routes')
       .then(m => m.ABOUT_ROUTES)
