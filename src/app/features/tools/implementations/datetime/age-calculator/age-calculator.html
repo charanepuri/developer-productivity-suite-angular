@@ -1,0 +1,114 @@
+<section class="datetime-tool">
+  <header class="datetime-tool__header">
+    <h1>Age Calculator</h1>
+    <p>Calculate age in years, months, days, and total days.</p>
+  </header>
+
+  <div class="datetime-tool__workspace">
+    <section class="datetime-tool__panel">
+      <h2>Dates</h2>
+
+      <div class="datetime-tool__controls">
+
+        <div class="datetime-tool__field">
+          <label for="birthDate">
+            Date of Birth
+          </label>
+
+          <input
+            id="birthDate"
+            class="datetime-tool__input"
+            type="date"
+            [(ngModel)]="birthDate"
+          />
+        </div>
+
+        <div class="datetime-tool__field">
+          <label for="calculationDate">
+            Calculate Age On
+          </label>
+
+          <input
+            id="calculationDate"
+            class="datetime-tool__input"
+            type="date"
+            [(ngModel)]="calculationDate"
+          />
+        </div>
+
+        <div class="datetime-tool__buttons">
+          <button
+            class="datetime-tool__button datetime-tool__button--primary"
+            type="button"
+            (click)="setToday()"
+          >
+            Today
+          </button>
+
+          <button
+            class="datetime-tool__button datetime-tool__button--secondary"
+            type="button"
+            (click)="reset()"
+          >
+            Reset
+          </button>
+        </div>
+
+        @if (error) {
+          <div class="datetime-tool__error">
+            {{ error }}
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="datetime-tool__panel">
+      <h2>Age</h2>
+
+      @if (result; as age) {
+        <div class="datetime-tool__age">
+
+          <div class="datetime-tool__age-value">
+            <strong>{{ age.years }}</strong>
+            <span>Years</span>
+          </div>
+
+          <div class="datetime-tool__age-value">
+            <strong>{{ age.months }}</strong>
+            <span>Months</span>
+          </div>
+
+          <div class="datetime-tool__age-value">
+            <strong>{{ age.days }}</strong>
+            <span>Days</span>
+          </div>
+
+        </div>
+
+        <div class="datetime-tool__result-grid">
+
+          <div class="datetime-tool__result">
+            <span class="datetime-tool__result-label">
+              Total Days
+            </span>
+
+            <span class="datetime-tool__result-value">
+              {{ age.totalDays }}
+            </span>
+          </div>
+
+          <div class="datetime-tool__result">
+            <span class="datetime-tool__result-label">
+              Next Birthday
+            </span>
+
+            <span class="datetime-tool__result-value">
+              {{ age.nextBirthdayDays }} days
+            </span>
+          </div>
+
+        </div>
+      }
+    </section>
+  </div>
+</section>

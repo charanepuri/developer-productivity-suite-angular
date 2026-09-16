@@ -1,0 +1,133 @@
+<section class="datetime-tool">
+  <header class="datetime-tool__header">
+    <h1>Date Difference Calculator</h1>
+    <p>Calculate the difference between two calendar dates.</p>
+  </header>
+
+  <div class="datetime-tool__workspace">
+    <section class="datetime-tool__panel">
+      <h2>Date Range</h2>
+
+      <div class="datetime-tool__controls">
+
+        <div class="datetime-tool__field">
+          <label for="startDate">Start Date</label>
+
+          <input
+            id="startDate"
+            class="datetime-tool__input"
+            type="date"
+            [(ngModel)]="startDate"
+          />
+        </div>
+
+        <div class="datetime-tool__field">
+          <label for="endDate">End Date</label>
+
+          <input
+            id="endDate"
+            class="datetime-tool__input"
+            type="date"
+            [(ngModel)]="endDate"
+          />
+        </div>
+
+        <div class="datetime-tool__buttons">
+          <button
+            class="datetime-tool__button datetime-tool__button--primary"
+            type="button"
+            (click)="setTodayAsStart()"
+          >
+            Start Today
+          </button>
+
+          <button
+            class="datetime-tool__button datetime-tool__button--secondary"
+            type="button"
+            (click)="reset()"
+          >
+            Reset
+          </button>
+        </div>
+
+        @if (error) {
+          <div class="datetime-tool__error">
+            {{ error }}
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="datetime-tool__panel">
+      <h2>Difference</h2>
+
+      @if (difference; as result) {
+        <div class="datetime-tool__result-grid">
+
+          <div class="datetime-tool__result">
+            <span class="datetime-tool__result-label">
+              Calendar Difference
+            </span>
+
+            <span class="datetime-tool__result-value">
+              {{ result.years }}y
+              {{ result.months }}m
+              {{ result.days }}d
+            </span>
+          </div>
+
+          <div class="datetime-tool__result">
+            <span class="datetime-tool__result-label">
+              Total Days
+            </span>
+
+            <span class="datetime-tool__result-value">
+              {{ result.totalDays }}
+            </span>
+          </div>
+
+          <div class="datetime-tool__result">
+            <span class="datetime-tool__result-label">
+              Total Weeks
+            </span>
+
+            <span class="datetime-tool__result-value">
+              {{ result.totalWeeks.toFixed(2) }}
+            </span>
+          </div>
+
+          <div class="datetime-tool__result">
+            <span class="datetime-tool__result-label">
+              Total Hours
+            </span>
+
+            <span class="datetime-tool__result-value">
+              {{ result.totalHours }}
+            </span>
+          </div>
+
+          <div class="datetime-tool__result">
+            <span class="datetime-tool__result-label">
+              Total Minutes
+            </span>
+
+            <span class="datetime-tool__result-value">
+              {{ result.totalMinutes }}
+            </span>
+          </div>
+
+          <div class="datetime-tool__result">
+            <span class="datetime-tool__result-label">
+              Total Seconds
+            </span>
+
+            <span class="datetime-tool__result-value">
+              {{ result.totalSeconds }}
+            </span>
+          </div>
+
+        </div>
+      }
+    </section>
+  </div>
+</section>

@@ -1,0 +1,104 @@
+<section class="datetime-tool">
+  <header class="datetime-tool__header">
+    <h1>Timezone Converter</h1>
+    <p>Convert a date and time between different time zones.</p>
+  </header>
+
+  <section class="datetime-tool__panel">
+    <div class="datetime-tool__controls">
+
+      <div class="datetime-tool__field">
+        <label for="dateTime">Date & Time</label>
+
+        <input
+          id="dateTime"
+          class="datetime-tool__input"
+          type="datetime-local"
+          [(ngModel)]="dateTime"
+        />
+      </div>
+
+      <div class="datetime-tool__field">
+        <label for="sourceTimezone">
+          Source Timezone
+        </label>
+
+        <select
+          id="sourceTimezone"
+          class="datetime-tool__select"
+          [(ngModel)]="sourceTimezone"
+        >
+          @for (timezone of timezones; track timezone.value) {
+            <option [value]="timezone.value">
+              {{ timezone.label }}
+            </option>
+          }
+        </select>
+      </div>
+
+      <div class="datetime-tool__field">
+        <label for="targetTimezone">
+          Target Timezone
+        </label>
+
+        <select
+          id="targetTimezone"
+          class="datetime-tool__select"
+          [(ngModel)]="targetTimezone"
+        >
+          @for (timezone of timezones; track timezone.value) {
+            <option [value]="timezone.value">
+              {{ timezone.label }}
+            </option>
+          }
+        </select>
+      </div>
+
+      <div class="datetime-tool__buttons">
+        <button
+          class="datetime-tool__button datetime-tool__button--primary"
+          type="button"
+          (click)="setNow()"
+        >
+          Use Current Time
+        </button>
+
+        <button
+          class="datetime-tool__button datetime-tool__button--secondary"
+          type="button"
+          (click)="swap()"
+        >
+          Swap Timezones
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="datetime-tool__panel" style="margin-top: 20px;">
+    <h2>Conversion</h2>
+
+    <div class="datetime-tool__timezone-grid">
+
+      <article class="datetime-tool__timezone-card">
+        <h3>Source</h3>
+
+        <span>{{ sourceTimezone }}</span>
+
+        <strong>
+          {{ sourceTime }}
+        </strong>
+      </article>
+
+      <article class="datetime-tool__timezone-card">
+        <h3>Converted</h3>
+
+        <span>{{ targetTimezone }}</span>
+
+        <strong>
+          {{ convertedTime }}
+        </strong>
+      </article>
+
+    </div>
+  </section>
+</section>

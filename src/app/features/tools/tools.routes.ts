@@ -278,7 +278,32 @@ export const TOOLS_ROUTES: Routes = [
   title: 'Query String Builder | Developer Productivity Suite'
 },
 
+{
+  path: 'date-difference-calculator',
+  loadComponent: () =>
+    import(
+      './implementations/datetime/date-difference-calculator/date-difference-calculator'
+    ).then(m => m.DateDifferenceCalculator),
+  title: 'Date Difference Calculator | Developer Productivity Suite'
+},
 
+{
+  path: 'timezone-converter',
+  loadComponent: () =>
+    import(
+      './implementations/datetime/timezone-converter/timezone-converter'
+    ).then(m => m.TimezoneConverter),
+  title: 'Timezone Converter | Developer Productivity Suite'
+},
+
+{
+  path: 'age-calculator',
+  loadComponent: () =>
+    import(
+      './implementations/datetime/age-calculator/age-calculator'
+    ).then(m => m.AgeCalculator),
+  title: 'Age Calculator | Developer Productivity Suite'
+},
 
   {
     path: '',
