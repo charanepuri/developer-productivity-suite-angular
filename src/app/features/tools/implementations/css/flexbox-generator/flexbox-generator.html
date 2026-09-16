@@ -1,0 +1,105 @@
+<section class="css-tool">
+  <header class="css-tool__header">
+    <h1>Flexbox Generator</h1>
+    <p>Generate CSS Flexbox layouts interactively.</p>
+  </header>
+
+  <div class="css-tool__workspace">
+    <section class="css-tool__panel">
+      <h2>Flexbox Controls</h2>
+
+      <div class="css-tool__controls">
+
+        <div class="css-tool__field">
+          <label>Direction</label>
+
+          <select [(ngModel)]="direction">
+            <option value="row">Row</option>
+            <option value="row-reverse">Row Reverse</option>
+            <option value="column">Column</option>
+            <option value="column-reverse">Column Reverse</option>
+          </select>
+        </div>
+
+        <div class="css-tool__field">
+          <label>Justify Content</label>
+
+          <select [(ngModel)]="justify">
+            <option value="flex-start">Flex Start</option>
+            <option value="center">Center</option>
+            <option value="flex-end">Flex End</option>
+            <option value="space-between">Space Between</option>
+            <option value="space-around">Space Around</option>
+            <option value="space-evenly">Space Evenly</option>
+          </select>
+        </div>
+
+        <div class="css-tool__field">
+          <label>Align Items</label>
+
+          <select [(ngModel)]="align">
+            <option value="stretch">Stretch</option>
+            <option value="flex-start">Flex Start</option>
+            <option value="center">Center</option>
+            <option value="flex-end">Flex End</option>
+            <option value="baseline">Baseline</option>
+          </select>
+        </div>
+
+        <div class="css-tool__field">
+          <label>Gap</label>
+
+          <div class="css-tool__range">
+            <input
+              type="range"
+              min="0"
+              max="60"
+              [(ngModel)]="gap"
+            />
+
+            <output>{{ gap }}px</output>
+          </div>
+        </div>
+
+        <label class="css-tool__checkbox">
+          <input type="checkbox" [(ngModel)]="wrap" />
+          Enable Flex Wrap
+        </label>
+
+        <div class="css-tool__buttons">
+          <button
+            class="css-tool__button css-tool__button--primary"
+            type="button"
+            (click)="copy()"
+          >
+            Copy CSS
+          </button>
+
+          <button
+            class="css-tool__button css-tool__button--secondary"
+            type="button"
+            (click)="reset()"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="css-tool__panel">
+      <h2>Preview</h2>
+
+      <div class="css-tool__preview">
+        <div class="flex-preview" [ngStyle]="flexStyle">
+          @for (item of items; track item) {
+            <div class="flex-preview__item">
+              {{ item }}
+            </div>
+          }
+        </div>
+      </div>
+
+      <pre class="css-tool__code">{{ cssCode }}</pre>
+    </section>
+  </div>
+</section>

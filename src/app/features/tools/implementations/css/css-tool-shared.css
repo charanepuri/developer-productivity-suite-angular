@@ -1,0 +1,184 @@
+.css-tool {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.css-tool__header {
+  margin-bottom: 24px;
+}
+
+.css-tool__header h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.css-tool__header p {
+  margin: 0;
+  color: var(--text-muted, #94a3b8);
+}
+
+.css-tool__workspace {
+  display: grid;
+  grid-template-columns: minmax(280px, 380px) 1fr;
+  gap: 20px;
+}
+
+.css-tool__panel {
+  padding: 22px;
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 16px;
+  background: var(--surface-color, #111827);
+}
+
+.css-tool__panel h2 {
+  margin: 0 0 18px;
+  font-size: 1rem;
+}
+
+.css-tool__controls {
+  display: grid;
+  gap: 16px;
+}
+
+.css-tool__field {
+  display: grid;
+  gap: 7px;
+}
+
+.css-tool__field label {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.css-tool__field input,
+.css-tool__field select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 9px;
+  background: var(--background-color, #0f172a);
+  color: inherit;
+  font: inherit;
+}
+
+.css-tool__field input[type="color"] {
+  height: 44px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.css-tool__range {
+  display: grid;
+  grid-template-columns: 1fr 70px;
+  gap: 10px;
+  align-items: center;
+}
+
+.css-tool__range input[type="range"] {
+  width: 100%;
+}
+
+.css-tool__range output {
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--background-color, #0f172a);
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.css-tool__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.css-tool__button {
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 15px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.css-tool__button--primary {
+  background: #2563eb;
+  color: white;
+}
+
+.css-tool__button--secondary {
+  background: #334155;
+  color: white;
+}
+
+.css-tool__preview {
+  min-height: 380px;
+  display: grid;
+  place-items: center;
+  padding: 30px;
+  border-radius: 14px;
+  background:
+    linear-gradient(45deg, #1e293b 25%, transparent 25%),
+    linear-gradient(-45deg, #1e293b 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #1e293b 75%),
+    linear-gradient(-45deg, transparent 75%, #1e293b 75%);
+  background-size: 24px 24px;
+  background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+}
+
+.css-tool__preview-box {
+  width: 180px;
+  height: 180px;
+  background: #2563eb;
+}
+
+.css-tool__code {
+  margin-top: 18px;
+  padding: 16px;
+  overflow-x: auto;
+  border-radius: 10px;
+  background: #020617;
+  color: #e2e8f0;
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.css-tool__copy {
+  margin-top: 12px;
+}
+
+.css-tool__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.css-tool__checkbox input {
+  width: auto;
+}
+
+@media (max-width: 800px) {
+  .css-tool__workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .css-tool__preview {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .css-tool__panel {
+    padding: 16px;
+  }
+
+  .css-tool__header h1 {
+    font-size: 1.5rem;
+  }
+}

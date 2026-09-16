@@ -1,0 +1,16 @@
+@import "../css-tool-shared.css";
+
+.grid-preview {
+  width: 100%;
+  height: 300px;
+}
+
+.grid-preview__item {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: 800;
+}

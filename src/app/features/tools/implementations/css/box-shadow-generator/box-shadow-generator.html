@@ -1,0 +1,122 @@
+<section class="css-tool">
+  <header class="css-tool__header">
+    <h1>Box Shadow Generator</h1>
+    <p>Create and preview CSS box shadows visually.</p>
+  </header>
+
+  <div class="css-tool__workspace">
+    <section class="css-tool__panel">
+      <h2>Shadow Controls</h2>
+
+      <div class="css-tool__controls">
+
+        <div class="css-tool__field">
+          <label>Horizontal Offset</label>
+          <div class="css-tool__range">
+            <input
+              type="range"
+              min="-50"
+              max="50"
+              [(ngModel)]="offsetX"
+            />
+            <output>{{ offsetX }}px</output>
+          </div>
+        </div>
+
+        <div class="css-tool__field">
+          <label>Vertical Offset</label>
+          <div class="css-tool__range">
+            <input
+              type="range"
+              min="-50"
+              max="50"
+              [(ngModel)]="offsetY"
+            />
+            <output>{{ offsetY }}px</output>
+          </div>
+        </div>
+
+        <div class="css-tool__field">
+          <label>Blur</label>
+          <div class="css-tool__range">
+            <input
+              type="range"
+              min="0"
+              max="100"
+              [(ngModel)]="blur"
+            />
+            <output>{{ blur }}px</output>
+          </div>
+        </div>
+
+        <div class="css-tool__field">
+          <label>Spread</label>
+          <div class="css-tool__range">
+            <input
+              type="range"
+              min="-50"
+              max="50"
+              [(ngModel)]="spread"
+            />
+            <output>{{ spread }}px</output>
+          </div>
+        </div>
+
+        <div class="css-tool__field">
+          <label>Opacity</label>
+          <div class="css-tool__range">
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              [(ngModel)]="opacity"
+            />
+            <output>{{ opacity }}</output>
+          </div>
+        </div>
+
+        <div class="css-tool__field">
+          <label>Shadow Color</label>
+          <input type="color" [(ngModel)]="shadowColor" />
+        </div>
+
+        <label class="css-tool__checkbox">
+          <input type="checkbox" [(ngModel)]="inset" />
+          Inset Shadow
+        </label>
+
+        <div class="css-tool__buttons">
+          <button
+            class="css-tool__button css-tool__button--primary"
+            type="button"
+            (click)="copy()"
+          >
+            Copy CSS
+          </button>
+
+          <button
+            class="css-tool__button css-tool__button--secondary"
+            type="button"
+            (click)="reset()"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="css-tool__panel">
+      <h2>Preview</h2>
+
+      <div class="css-tool__preview">
+        <div
+          class="css-tool__preview-box"
+          [style.box-shadow]="boxShadow"
+        ></div>
+      </div>
+
+      <pre class="css-tool__code">{{ cssCode }}</pre>
+    </section>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+@import "../css-tool-shared.css";
+
+.flex-preview {
+  width: 100%;
+  min-height: 260px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.flex-preview__item {
+  min-width: 70px;
+  min-height: 70px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-weight: 800;
+}

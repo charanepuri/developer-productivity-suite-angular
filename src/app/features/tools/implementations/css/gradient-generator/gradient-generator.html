@@ -1,0 +1,83 @@
+<section class="css-tool">
+  <header class="css-tool__header">
+    <h1>Gradient Generator</h1>
+    <p>Build beautiful CSS linear and radial gradients.</p>
+  </header>
+
+  <div class="css-tool__workspace">
+    <section class="css-tool__panel">
+      <h2>Gradient Controls</h2>
+
+      <div class="css-tool__controls">
+
+        <div class="css-tool__field">
+          <label for="gradientType">Gradient Type</label>
+
+          <select
+            id="gradientType"
+            [(ngModel)]="type"
+          >
+            <option value="linear">Linear</option>
+            <option value="radial">Radial</option>
+          </select>
+        </div>
+
+        @if (type === 'linear') {
+          <div class="css-tool__field">
+            <label>Angle</label>
+
+            <div class="css-tool__range">
+              <input
+                type="range"
+                min="0"
+                max="360"
+                [(ngModel)]="angle"
+              />
+
+              <output>{{ angle }}°</output>
+            </div>
+          </div>
+        }
+
+        <div class="css-tool__field">
+          <label>Color 1</label>
+          <input type="color" [(ngModel)]="colorOne" />
+        </div>
+
+        <div class="css-tool__field">
+          <label>Color 2</label>
+          <input type="color" [(ngModel)]="colorTwo" />
+        </div>
+
+        <div class="css-tool__buttons">
+          <button
+            class="css-tool__button css-tool__button--primary"
+            type="button"
+            (click)="copy()"
+          >
+            Copy CSS
+          </button>
+
+          <button
+            class="css-tool__button css-tool__button--secondary"
+            type="button"
+            (click)="reset()"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="css-tool__panel">
+      <h2>Preview</h2>
+
+      <div
+        class="css-tool__preview"
+        [style.background]="gradient"
+      ></div>
+
+      <pre class="css-tool__code">{{ cssCode }}</pre>
+    </section>
+  </div>
+</section>

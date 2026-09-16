@@ -127,6 +127,45 @@ export const TOOLS_ROUTES: Routes = [
       .then(m => m.JwtDecoder),
   title: 'JWT Decoder | Developer Productivity Suite'
 },
+{
+  path: 'box-shadow-generator',
+  loadComponent: () =>
+    import('./implementations/css/box-shadow-generator/box-shadow-generator')
+      .then(m => m.BoxShadowGenerator),
+  title: 'Box Shadow Generator | Developer Productivity Suite'
+},
+
+{
+  path: 'gradient-generator',
+  loadComponent: () =>
+    import('./implementations/css/gradient-generator/gradient-generator')
+      .then(m => m.GradientGenerator),
+  title: 'Gradient Generator | Developer Productivity Suite'
+},
+
+{
+  path: 'border-radius-generator',
+  loadComponent: () =>
+    import('./implementations/css/border-radius-generator/border-radius-generator')
+      .then(m => m.BorderRadiusGenerator),
+  title: 'Border Radius Generator | Developer Productivity Suite'
+},
+
+{
+  path: 'flexbox-generator',
+  loadComponent: () =>
+    import('./implementations/css/flexbox-generator/flexbox-generator')
+      .then(m => m.FlexboxGenerator),
+  title: 'Flexbox Generator | Developer Productivity Suite'
+},
+
+{
+  path: 'grid-generator',
+  loadComponent: () =>
+    import('./implementations/css/grid-generator/grid-generator')
+      .then(m => m.GridGenerator),
+  title: 'Grid Generator | Developer Productivity Suite'
+},
   {
     path: '',
     loadComponent: () =>
