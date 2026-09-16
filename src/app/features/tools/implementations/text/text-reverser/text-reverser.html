@@ -1,0 +1,200 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>TEXT TOOL</span>
+
+    <h1>Text Reverser</h1>
+
+    <p>
+      Reverse characters, words, or complete lines with
+      a simple real-time text transformation tool.
+    </p>
+  </header>
+
+
+  <div class="tool-page__workspace">
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label for="text-reverser-input">
+          Input
+        </label>
+
+        <button
+          type="button"
+          (click)="clear()"
+          [disabled]="!inputText"
+        >
+          Clear
+        </button>
+
+      </div>
+
+
+      <textarea
+        id="text-reverser-input"
+        [(ngModel)]="inputText"
+        placeholder="Enter your text here..."
+        rows="16"
+      ></textarea>
+
+    </div>
+
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label for="text-reverser-output">
+          Reversed Result
+        </label>
+
+        <span class="result-badge">
+          Live
+        </span>
+
+      </div>
+
+
+      <textarea
+        id="text-reverser-output"
+        [value]="outputText"
+        readonly
+        placeholder="Reversed text will appear here..."
+        rows="16"
+      ></textarea>
+
+
+      <button
+        type="button"
+        class="tool-action"
+        [disabled]="!outputText"
+        (click)="copyOutput()"
+      >
+        Copy Output
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <section class="options-panel">
+
+    <div class="options-panel__header">
+
+      <div>
+        <h2>Reverse Mode</h2>
+
+        <span>
+          Select how the input should be reversed.
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="mode-grid">
+
+      @for (
+        option of reverseOptions;
+        track option.value
+      ) {
+
+        <label
+          class="mode-card"
+          [class.mode-card--active]="
+            reverseMode === option.value
+          "
+        >
+
+          <input
+            type="radio"
+            name="reverse-mode"
+            [value]="option.value"
+            [(ngModel)]="reverseMode"
+          />
+
+          <span class="mode-card__content">
+
+            <strong>
+              {{ option.label }}
+            </strong>
+
+            @if (option.value === 'characters') {
+              <small>
+                Reverse every character while preserving
+                the original text structure.
+              </small>
+            }
+
+            @if (option.value === 'words') {
+              <small>
+                Reverse the order of words while keeping
+                each word unchanged.
+              </small>
+            }
+
+            @if (option.value === 'lines') {
+              <small>
+                Reverse the order of lines while preserving
+                each line's content.
+              </small>
+            }
+
+          </span>
+
+        </label>
+
+      }
+
+    </div>
+
+  </section>
+
+
+  <section class="statistics">
+
+    <article class="stat-card">
+
+      <span>
+        Characters
+      </span>
+
+      <strong>
+        {{ characterCount }}
+      </strong>
+
+    </article>
+
+
+    <article class="stat-card">
+
+      <span>
+        Words
+      </span>
+
+      <strong>
+        {{ wordCount }}
+      </strong>
+
+    </article>
+
+
+    <article class="stat-card">
+
+      <span>
+        Lines
+      </span>
+
+      <strong>
+        {{ lineCount }}
+      </strong>
+
+    </article>
+
+  </section>
+
+</section>

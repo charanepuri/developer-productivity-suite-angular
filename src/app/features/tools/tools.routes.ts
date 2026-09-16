@@ -36,6 +36,13 @@ export const TOOLS_ROUTES: Routes = [
       .then(m => m.SlugGenerator),
   title: 'Slug Generator | Developer Productivity Suite'
 },
+{
+  path: 'text-reverser',
+  loadComponent: () =>
+    import('./implementations/text/text-reverser/text-reverser')
+      .then(m => m.TextReverser),
+  title: 'Text Reverser | Developer Productivity Suite'
+},
   {
     path: '',
     loadComponent: () =>
