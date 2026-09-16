@@ -1,0 +1,92 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>JSON TOOL</span>
+
+    <h1>JSON Validator</h1>
+
+    <p>
+      Validate JSON syntax instantly and identify
+      parsing errors before using your data.
+    </p>
+  </header>
+
+
+  <div class="tool-panel">
+
+    <div class="tool-panel__header">
+
+      <label for="validator-input">
+        JSON Input
+      </label>
+
+      <button
+        type="button"
+        (click)="clear()"
+        [disabled]="!inputText"
+      >
+        Clear
+      </button>
+
+    </div>
+
+    <textarea
+      id="validator-input"
+      [(ngModel)]="inputText"
+      placeholder='{"name":"Angular","version":21}'
+      rows="18"
+    ></textarea>
+
+  </div>
+
+
+  @if (validationResult?.valid) {
+
+    <section class="validation-panel validation-panel--success">
+
+      <div class="validation-icon">
+        ✓
+      </div>
+
+      <div>
+        <strong>
+          Valid JSON
+        </strong>
+
+        <p>
+          The supplied content is valid JSON.
+        </p>
+      </div>
+
+      <span class="type-badge">
+        {{ rootType }}
+      </span>
+
+    </section>
+
+  }
+
+
+  @if (validationResult && !validationResult.valid) {
+
+    <section class="validation-panel validation-panel--error">
+
+      <div class="validation-icon">
+        !
+      </div>
+
+      <div>
+        <strong>
+          Invalid JSON
+        </strong>
+
+        <p>
+          {{ validationResult.error }}
+        </p>
+      </div>
+
+    </section>
+
+  }
+
+</section>

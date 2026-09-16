@@ -1,0 +1,151 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>JSON TOOL</span>
+
+    <h1>JSON Key Extractor</h1>
+
+    <p>
+      Extract JSON keys, paths, types, and values from
+      nested objects and arrays.
+    </p>
+  </header>
+
+
+  <div class="tool-page__workspace">
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label for="key-input">
+          JSON Input
+        </label>
+
+        <button
+          type="button"
+          (click)="clear()"
+          [disabled]="!inputText"
+        >
+          Clear
+        </button>
+
+      </div>
+
+      <textarea
+        id="key-input"
+        [(ngModel)]="inputText"
+        placeholder='{"name":"Charan","skills":["Angular","Python"]}'
+        rows="20"
+      ></textarea>
+
+    </div>
+
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label>
+          Extracted Keys
+        </label>
+
+        <span class="status-badge">
+          {{ uniqueKeys.length }} unique
+        </span>
+
+      </div>
+
+
+      <div class="key-table-wrapper">
+
+        @if (keys.length) {
+
+          <table class="key-table">
+
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Path</th>
+                <th>Type</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              @for (
+                item of keys;
+                track $index
+              ) {
+
+                <tr>
+
+                  <td>
+                    {{ item.key }}
+                  </td>
+
+                  <td class="path-cell">
+                    {{ item.path }}
+                  </td>
+
+                  <td>
+                    <span class="type-badge">
+                      {{ item.type }}
+                    </span>
+                  </td>
+
+                  <td class="value-cell">
+                    {{ item.value }}
+                  </td>
+
+                </tr>
+
+              }
+
+            </tbody>
+
+          </table>
+
+        } @else {
+
+          <div class="empty-state">
+            Enter valid JSON to extract keys.
+          </div>
+
+        }
+
+      </div>
+
+
+      <button
+        type="button"
+        class="tool-action"
+        [disabled]="!keyList"
+        (click)="copyKeys()"
+      >
+        Copy Unique Keys
+      </button>
+
+    </div>
+
+  </div>
+
+
+  @if (errorMessage) {
+
+    <section class="error-panel">
+
+      <strong>
+        Invalid JSON
+      </strong>
+
+      <p>
+        {{ errorMessage }}
+      </p>
+
+    </section>
+
+  }
+
+</section>

@@ -1,0 +1,112 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>JSON TOOL</span>
+
+    <h1>JSON to CSV</h1>
+
+    <p>
+      Convert JSON objects and arrays into CSV format
+      for spreadsheets, analytics, and data processing.
+    </p>
+  </header>
+
+
+  <div class="tool-page__workspace">
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label for="csv-input">
+          JSON Input
+        </label>
+
+        <button
+          type="button"
+          (click)="clear()"
+          [disabled]="!inputText"
+        >
+          Clear
+        </button>
+
+      </div>
+
+      <textarea
+        id="csv-input"
+        [(ngModel)]="inputText"
+        placeholder='[{"name":"Charan","age":25}]'
+        rows="18"
+      ></textarea>
+
+    </div>
+
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label for="csv-output">
+          CSV Output
+        </label>
+
+        @if (outputText) {
+          <span class="status-badge status-badge--success">
+            {{ rowCount }} rows
+          </span>
+        }
+
+      </div>
+
+      <textarea
+        id="csv-output"
+        [value]="outputText"
+        readonly
+        placeholder="CSV output will appear here..."
+        rows="18"
+      ></textarea>
+
+      <div class="button-row">
+
+        <button
+          type="button"
+          class="tool-action"
+          [disabled]="!outputText"
+          (click)="copyOutput()"
+        >
+          Copy CSV
+        </button>
+
+        <button
+          type="button"
+          class="tool-action tool-action--secondary"
+          [disabled]="!outputText"
+          (click)="downloadCsv()"
+        >
+          Download CSV
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  @if (errorMessage) {
+
+    <section class="error-panel">
+
+      <strong>
+        Conversion Error
+      </strong>
+
+      <p>
+        {{ errorMessage }}
+      </p>
+
+    </section>
+
+  }
+
+</section>

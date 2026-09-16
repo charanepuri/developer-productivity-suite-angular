@@ -1,0 +1,130 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>JSON TOOL</span>
+
+    <h1>JSON Formatter</h1>
+
+    <p>
+      Format and beautify JSON data with configurable
+      indentation for easier reading and debugging.
+    </p>
+  </header>
+
+
+  <div class="tool-page__workspace">
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label for="formatter-input">
+          Input JSON
+        </label>
+
+        <button
+          type="button"
+          (click)="clear()"
+          [disabled]="!inputText"
+        >
+          Clear
+        </button>
+
+      </div>
+
+      <textarea
+        id="formatter-input"
+        [(ngModel)]="inputText"
+        placeholder='{"name":"Angular","version":21}'
+        rows="18"
+      ></textarea>
+
+    </div>
+
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label for="formatter-output">
+          Formatted JSON
+        </label>
+
+        @if (isValid === true) {
+          <span class="status-badge status-badge--success">
+            Valid JSON
+          </span>
+        }
+
+        @if (isValid === false) {
+          <span class="status-badge status-badge--error">
+            Invalid JSON
+          </span>
+        }
+
+      </div>
+
+      <textarea
+        id="formatter-output"
+        [value]="outputText"
+        readonly
+        placeholder="Formatted JSON will appear here..."
+        rows="18"
+      ></textarea>
+
+      <button
+        type="button"
+        class="tool-action"
+        [disabled]="!outputText"
+        (click)="copyOutput()"
+      >
+        Copy Formatted JSON
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <section class="options-panel">
+
+    <label for="indentation">
+      Indentation
+    </label>
+
+    <select
+      id="indentation"
+      [(ngModel)]="indentation"
+    >
+
+      @for (
+        option of indentationOptions;
+        track option.value
+      ) {
+        <option [ngValue]="option.value">
+          {{ option.label }}
+        </option>
+      }
+
+    </select>
+
+  </section>
+
+
+  @if (errorMessage) {
+
+    <section class="error-panel">
+
+      <strong>
+        JSON Error
+      </strong>
+
+      <p>
+        {{ errorMessage }}
+      </p>
+
+    </section>
+
+  }
+
+</section>

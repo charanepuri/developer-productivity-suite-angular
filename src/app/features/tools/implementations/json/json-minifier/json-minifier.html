@@ -1,0 +1,108 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>JSON TOOL</span>
+
+    <h1>JSON Minifier</h1>
+
+    <p>
+      Remove unnecessary whitespace from JSON to create
+      compact output suitable for APIs and production use.
+    </p>
+  </header>
+
+
+  <div class="tool-page__workspace">
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label for="minifier-input">
+          Input JSON
+        </label>
+
+        <button
+          type="button"
+          (click)="clear()"
+          [disabled]="!inputText"
+        >
+          Clear
+        </button>
+
+      </div>
+
+      <textarea
+        id="minifier-input"
+        [(ngModel)]="inputText"
+        placeholder="Paste formatted JSON here..."
+        rows="18"
+      ></textarea>
+
+    </div>
+
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label for="minifier-output">
+          Minified JSON
+        </label>
+
+        @if (isValid === true) {
+          <span class="status-badge status-badge--success">
+            Valid
+          </span>
+        }
+
+        @if (isValid === false) {
+          <span class="status-badge status-badge--error">
+            Invalid
+          </span>
+        }
+
+      </div>
+
+      <textarea
+        id="minifier-output"
+        [value]="outputText"
+        readonly
+        placeholder="Minified JSON will appear here..."
+        rows="18"
+      ></textarea>
+
+      <button
+        type="button"
+        class="tool-action"
+        [disabled]="!outputText"
+        (click)="copyOutput()"
+      >
+        Copy Minified JSON
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <section class="statistics">
+
+    <article class="stat-card">
+      <span>Original Size</span>
+      <strong>{{ originalSize }} B</strong>
+    </article>
+
+    <article class="stat-card">
+      <span>Minified Size</span>
+      <strong>{{ minifiedSize }} B</strong>
+    </article>
+
+    <article class="stat-card">
+      <span>Saved</span>
+      <strong>{{ savedBytes }} B</strong>
+    </article>
+
+  </section>
+
+</section>
