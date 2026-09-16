@@ -1,0 +1,220 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>TEXT TOOL</span>
+
+    <h1>Line Sorter</h1>
+
+    <p>
+      Sort lines alphabetically or numerically with
+      flexible sorting and formatting options.
+    </p>
+  </header>
+
+
+  <div class="tool-page__workspace">
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label for="line-sorter-input">
+          Input
+        </label>
+
+        <button
+          type="button"
+          (click)="clear()"
+          [disabled]="!inputText"
+        >
+          Clear
+        </button>
+
+      </div>
+
+      <textarea
+        id="line-sorter-input"
+        [(ngModel)]="inputText"
+        placeholder="Enter one value per line..."
+        rows="16"
+      ></textarea>
+
+    </div>
+
+
+    <div class="tool-panel">
+
+      <div class="tool-panel__header">
+
+        <label for="line-sorter-output">
+          Sorted Result
+        </label>
+
+        <span class="result-badge">
+          {{ sortedLineCount }} lines
+        </span>
+
+      </div>
+
+      <textarea
+        id="line-sorter-output"
+        [value]="outputText"
+        readonly
+        placeholder="Sorted lines will appear here..."
+        rows="16"
+      ></textarea>
+
+      <button
+        type="button"
+        class="tool-action"
+        [disabled]="!outputText"
+        (click)="copyOutput()"
+      >
+        Copy Output
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <section class="options-panel">
+
+    <div class="options-panel__header">
+
+      <div>
+        <h2>Sorting Options</h2>
+
+        <span>
+          Configure how your lines should be sorted.
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="sort-control">
+
+      <label for="sort-mode">
+        Sort Method
+      </label>
+
+      <select
+        id="sort-mode"
+        [(ngModel)]="sortMode"
+      >
+
+        @for (option of sortOptions; track option.value) {
+          <option [value]="option.value">
+            {{ option.label }}
+          </option>
+        }
+
+      </select>
+
+    </div>
+
+
+    <div class="options-grid">
+
+      <label class="option">
+
+        <input
+          type="checkbox"
+          [(ngModel)]="caseSensitive"
+        />
+
+        <span>
+          <strong>Case Sensitive</strong>
+
+          <small>
+            Distinguish uppercase and lowercase characters.
+          </small>
+        </span>
+
+      </label>
+
+
+      <label class="option">
+
+        <input
+          type="checkbox"
+          [(ngModel)]="trimWhitespace"
+        />
+
+        <span>
+          <strong>Trim Whitespace</strong>
+
+          <small>
+            Remove leading and trailing spaces.
+          </small>
+        </span>
+
+      </label>
+
+
+      <label class="option">
+
+        <input
+          type="checkbox"
+          [(ngModel)]="removeEmptyLines"
+        />
+
+        <span>
+          <strong>Remove Empty Lines</strong>
+
+          <small>
+            Exclude blank lines from the sorted result.
+          </small>
+        </span>
+
+      </label>
+
+    </div>
+
+  </section>
+
+
+  <section class="statistics">
+
+    <article class="stat-card">
+
+      <span>
+        Original Lines
+      </span>
+
+      <strong>
+        {{ originalLineCount }}
+      </strong>
+
+    </article>
+
+
+    <article class="stat-card">
+
+      <span>
+        Processed Lines
+      </span>
+
+      <strong>
+        {{ preparedLineCount }}
+      </strong>
+
+    </article>
+
+
+    <article class="stat-card">
+
+      <span>
+        Sorted Lines
+      </span>
+
+      <strong>
+        {{ sortedLineCount }}
+      </strong>
+
+    </article>
+
+  </section>
+
+</section>

@@ -23,6 +23,13 @@ export const TOOLS_ROUTES: Routes = [
     title: 'Duplicate Line Remover | Developer Productivity Suite'
   },
   {
+  path: 'line-sorter',
+  loadComponent: () =>
+    import('./implementations/text/line-sorter/line-sorter')
+      .then(m => m.LineSorter),
+  title: 'Line Sorter | Developer Productivity Suite'
+},
+  {
     path: '',
     loadComponent: () =>
       import('./pages/tools/tools')
