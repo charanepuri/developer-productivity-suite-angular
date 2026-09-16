@@ -1,0 +1,238 @@
+.developer-tool {
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.developer-tool__header {
+  margin-bottom: 24px;
+}
+
+.developer-tool__header h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.developer-tool__header p {
+  margin: 0;
+  color: var(--text-muted, #94a3b8);
+}
+
+.developer-tool__workspace {
+  display: grid;
+  grid-template-columns: minmax(280px, 400px) 1fr;
+  gap: 20px;
+}
+
+.developer-tool__panel {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 16px;
+  background: var(--surface-color, #111827);
+}
+
+.developer-tool__panel h2 {
+  margin: 0 0 18px;
+  font-size: 1rem;
+}
+
+.developer-tool__controls {
+  display: grid;
+  gap: 16px;
+}
+
+.developer-tool__field {
+  display: grid;
+  gap: 7px;
+}
+
+.developer-tool__field label {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.developer-tool__input,
+.developer-tool__select,
+.developer-tool__textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 9px;
+  outline: none;
+  background: var(--background-color, #0f172a);
+  color: inherit;
+  font: inherit;
+}
+
+.developer-tool__textarea {
+  min-height: 220px;
+  resize: vertical;
+  font-family: "Courier New", monospace;
+  line-height: 1.6;
+}
+
+.developer-tool__input:focus,
+.developer-tool__select:focus,
+.developer-tool__textarea:focus {
+  border-color: #2563eb;
+}
+
+.developer-tool__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.developer-tool__button {
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 15px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.developer-tool__button--primary {
+  background: #2563eb;
+  color: white;
+}
+
+.developer-tool__button--secondary {
+  background: #334155;
+  color: white;
+}
+
+.developer-tool__button--danger {
+  background: #7f1d1d;
+  color: white;
+}
+
+.developer-tool__result {
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--background-color, #0f172a);
+}
+
+.developer-tool__code {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  border-radius: 10px;
+  background: #020617;
+  color: #e2e8f0;
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.developer-tool__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.developer-tool__stat {
+  padding: 14px;
+  border-radius: 10px;
+  background: var(--background-color, #0f172a);
+  text-align: center;
+}
+
+.developer-tool__stat strong {
+  display: block;
+  font-size: 1.4rem;
+}
+
+.developer-tool__stat span {
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.75rem;
+}
+
+.developer-tool__error {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 9px;
+  background: #450a0a;
+  color: #fecaca;
+}
+
+.developer-tool__success {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 9px;
+  background: #14532d;
+  color: #bbf7d0;
+}
+
+.developer-tool__table-wrapper {
+  overflow-x: auto;
+}
+
+.developer-tool__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.developer-tool__table th,
+.developer-tool__table td {
+  padding: 10px;
+  border: 1px solid var(--border-color, #334155);
+  text-align: left;
+  vertical-align: top;
+}
+
+.developer-tool__table th {
+  background: var(--background-color, #0f172a);
+}
+
+.developer-tool__badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #1e3a8a;
+  color: #bfdbfe;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.developer-tool__list {
+  display: grid;
+  gap: 10px;
+}
+
+.developer-tool__list-item {
+  padding: 12px;
+  border-radius: 9px;
+  background: var(--background-color, #0f172a);
+}
+
+.developer-tool__list-item strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 850px) {
+  .developer-tool__workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .developer-tool__panel {
+    padding: 16px;
+  }
+
+  .developer-tool__header h1 {
+    font-size: 1.5rem;
+  }
+
+  .developer-tool__stats {
+    grid-template-columns: 1fr;
+  }
+}

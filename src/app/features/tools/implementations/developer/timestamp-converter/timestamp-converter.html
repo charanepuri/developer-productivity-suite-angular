@@ -1,0 +1,80 @@
+<section class="developer-tool">
+  <header class="developer-tool__header">
+    <h1>Timestamp Converter</h1>
+    <p>Convert Unix timestamps into readable date and time values.</p>
+  </header>
+
+  <div class="developer-tool__workspace">
+    <section class="developer-tool__panel">
+      <h2>Unix Timestamp</h2>
+
+      <div class="developer-tool__controls">
+
+        <div class="developer-tool__field">
+          <label for="timestamp">Unix Seconds</label>
+
+          <input
+            id="timestamp"
+            class="developer-tool__input"
+            type="number"
+            [(ngModel)]="timestamp"
+          />
+        </div>
+
+        <div class="developer-tool__buttons">
+          <button
+            class="developer-tool__button developer-tool__button--primary"
+            type="button"
+            (click)="setCurrentTimestamp()"
+          >
+            Current Time
+          </button>
+
+          <button
+            class="developer-tool__button developer-tool__button--secondary"
+            type="button"
+            (click)="fromIso()"
+          >
+            From ISO
+          </button>
+
+          <button
+            class="developer-tool__button developer-tool__button--secondary"
+            type="button"
+            (click)="fromMilliseconds()"
+          >
+            From Milliseconds
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="developer-tool__panel">
+      <h2>Converted Values</h2>
+
+      <div class="developer-tool__list">
+
+        <div class="developer-tool__list-item">
+          <strong>Unix Seconds</strong>
+          <code>{{ timestamp }}</code>
+        </div>
+
+        <div class="developer-tool__list-item">
+          <strong>Unix Milliseconds</strong>
+          <code>{{ milliseconds }}</code>
+        </div>
+
+        <div class="developer-tool__list-item">
+          <strong>ISO 8601</strong>
+          <code>{{ isoString }}</code>
+        </div>
+
+        <div class="developer-tool__list-item">
+          <strong>Local Date & Time</strong>
+          <span>{{ localString }}</span>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</section>

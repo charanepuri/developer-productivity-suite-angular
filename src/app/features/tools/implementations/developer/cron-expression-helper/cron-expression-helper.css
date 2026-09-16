@@ -1,0 +1,14 @@
+@import "../developer-tool-shared.css";
+
+.developer-tool__list-item {
+  width: 100%;
+  border: 0;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.developer-tool__list-item:hover {
+  border: 1px solid #2563eb;
+}

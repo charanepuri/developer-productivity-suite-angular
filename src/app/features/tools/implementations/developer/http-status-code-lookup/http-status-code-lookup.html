@@ -1,0 +1,77 @@
+<section class="developer-tool">
+  <header class="developer-tool__header">
+    <h1>HTTP Status Code Lookup</h1>
+    <p>Search common HTTP response status codes and their meanings.</p>
+  </header>
+
+  <section class="developer-tool__panel">
+    <div class="developer-tool__controls">
+
+      <div class="developer-tool__field">
+        <label for="statusSearch">Search Status Code</label>
+
+        <input
+          id="statusSearch"
+          class="developer-tool__input"
+          [(ngModel)]="search"
+          placeholder="Example: 404, Not Found, Client Error"
+        />
+      </div>
+
+      <div class="developer-tool__buttons">
+        <button
+          class="developer-tool__button developer-tool__button--secondary"
+          type="button"
+          (click)="clear()"
+        >
+          Clear Search
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="developer-tool__panel" style="margin-top: 20px;">
+    <h2>
+      Results — {{ filteredStatuses.length }}
+    </h2>
+
+    <div class="developer-tool__table-wrapper">
+      <table class="developer-tool__table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Status</th>
+            <th>Category</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (status of filteredStatuses; track status.code) {
+            <tr>
+              <td>
+                <span class="developer-tool__badge">
+                  {{ status.code }}
+                </span>
+              </td>
+
+              <td>
+                <strong>{{ status.name }}</strong>
+              </td>
+
+              <td>{{ status.category }}</td>
+
+              <td>{{ status.description }}</td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="4">
+                No status code found.
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+</section>

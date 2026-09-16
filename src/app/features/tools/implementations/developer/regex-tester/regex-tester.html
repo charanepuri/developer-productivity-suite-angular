@@ -1,0 +1,118 @@
+<section class="developer-tool">
+  <header class="developer-tool__header">
+    <h1>Regex Tester</h1>
+    <p>Test JavaScript regular expressions against sample text.</p>
+  </header>
+
+  <div class="developer-tool__workspace">
+    <section class="developer-tool__panel">
+      <h2>Regular Expression</h2>
+
+      <div class="developer-tool__controls">
+
+        <div class="developer-tool__field">
+          <label for="pattern">Pattern</label>
+
+          <input
+            id="pattern"
+            class="developer-tool__input"
+            [(ngModel)]="pattern"
+            placeholder="Enter regex pattern"
+          />
+        </div>
+
+        <div class="developer-tool__field">
+          <label for="flags">Flags</label>
+
+          <input
+            id="flags"
+            class="developer-tool__input"
+            [(ngModel)]="flags"
+            placeholder="gi"
+          />
+        </div>
+
+        <div class="developer-tool__field">
+          <label for="regexText">Test Text</label>
+
+          <textarea
+            id="regexText"
+            class="developer-tool__textarea"
+            [(ngModel)]="text"
+          ></textarea>
+        </div>
+
+        <div class="developer-tool__buttons">
+          <button
+            class="developer-tool__button developer-tool__button--primary"
+            type="button"
+            (click)="testRegex()"
+          >
+            Test Regex
+          </button>
+
+          <button
+            class="developer-tool__button developer-tool__button--secondary"
+            type="button"
+            (click)="reset()"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="developer-tool__panel">
+      <h2>Results</h2>
+
+      <div class="developer-tool__stats">
+        <div class="developer-tool__stat">
+          <strong>{{ matchCount }}</strong>
+          <span>Matches</span>
+        </div>
+
+        <div class="developer-tool__stat">
+          <strong>{{ pattern.length }}</strong>
+          <span>Pattern Length</span>
+        </div>
+
+        <div class="developer-tool__stat">
+          <strong>{{ flags || 'None' }}</strong>
+          <span>Flags</span>
+        </div>
+      </div>
+
+      @if (error) {
+        <div class="developer-tool__error">
+          {{ error }}
+        </div>
+      } @else if (matches.length) {
+        <div class="developer-tool__table-wrapper">
+          <table class="developer-tool__table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Match</th>
+                <th>Index</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              @for (match of matches; track $index) {
+                <tr>
+                  <td>{{ $index + 1 }}</td>
+                  <td><code>{{ match.value }}</code></td>
+                  <td>{{ match.index }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      } @else {
+        <div class="developer-tool__result">
+          No matches found.
+        </div>
+      }
+    </section>
+  </div>
+</section>

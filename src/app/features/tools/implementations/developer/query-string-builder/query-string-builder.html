@@ -1,0 +1,109 @@
+<section class="developer-tool">
+  <header class="developer-tool__header">
+    <h1>Query String Builder</h1>
+    <p>Build URL query parameters with automatic URL encoding.</p>
+  </header>
+
+  <section class="developer-tool__panel">
+    <div class="developer-tool__field">
+      <label for="baseUrl">Base URL</label>
+
+      <input
+        id="baseUrl"
+        class="developer-tool__input"
+        [(ngModel)]="baseUrl"
+        placeholder="https://example.com/search"
+      />
+    </div>
+  </section>
+
+  <section class="developer-tool__panel" style="margin-top: 20px;">
+    <h2>Parameters</h2>
+
+    <div class="developer-tool__table-wrapper">
+      <table class="developer-tool__table">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Value</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (parameter of parameters; track $index) {
+            <tr>
+              <td>
+                <input
+                  class="developer-tool__input"
+                  [(ngModel)]="parameter.key"
+                  placeholder="key"
+                />
+              </td>
+
+              <td>
+                <input
+                  class="developer-tool__input"
+                  [(ngModel)]="parameter.value"
+                  placeholder="value"
+                />
+              </td>
+
+              <td>
+                <button
+                  class="developer-tool__button developer-tool__button--danger"
+                  type="button"
+                  (click)="removeParameter($index)"
+                >
+                  Remove
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="developer-tool__buttons" style="margin-top: 16px;">
+      <button
+        class="developer-tool__button developer-tool__button--primary"
+        type="button"
+        (click)="addParameter()"
+      >
+        Add Parameter
+      </button>
+
+      <button
+        class="developer-tool__button developer-tool__button--secondary"
+        type="button"
+        (click)="reset()"
+      >
+        Reset
+      </button>
+
+      <button
+        class="developer-tool__button developer-tool__button--secondary"
+        type="button"
+        (click)="clear()"
+      >
+        Clear
+      </button>
+    </div>
+  </section>
+
+  <section class="developer-tool__panel" style="margin-top: 20px;">
+    <h2>Generated URL</h2>
+
+    <pre class="developer-tool__code">{{ fullUrl }}</pre>
+
+    <div class="developer-tool__buttons" style="margin-top: 12px;">
+      <button
+        class="developer-tool__button developer-tool__button--primary"
+        type="button"
+        (click)="copy()"
+      >
+        Copy URL
+      </button>
+    </div>
+  </section>
+</section>

@@ -1,0 +1,85 @@
+<section class="developer-tool">
+  <header class="developer-tool__header">
+    <h1>Cron Expression Helper</h1>
+    <p>Explore standard five-field cron expressions and common schedules.</p>
+  </header>
+
+  <div class="developer-tool__workspace">
+    <section class="developer-tool__panel">
+      <h2>Cron Expression</h2>
+
+      <div class="developer-tool__controls">
+
+        <div class="developer-tool__field">
+          <label for="cron">Expression</label>
+
+          <input
+            id="cron"
+            class="developer-tool__input"
+            [(ngModel)]="expression"
+            placeholder="* * * * *"
+          />
+        </div>
+
+        <div class="developer-tool__result">
+          <strong>Description</strong>
+          <p>{{ description }}</p>
+        </div>
+
+        <button
+          class="developer-tool__button developer-tool__button--secondary"
+          type="button"
+          (click)="reset()"
+        >
+          Reset
+        </button>
+      </div>
+    </section>
+
+    <section class="developer-tool__panel">
+      <h2>Common Presets</h2>
+
+      <div class="developer-tool__list">
+        @for (preset of presets; track preset.expression) {
+          <button
+            class="developer-tool__list-item"
+            type="button"
+            (click)="selectPreset(preset.expression)"
+          >
+            <strong>{{ preset.label }}</strong>
+
+            <code>{{ preset.expression }}</code>
+
+            <span>{{ preset.description }}</span>
+          </button>
+        }
+      </div>
+    </section>
+  </div>
+
+  <section class="developer-tool__panel" style="margin-top: 20px;">
+    <h2>Five Cron Fields</h2>
+
+    <div class="developer-tool__table-wrapper">
+      <table class="developer-tool__table">
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Allowed Values</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (field of fields; track field.field) {
+            <tr>
+              <td><strong>{{ field.field }}</strong></td>
+              <td><code>{{ field.allowed }}</code></td>
+              <td>{{ field.description }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+</section>

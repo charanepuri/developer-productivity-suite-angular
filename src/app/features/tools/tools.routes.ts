@@ -238,6 +238,46 @@ export const TOOLS_ROUTES: Routes = [
   title: 'Markdown TOC Generator | Developer Productivity Suite'
 },
 
+{
+  path: 'regex-tester',
+  loadComponent: () =>
+    import('./implementations/developer/regex-tester/regex-tester')
+      .then(m => m.RegexTester),
+  title: 'Regex Tester | Developer Productivity Suite'
+},
+
+{
+  path: 'timestamp-converter',
+  loadComponent: () =>
+    import('./implementations/developer/timestamp-converter/timestamp-converter')
+      .then(m => m.TimestampConverter),
+  title: 'Timestamp Converter | Developer Productivity Suite'
+},
+
+{
+  path: 'http-status-code-lookup',
+  loadComponent: () =>
+    import('./implementations/developer/http-status-code-lookup/http-status-code-lookup')
+      .then(m => m.HttpStatusCodeLookup),
+  title: 'HTTP Status Code Lookup | Developer Productivity Suite'
+},
+
+{
+  path: 'cron-expression-helper',
+  loadComponent: () =>
+    import('./implementations/developer/cron-expression-helper/cron-expression-helper')
+      .then(m => m.CronExpressionHelper),
+  title: 'Cron Expression Helper | Developer Productivity Suite'
+},
+
+{
+  path: 'query-string-builder',
+  loadComponent: () =>
+    import('./implementations/developer/query-string-builder/query-string-builder')
+      .then(m => m.QueryStringBuilder),
+  title: 'Query String Builder | Developer Productivity Suite'
+},
+
 
 
   {
