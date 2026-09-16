@@ -1,0 +1,197 @@
+.settings {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.settings__header {
+  margin-bottom: 2rem;
+}
+
+.settings__eyebrow {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0.65;
+}
+
+.settings__header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.settings__header p {
+  margin-top: 0.75rem;
+  max-width: 650px;
+  line-height: 1.7;
+  opacity: 0.7;
+}
+
+.settings-card {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  background: var(--surface-color);
+}
+
+.settings-card__header {
+  margin-bottom: 1.5rem;
+}
+
+.settings-card__header > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.settings-card__icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 12px;
+  background: var(--surface-elevated);
+  font-size: 1.25rem;
+}
+
+.settings-card h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.settings-card p {
+  margin: 0.4rem 0 0;
+  line-height: 1.6;
+  opacity: 0.65;
+}
+
+
+/* Theme Options */
+
+.theme-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.theme-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.theme-option:hover {
+  transform: translateY(-2px);
+  background: var(--surface-elevated);
+}
+
+.theme-option--active {
+  border-color: var(--accent-color);
+  background: var(--surface-elevated);
+}
+
+.theme-option__icon {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.theme-option strong {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.theme-option small {
+  display: block;
+  line-height: 1.5;
+  opacity: 0.65;
+}
+
+
+/* Workspace */
+
+.settings-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.settings-info {
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--surface-elevated);
+}
+
+.settings-info span {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.settings-info strong {
+  font-size: 1rem;
+}
+
+
+/* Reset */
+
+.settings-card--danger {
+  border-style: dashed;
+}
+
+.reset-button {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+
+.reset-button:hover {
+  background: var(--surface-elevated);
+}
+
+
+/* Responsive */
+
+@media (max-width: 800px) {
+  .theme-options {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .settings {
+    padding: 1rem;
+  }
+
+  .settings-card {
+    padding: 1rem;
+  }
+
+  .settings-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
