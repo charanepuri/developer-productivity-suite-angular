@@ -7,12 +7,15 @@ import { Tool } from '../../../../core/models/tool.model';
 import { ToolCategory } from '../../../../core/models/tool-category.type';
 import { ToolService } from '../../../../core/services/tool.service';
 
+import { ToolCard } from '../../components/tool-card/tool-card';
+
 @Component({
   selector: 'app-tools',
-  imports: [AsyncPipe, RouterLink],
+  imports: [AsyncPipe, RouterLink, ToolCard],
   templateUrl: './tools.html',
   styleUrl: './tools.css'
 })
+
 export class Tools {
   private readonly toolService = inject(ToolService);
   private readonly route = inject(ActivatedRoute);

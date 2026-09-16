@@ -1,12 +1,5 @@
-import {
-  Injectable,
-  inject
-} from '@angular/core';
-
-import {
-  BehaviorSubject,
-  map
-} from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { BehaviorSubject, map } from 'rxjs';
 
 import { StorageService } from './storage.service';
 
@@ -17,9 +10,6 @@ export class FavoritesService {
 
   private readonly storageService =
     inject(StorageService);
-
-  private readonly storageKey =
-    'dps-favorites';
 
   private readonly favoritesSubject =
     new BehaviorSubject<string[]>(
@@ -35,44 +25,49 @@ export class FavoritesService {
     );
 
   isFavorite(toolId: string): boolean {
-    return this.favoritesSubject
-      .value
+    return this.favoritesSubject.value
       .includes(toolId);
   }
 
   addFavorite(toolId: string): void {
+
     if (this.isFavorite(toolId)) {
       return;
     }
 
-    const updatedFavorites = [
+    const favorites = [
       ...this.favoritesSubject.value,
       toolId
     ];
 
-    this.updateFavorites(updatedFavorites);
+    this.updateFavorites(favorites);
   }
 
   removeFavorite(toolId: string): void {
-    const updatedFavorites =
+
+    const favorites =
       this.favoritesSubject.value.filter(
         id => id !== toolId
       );
 
-    this.updateFavorites(updatedFavorites);
+    this.updateFavorites(favorites);
   }
 
   toggleFavorite(toolId: string): void {
+
     if (this.isFavorite(toolId)) {
       this.removeFavorite(toolId);
-      return;
+    } else {
+      this.addFavorite(toolId);
     }
-
-    this.addFavorite(toolId);
   }
 
   getFavoriteIds(): readonly string[] {
     return this.favoritesSubject.value;
+  }
+
+  clearFavorites(): void {
+    this.updateFavorites([]);
   }
 
   private updateFavorites(
@@ -82,14 +77,15 @@ export class FavoritesService {
     this.favoritesSubject.next(favorites);
 
     this.storageService.set(
-      this.storageKey,
+      'dps-favorites',
       favorites
     );
   }
 
   private loadFavorites(): string[] {
+
     return this.storageService.get<string[]>(
-      this.storageKey
+      'dps-favorites'
     ) ?? [];
   }
 }

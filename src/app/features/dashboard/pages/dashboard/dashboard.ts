@@ -8,12 +8,14 @@ import { RecentToolsService } from '../../../../core/services/recent-tools.servi
 import { ToolService } from '../../../../core/services/tool.service';
 import { Tool } from '../../../../core/models/tool.model';
 
+
 @Component({
   selector: 'app-dashboard',
   imports: [AsyncPipe],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })
+
 export class Dashboard {
   private readonly toolService = inject(ToolService);
   private readonly categoryService = inject(CategoryService);
