@@ -1,7 +1,13 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import {
+  ActivatedRoute,
+  RouterLink
+} from '@angular/router';
+import {
+  map,
+  Observable
+} from 'rxjs';
 
 import { Tool } from '../../../../core/models/tool.model';
 import { ToolCategory } from '../../../../core/models/tool-category.type';
@@ -11,55 +17,86 @@ import { ToolCard } from '../../components/tool-card/tool-card';
 
 @Component({
   selector: 'app-tools',
-  imports: [AsyncPipe, RouterLink, ToolCard],
+  imports: [
+    AsyncPipe,
+    RouterLink,
+    ToolCard
+  ],
   templateUrl: './tools.html',
   styleUrl: './tools.css'
 })
-
 export class Tools {
-  private readonly toolService = inject(ToolService);
-  private readonly route = inject(ActivatedRoute);
 
-  readonly selectedCategory$: Observable<ToolCategory | null> =
-    this.route.queryParamMap.pipe(
-      map(params => {
-        const category = params.get('category');
+  private readonly toolService =
+    inject(ToolService);
 
-        if (!category) {
-          return null;
-        }
+  private readonly route =
+    inject(ActivatedRoute);
 
-        return this.isToolCategory(category)
-          ? category
-          : null;
-      })
-    );
+  readonly selectedCategory$:
+    Observable<ToolCategory | null> =
+      this.route.queryParamMap.pipe(
 
-  readonly tools$: Observable<readonly Tool[]> =
+        map(params => {
+
+          const category =
+            params.get('category');
+
+          if (!category) {
+            return null;
+          }
+
+          return this.isToolCategory(category)
+            ? category
+            : null;
+
+        })
+
+      );
+
+  readonly tools$ =
     this.selectedCategory$.pipe(
+
       map(category =>
+
         category
-          ? this.toolService.getToolsByCategory(category)
-          : this.toolService.getTools()
+          ? this.toolService
+              .getToolsByCategory(category)
+          : this.toolService
+              .getTools()
+
       )
+
     );
 
   readonly totalTools =
     this.toolService.getToolCount();
 
+
   private isToolCategory(
     value: string
   ): value is ToolCategory {
-    const categories: readonly ToolCategory[] = [
-      'Text Tools',
-      'JSON Tools',
-      'Security Tools',
-      'CSS Tools',
-      'Color Tools',
-      'Markdown Tools',
-      'Developer Tools',
-      'Date & Time Tools'
-    ];
+
+    const categories:
+      readonly ToolCategory[] = [
+
+        'Text Tools',
+
+        'JSON Tools',
+
+        'Security Tools',
+
+        'CSS Tools',
+
+        'Color Tools',
+
+        'Markdown Tools',
+
+        'Developer Tools',
+
+        'Date & Time Tools'
+
+      ];
 
     return categories.includes(
       value as ToolCategory

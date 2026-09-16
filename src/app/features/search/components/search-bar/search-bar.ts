@@ -9,8 +9,7 @@ import {
 } from '@angular/forms';
 
 import {
-  Router,
-  RouterLink
+  Router
 } from '@angular/router';
 
 import {
@@ -24,7 +23,6 @@ import { AppStateService } from '../../../../core/services/app-state.service';
   selector: 'app-search-bar',
   imports: [
     ReactiveFormsModule,
-    RouterLink
   ],
   templateUrl: './search-bar.html',
   styleUrl: './search-bar.css'
