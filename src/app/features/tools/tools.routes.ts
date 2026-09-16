@@ -29,6 +29,13 @@ export const TOOLS_ROUTES: Routes = [
       .then(m => m.LineSorter),
   title: 'Line Sorter | Developer Productivity Suite'
 },
+{
+  path: 'slug-generator',
+  loadComponent: () =>
+    import('./implementations/text/slug-generator/slug-generator')
+      .then(m => m.SlugGenerator),
+  title: 'Slug Generator | Developer Productivity Suite'
+},
   {
     path: '',
     loadComponent: () =>

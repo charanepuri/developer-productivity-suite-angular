@@ -1,0 +1,177 @@
+<section class="tool-page">
+
+  <header class="tool-page__header">
+    <span>TEXT TOOL</span>
+
+    <h1>Slug Generator</h1>
+
+    <p>
+      Convert titles and text into clean, URL-friendly slugs
+      for websites, blogs, APIs, and applications.
+    </p>
+  </header>
+
+
+  <div class="tool-panel">
+
+    <div class="tool-panel__header">
+
+      <label for="slug-input">
+        Input Text
+      </label>
+
+      <button
+        type="button"
+        (click)="clear()"
+        [disabled]="!inputText"
+      >
+        Clear
+      </button>
+
+    </div>
+
+
+    <textarea
+      id="slug-input"
+      [(ngModel)]="inputText"
+      placeholder="Example: Building Modern Web Applications with Angular"
+      rows="7"
+    ></textarea>
+
+  </div>
+
+
+  <div class="tool-panel output-panel">
+
+    <div class="tool-panel__header">
+
+      <label for="slug-output">
+        Generated Slug
+      </label>
+
+      <span class="status-badge">
+        Live
+      </span>
+
+    </div>
+
+
+    <div class="slug-preview">
+
+      <span class="preview-prefix">
+        example.com/
+      </span>
+
+      <span class="preview-slug">
+        {{ slug || 'your-generated-slug' }}
+      </span>
+
+    </div>
+
+
+    <textarea
+      id="slug-output"
+      [value]="slug"
+      readonly
+      placeholder="Generated slug will appear here..."
+      rows="4"
+    ></textarea>
+
+
+    <button
+      type="button"
+      class="tool-action"
+      [disabled]="!slug"
+      (click)="copySlug()"
+    >
+      Copy Slug
+    </button>
+
+  </div>
+
+
+  <section class="options-panel">
+
+    <div class="options-panel__header">
+
+      <div>
+        <h2>Slug Options</h2>
+
+        <span>
+          Choose the separator used between words.
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="separator-control">
+
+      <label for="separator">
+        Separator
+      </label>
+
+      <select
+        id="separator"
+        [(ngModel)]="separator"
+      >
+
+        @for (
+          option of separatorOptions;
+          track option.value
+        ) {
+          <option [value]="option.value">
+            {{ option.label }}
+          </option>
+        }
+
+      </select>
+
+    </div>
+
+  </section>
+
+
+  <section class="statistics">
+
+    <article class="stat-card">
+
+      <span>
+        Words
+      </span>
+
+      <strong>
+        {{ wordCount }}
+      </strong>
+
+    </article>
+
+
+    <article class="stat-card">
+
+      <span>
+        Input Characters
+      </span>
+
+      <strong>
+        {{ inputCharacterCount }}
+      </strong>
+
+    </article>
+
+
+    <article class="stat-card">
+
+      <span>
+        Slug Characters
+      </span>
+
+      <strong>
+        {{ slugCharacterCount }}
+      </strong>
+
+    </article>
+
+  </section>
+
+</section>
