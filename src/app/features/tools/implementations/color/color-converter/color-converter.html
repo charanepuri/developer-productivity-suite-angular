@@ -1,0 +1,75 @@
+<section class="color-tool">
+  <header class="color-tool__header">
+    <h1>Color Converter</h1>
+    <p>Convert HEX colors into RGB and HSL values.</p>
+  </header>
+
+  <div class="color-tool__workspace">
+    <section class="color-tool__panel">
+      <h2>Input</h2>
+
+      <div class="color-tool__controls">
+        <div class="color-tool__field">
+          <label for="hexInput">HEX Color</label>
+
+          <input
+            id="hexInput"
+            type="text"
+            [(ngModel)]="hex"
+            maxlength="7"
+            placeholder="#2563EB"
+          />
+        </div>
+
+        <div class="color-tool__field">
+          <label>Color Picker</label>
+
+          <input
+            type="color"
+            [(ngModel)]="hex"
+          />
+        </div>
+
+        <button
+          class="color-tool__button color-tool__button--secondary"
+          type="button"
+          (click)="reset()"
+        >
+          Reset
+        </button>
+      </div>
+    </section>
+
+    <section class="color-tool__panel">
+      <h2>Converted Values</h2>
+
+      <div class="color-tool__result-grid">
+        <div class="color-tool__result">
+          <span class="color-tool__result-label">HEX</span>
+          <span class="color-tool__result-value">
+            {{ hexText }}
+          </span>
+        </div>
+
+        <div class="color-tool__result">
+          <span class="color-tool__result-label">RGB</span>
+          <span class="color-tool__result-value">
+            {{ rgbText }}
+          </span>
+        </div>
+
+        <div class="color-tool__result">
+          <span class="color-tool__result-label">HSL</span>
+          <span class="color-tool__result-value">
+            {{ hslText }}
+          </span>
+        </div>
+      </div>
+
+      <div
+        class="color-tool__preview"
+        [style.background]="hex"
+      ></div>
+    </section>
+  </div>
+</section>

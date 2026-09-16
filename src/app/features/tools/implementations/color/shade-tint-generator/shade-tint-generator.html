@@ -1,0 +1,83 @@
+<section class="color-tool">
+  <header class="color-tool__header">
+    <h1>Shade & Tint Generator</h1>
+    <p>Generate darker shades and lighter tints from a base color.</p>
+  </header>
+
+  <div class="color-tool__workspace">
+    <section class="color-tool__panel">
+      <h2>Base Color</h2>
+
+      <div class="color-tool__controls">
+        <div class="color-tool__field">
+          <label>Color</label>
+
+          <input
+            type="color"
+            [(ngModel)]="baseColor"
+          />
+        </div>
+
+        <div class="color-tool__field">
+          <label>HEX</label>
+
+          <input
+            type="text"
+            [(ngModel)]="baseColor"
+            maxlength="7"
+          />
+        </div>
+
+        <button
+          class="color-tool__button color-tool__button--secondary"
+          type="button"
+          (click)="reset()"
+        >
+          Reset
+        </button>
+      </div>
+    </section>
+
+    <section class="color-tool__panel">
+      <h2>Shades</h2>
+
+      @if (shades.length) {
+        <div class="color-tool__palette">
+          @for (color of shades; track color) {
+            <div
+              class="color-tool__swatch"
+              [style.background]="color"
+              (click)="copy(color)"
+              [title]="'Copy ' + color"
+            >
+              <span class="color-tool__swatch-label">
+                {{ color }}
+              </span>
+            </div>
+          }
+        </div>
+      }
+    </section>
+
+    <section class="color-tool__panel">
+      <h2>Tints</h2>
+
+      @if (tints.length) {
+        <div class="color-tool__palette">
+          @for (color of tints; track color) {
+            <div
+              class="color-tool__swatch"
+              [style.background]="color"
+              (click)="copy(color)"
+              [title]="'Copy ' + color"
+            >
+              <span class="color-tool__swatch-label">
+                {{ color }}
+              </span>
+            </div>
+          }
+        </div>
+      }
+    </section>
+  </div>
+</section>

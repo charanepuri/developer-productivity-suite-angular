@@ -1,0 +1,77 @@
+<section class="color-tool">
+  <header class="color-tool__header">
+    <h1>Color Palette Generator</h1>
+    <p>Generate a five-color palette from a base color.</p>
+  </header>
+
+  <div class="color-tool__workspace">
+    <section class="color-tool__panel">
+      <h2>Base Color</h2>
+
+      <div class="color-tool__controls">
+        <div class="color-tool__field">
+          <label for="baseColor">Color</label>
+
+          <input
+            id="baseColor"
+            type="color"
+            [(ngModel)]="baseColor"
+          />
+        </div>
+
+        <div class="color-tool__field">
+          <label>HEX</label>
+
+          <input
+            type="text"
+            [(ngModel)]="baseColor"
+            maxlength="7"
+          />
+        </div>
+
+        <div class="color-tool__buttons">
+          <button
+            class="color-tool__button color-tool__button--primary"
+            type="button"
+            (click)="copyPalette()"
+          >
+            Copy Palette
+          </button>
+
+          <button
+            class="color-tool__button color-tool__button--secondary"
+            type="button"
+            (click)="reset()"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="color-tool__panel">
+      <h2>Generated Palette</h2>
+
+      @if (palette.length) {
+        <div class="color-tool__palette">
+          @for (color of palette; track color) {
+            <div
+              class="color-tool__swatch"
+              [style.background]="color"
+              (click)="copyColor(color)"
+              [title]="'Copy ' + color"
+            >
+              <span class="color-tool__swatch-label">
+                {{ color }}
+              </span>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="color-tool__error">
+          Enter a valid HEX color.
+        </div>
+      }
+    </section>
+  </div>
+</section>

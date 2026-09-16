@@ -1,0 +1,85 @@
+<section class="color-tool">
+  <header class="color-tool__header">
+    <h1>Color Picker</h1>
+    <p>Pick a color and instantly inspect its CSS color values.</p>
+  </header>
+
+  <div class="color-tool__workspace">
+    <section class="color-tool__panel">
+      <h2>Select Color</h2>
+
+      <div class="color-tool__controls">
+        <div class="color-tool__field">
+          <label for="picker">Color</label>
+
+          <input
+            id="picker"
+            type="color"
+            [(ngModel)]="color"
+          />
+        </div>
+
+        <div class="color-tool__field">
+          <label for="hex">HEX</label>
+
+          <input
+            id="hex"
+            type="text"
+            [(ngModel)]="color"
+            maxlength="7"
+          />
+        </div>
+
+        <div class="color-tool__buttons">
+          <button
+            class="color-tool__button color-tool__button--primary"
+            type="button"
+            (click)="copyHex()"
+          >
+            Copy HEX
+          </button>
+
+          <button
+            class="color-tool__button color-tool__button--secondary"
+            type="button"
+            (click)="reset()"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="color-tool__panel">
+      <h2>Color Preview</h2>
+
+      <div
+        class="color-tool__preview"
+        [style.background]="color"
+      ></div>
+
+      <div class="color-tool__result-grid">
+        <div class="color-tool__result">
+          <span class="color-tool__result-label">HEX</span>
+          <span class="color-tool__result-value">
+            {{ color.toUpperCase() }}
+          </span>
+        </div>
+
+        <div class="color-tool__result">
+          <span class="color-tool__result-label">RGB</span>
+          <span class="color-tool__result-value">
+            {{ rgbText }}
+          </span>
+        </div>
+
+        <div class="color-tool__result">
+          <span class="color-tool__result-label">HSL</span>
+          <span class="color-tool__result-value">
+            {{ hslText }}
+          </span>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

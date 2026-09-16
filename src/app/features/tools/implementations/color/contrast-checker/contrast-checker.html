@@ -1,0 +1,111 @@
+<section class="color-tool">
+  <header class="color-tool__header">
+    <h1>Contrast Checker</h1>
+    <p>Check the contrast ratio between foreground and background colors.</p>
+  </header>
+
+  <div class="color-tool__workspace">
+    <section class="color-tool__panel">
+      <h2>Colors</h2>
+
+      <div class="color-tool__controls">
+        <div class="color-tool__field">
+          <label>Foreground</label>
+
+          <input
+            type="color"
+            [(ngModel)]="foreground"
+          />
+        </div>
+
+        <div class="color-tool__field">
+          <label>Background</label>
+
+          <input
+            type="color"
+            [(ngModel)]="background"
+          />
+        </div>
+
+        <button
+          class="color-tool__button color-tool__button--secondary"
+          type="button"
+          (click)="reset()"
+        >
+          Reset
+        </button>
+      </div>
+    </section>
+
+    <section class="color-tool__panel">
+      <h2>Preview</h2>
+
+      <div
+        class="color-tool__comparison"
+        [style.background]="background"
+      >
+        <div
+          class="color-tool__comparison-side"
+          [style.color]="foreground"
+        >
+          <div>
+            <strong>Accessible Text Preview</strong>
+            <p>The quick brown fox jumps over the lazy dog.</p>
+          </div>
+        </div>
+
+        <div
+          class="color-tool__comparison-side"
+          [style.background]="foreground"
+          [style.color]="background"
+        >
+          <div>
+            <strong>Reverse Preview</strong>
+            <p>The quick brown fox jumps over the lazy dog.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-tool__ratio">
+        <span>Contrast Ratio</span>
+        <strong>{{ ratioText }} : 1</strong>
+      </div>
+
+      <div
+        class="color-tool__status"
+        [class.color-tool__status--pass]="normalAa"
+        [class.color-tool__status--fail]="!normalAa"
+      >
+        Normal Text — WCAG AA:
+        {{ normalAa ? 'PASS' : 'FAIL' }}
+      </div>
+
+      <div
+        class="color-tool__status"
+        [class.color-tool__status--pass]="largeAa"
+        [class.color-tool__status--fail]="!largeAa"
+      >
+        Large Text — WCAG AA:
+        {{ largeAa ? 'PASS' : 'FAIL' }}
+      </div>
+
+      <div
+        class="color-tool__status"
+        [class.color-tool__status--pass]="normalAaa"
+        [class.color-tool__status--fail]="!normalAaa"
+      >
+        Normal Text — WCAG AAA:
+        {{ normalAaa ? 'PASS' : 'FAIL' }}
+      </div>
+
+      <div
+        class="color-tool__status"
+        [class.color-tool__status--pass]="largeAaa"
+        [class.color-tool__status--fail]="!largeAaa"
+      >
+        Large Text — WCAG AAA:
+        {{ largeAaa ? 'PASS' : 'FAIL' }}
+      </div>
+    </section>
+  </div>
+</section>

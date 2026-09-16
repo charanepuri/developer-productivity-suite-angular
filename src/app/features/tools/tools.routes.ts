@@ -166,6 +166,45 @@ export const TOOLS_ROUTES: Routes = [
       .then(m => m.GridGenerator),
   title: 'Grid Generator | Developer Productivity Suite'
 },
+{
+  path: 'color-picker',
+  loadComponent: () =>
+    import('./implementations/color/color-picker/color-picker')
+      .then(m => m.ColorPicker),
+  title: 'Color Picker | Developer Productivity Suite'
+},
+
+{
+  path: 'color-converter',
+  loadComponent: () =>
+    import('./implementations/color/color-converter/color-converter')
+      .then(m => m.ColorConverter),
+  title: 'Color Converter | Developer Productivity Suite'
+},
+
+{
+  path: 'color-palette-generator',
+  loadComponent: () =>
+    import('./implementations/color/color-palette-generator/color-palette-generator')
+      .then(m => m.ColorPaletteGenerator),
+  title: 'Color Palette Generator | Developer Productivity Suite'
+},
+
+{
+  path: 'contrast-checker',
+  loadComponent: () =>
+    import('./implementations/color/contrast-checker/contrast-checker')
+      .then(m => m.ContrastChecker),
+  title: 'Contrast Checker | Developer Productivity Suite'
+},
+
+{
+  path: 'shade-tint-generator',
+  loadComponent: () =>
+    import('./implementations/color/shade-tint-generator/shade-tint-generator')
+      .then(m => m.ShadeTintGenerator),
+  title: 'Shade & Tint Generator | Developer Productivity Suite'
+},
   {
     path: '',
     loadComponent: () =>

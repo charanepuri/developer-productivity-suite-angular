@@ -1,0 +1,274 @@
+.color-tool {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.color-tool__header {
+  margin-bottom: 24px;
+}
+
+.color-tool__header h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.color-tool__header p {
+  margin: 0;
+  color: var(--text-muted, #94a3b8);
+}
+
+.color-tool__workspace {
+  display: grid;
+  grid-template-columns: minmax(280px, 380px) 1fr;
+  gap: 20px;
+}
+
+.color-tool__panel {
+  padding: 22px;
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 16px;
+  background: var(--surface-color, #111827);
+}
+
+.color-tool__panel h2 {
+  margin: 0 0 18px;
+  font-size: 1rem;
+}
+
+.color-tool__controls {
+  display: grid;
+  gap: 16px;
+}
+
+.color-tool__field {
+  display: grid;
+  gap: 7px;
+}
+
+.color-tool__field label {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.color-tool__field input,
+.color-tool__field select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 9px;
+  background: var(--background-color, #0f172a);
+  color: inherit;
+  font: inherit;
+}
+
+.color-tool__field input[type="color"] {
+  height: 50px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.color-tool__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.color-tool__button {
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 15px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.color-tool__button--primary {
+  background: #2563eb;
+  color: white;
+}
+
+.color-tool__button--secondary {
+  background: #334155;
+  color: white;
+}
+
+.color-tool__preview {
+  min-height: 300px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.color-tool__code {
+  margin-top: 18px;
+  padding: 16px;
+  overflow-x: auto;
+  border-radius: 10px;
+  background: #020617;
+  color: #e2e8f0;
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.color-tool__error {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 9px;
+  background: #450a0a;
+  color: #fecaca;
+}
+
+.color-tool__result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.color-tool__result {
+  padding: 14px;
+  border-radius: 10px;
+  background: var(--background-color, #0f172a);
+}
+
+.color-tool__result-label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.color-tool__result-value {
+  font-family: "Courier New", monospace;
+  word-break: break-word;
+}
+
+.color-tool__palette {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  min-height: 300px;
+}
+
+.color-tool__swatch {
+  min-height: 260px;
+  display: flex;
+  align-items: flex-end;
+  padding: 14px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.color-tool__swatch:hover {
+  transform: scale(1.02);
+}
+
+.color-tool__swatch-label {
+  width: 100%;
+  padding: 8px;
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+  text-align: center;
+  font-family: "Courier New", monospace;
+  font-size: 0.8rem;
+}
+
+.color-tool__comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 220px;
+}
+
+.color-tool__comparison-side {
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.color-tool__ratio {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 10px;
+  background: var(--background-color, #0f172a);
+  text-align: center;
+}
+
+.color-tool__ratio strong {
+  display: block;
+  font-size: 1.6rem;
+}
+
+.color-tool__status {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.color-tool__status--pass {
+  background: #14532d;
+  color: #bbf7d0;
+}
+
+.color-tool__status--fail {
+  background: #450a0a;
+  color: #fecaca;
+}
+
+.color-tool__range {
+  display: grid;
+  grid-template-columns: 1fr 65px;
+  gap: 10px;
+  align-items: center;
+}
+
+.color-tool__range input[type="range"] {
+  width: 100%;
+}
+
+.color-tool__range output {
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--background-color, #0f172a);
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 800px) {
+  .color-tool__workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .color-tool__palette {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .color-tool__comparison {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .color-tool__panel {
+    padding: 16px;
+  }
+
+  .color-tool__header h1 {
+    font-size: 1.5rem;
+  }
+
+  .color-tool__result-grid {
+    grid-template-columns: 1fr;
+  }
+}
