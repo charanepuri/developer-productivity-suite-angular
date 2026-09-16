@@ -40,4 +40,10 @@ export class Dashboard {
     this.recentToolsService.recentTools$.pipe(
       map(tools => tools.length)
     );
+
+    getTool(
+  toolId: string
+) {
+  return this.toolService.getToolById(toolId);
+}
 }

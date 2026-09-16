@@ -1,0 +1,109 @@
+<section class="recent-page">
+
+  <header class="recent-header">
+
+    <div>
+
+      <span class="eyebrow">
+        ACTIVITY
+      </span>
+
+      <h1>
+        Recently Used
+      </h1>
+
+      <p>
+        Quickly return to the tools you used most recently.
+      </p>
+
+    </div>
+
+    <button
+      type="button"
+      class="clear-button"
+      (click)="clearRecentTools()"
+    >
+      Clear History
+    </button>
+
+  </header>
+
+
+  @if (recentTools$ | async; as tools) {
+
+    @if (tools.length > 0) {
+
+      <div class="recent-list">
+
+        @for (tool of tools; track tool.id) {
+
+          <article class="recent-card">
+
+            <div class="recent-card__icon">
+              {{ tool.icon }}
+            </div>
+
+            <div class="recent-card__content">
+
+              <span>
+                {{ tool.category }}
+              </span>
+
+              <h2>
+                {{ tool.name }}
+              </h2>
+
+              <p>
+                {{ tool.description }}
+              </p>
+
+            </div>
+
+            <a
+              [routerLink]="tool.route"
+              class="open-button"
+            >
+              Open Tool
+              <span aria-hidden="true">→</span>
+            </a>
+
+          </article>
+
+        }
+
+      </div>
+
+    } @else {
+
+      <div class="empty-state">
+
+        <div
+          class="empty-state__icon"
+          aria-hidden="true"
+        >
+          ◷
+        </div>
+
+        <h2>
+          No recently used tools
+        </h2>
+
+        <p>
+          Tools you open will automatically appear here.
+        </p>
+
+        <a
+          routerLink="/tools"
+          class="open-button"
+        >
+          Explore Tools
+          <span aria-hidden="true">→</span>
+        </a>
+
+      </div>
+
+    }
+
+  }
+
+</section>

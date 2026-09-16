@@ -1,0 +1,150 @@
+.recent-page {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.recent-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.recent-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.recent-header p {
+  margin-top: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.clear-button {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.7rem;
+  background: var(--surface-color);
+  color: var(--text-primary);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+}
+
+.clear-button:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.recent-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.recent-card {
+  display: grid;
+  grid-template-columns: 50px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  background: var(--surface-color);
+}
+
+.recent-card__icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 0.75rem;
+  background: var(--surface-elevated);
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.recent-card__content {
+  min-width: 0;
+}
+
+.recent-card__content > span {
+  color: var(--accent-color);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.recent-card h2 {
+  margin: 0.35rem 0;
+  font-size: 1.1rem;
+}
+
+.recent-card p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.open-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.7rem;
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.open-button:hover {
+  color: var(--accent-color);
+}
+
+.empty-state {
+  padding: 4rem 1.5rem;
+  border: 1px dashed var(--border-color);
+  border-radius: 1rem;
+  background: var(--surface-color);
+  text-align: center;
+}
+
+.empty-state__icon {
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+  font-size: 3rem;
+}
+
+.empty-state h2 {
+  margin: 0;
+}
+
+.empty-state p {
+  margin: 0.75rem 0 1.5rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 700px) {
+  .recent-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .recent-card {
+    grid-template-columns: 46px 1fr;
+  }
+
+  .open-button {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+}

@@ -44,6 +44,13 @@ export const routes: Routes = [
   },
 
   {
+  path: 'recent',
+  loadChildren: () =>
+    import('./features/recent/recent.routes')
+      .then(m => m.RECENT_ROUTES)
+},
+
+  {
     path: 'settings',
     loadChildren: () =>
       import('./features/settings/settings.routes')

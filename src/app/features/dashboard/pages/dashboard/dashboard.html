@@ -70,6 +70,103 @@
 
   </section>
 
+  <section class="dashboard-section">
+
+  <div class="dashboard-section__header">
+
+    <div>
+      <span class="eyebrow">
+        QUICK ACCESS
+      </span>
+
+      <h2>
+        Recently Used
+      </h2>
+    </div>
+
+    <a
+      routerLink="/tools"
+      class="dashboard-section__link"
+    >
+      View All Tools
+      <span aria-hidden="true">→</span>
+    </a>
+
+  </div>
+
+
+  @if (recentTools$ | async; as recentIds) {
+
+    @if (recentIds.length > 0) {
+
+      <div class="recent-tools">
+
+        @for (
+          toolId of recentIds;
+          track toolId
+        ) {
+
+          @if (getTool(toolId); as tool) {
+
+            <a
+              class="recent-tool"
+              [routerLink]="tool.route"
+            >
+
+              <div class="recent-tool__icon">
+                {{ tool.icon }}
+              </div>
+
+              <div class="recent-tool__content">
+
+                <span>
+                  {{ tool.category }}
+                </span>
+
+                <strong>
+                  {{ tool.name }}
+                </strong>
+
+              </div>
+
+              <span
+                class="recent-tool__arrow"
+                aria-hidden="true"
+              >
+                →
+              </span>
+
+            </a>
+
+          }
+
+        }
+
+      </div>
+
+    } @else {
+
+      <div class="recent-empty">
+
+        <span aria-hidden="true">
+          ◷
+        </span>
+
+        <p>
+          Your recently used tools will appear here.
+        </p>
+
+        <a routerLink="/tools">
+          Explore Tools
+        </a>
+
+      </div>
+
+    }
+
+  }
+
+</section>
 
   <section class="dashboard__recent">
 

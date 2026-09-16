@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  inject
-} from '@angular/core';
-
+import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { StorageService } from './storage.service';
@@ -15,10 +11,7 @@ export class RecentToolsService {
   private readonly storageService =
     inject(StorageService);
 
-  private readonly storageKey =
-    'dps-recent-tools';
-
-  private readonly maximumItems = 5;
+  private readonly maxRecentTools = 5;
 
   private readonly recentToolsSubject =
     new BehaviorSubject<string[]>(
@@ -30,37 +23,43 @@ export class RecentToolsService {
 
   recordUsage(toolId: string): void {
 
-    const existing =
+    const currentTools =
       this.recentToolsSubject.value;
 
-    const updated = [
+    const updatedTools = [
       toolId,
-      ...existing.filter(id => id !== toolId)
-    ].slice(0, this.maximumItems);
+      ...currentTools.filter(
+        id => id !== toolId
+      )
+    ].slice(0, this.maxRecentTools);
 
-    this.recentToolsSubject.next(updated);
-
-    this.storageService.set(
-      this.storageKey,
-      updated
-    );
+    this.updateRecentTools(updatedTools);
   }
 
   clear(): void {
-    this.recentToolsSubject.next([]);
-
-    this.storageService.remove(
-      this.storageKey
-    );
+    this.updateRecentTools([]);
   }
 
   getRecentToolIds(): readonly string[] {
     return this.recentToolsSubject.value;
   }
 
+  private updateRecentTools(
+    toolIds: string[]
+  ): void {
+
+    this.recentToolsSubject.next(toolIds);
+
+    this.storageService.set(
+      'dps-recent-tools',
+      toolIds
+    );
+  }
+
   private loadRecentTools(): string[] {
+
     return this.storageService.get<string[]>(
-      this.storageKey
+      'dps-recent-tools'
     ) ?? [];
   }
 }

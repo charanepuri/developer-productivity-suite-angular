@@ -35,6 +35,11 @@ export class NavigationService {
       icon: '★'
     },
     {
+  label: 'Recently Used',
+  route: '/recent',
+  icon: '◷'
+},
+    {
       label: 'Settings',
       route: '/settings',
       icon: '⚙'
