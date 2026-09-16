@@ -1,0 +1,93 @@
+<section class="markdown-tool">
+  <header class="markdown-tool__header">
+    <h1>Markdown Table Generator</h1>
+    <p>Create Markdown tables without manually writing the syntax.</p>
+  </header>
+
+  <section class="markdown-tool__panel">
+    <div class="markdown-tool__controls">
+
+      <div class="markdown-tool__field">
+        <label for="columns">Columns</label>
+
+        <input
+          id="columns"
+          class="markdown-tool__input"
+          type="number"
+          min="1"
+          max="8"
+          [(ngModel)]="columns"
+          (ngModelChange)="resizeTable()"
+        />
+      </div>
+
+      <div class="markdown-tool__field">
+        <label for="rows">Rows</label>
+
+        <input
+          id="rows"
+          class="markdown-tool__input"
+          type="number"
+          min="1"
+          max="15"
+          [(ngModel)]="rows"
+          (ngModelChange)="resizeTable()"
+        />
+      </div>
+
+      <button
+        class="markdown-tool__button markdown-tool__button--primary"
+        type="button"
+        (click)="copy()"
+      >
+        Copy Markdown
+      </button>
+
+      <button
+        class="markdown-tool__button markdown-tool__button--secondary"
+        type="button"
+        (click)="reset()"
+      >
+        Reset
+      </button>
+    </div>
+
+    <div class="markdown-tool__table-wrapper">
+      <table class="markdown-tool__table">
+        <thead>
+          <tr>
+            @for (header of headers; track $index) {
+              <th>
+                <input
+                  [(ngModel)]="headers[$index]"
+                  [placeholder]="'Column ' + ($index + 1)"
+                />
+              </th>
+            }
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (row of data; track $index) {
+            <tr>
+              @for (cell of row; track $index) {
+                <td>
+                  <input
+                    [(ngModel)]="row[$index]"
+                    placeholder="Value"
+                  />
+                </td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="markdown-tool__panel" style="margin-top: 20px;">
+    <h2>Generated Markdown</h2>
+
+    <pre class="markdown-tool__code">{{ markdown }}</pre>
+  </section>
+</section>

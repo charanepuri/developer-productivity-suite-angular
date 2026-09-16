@@ -1,0 +1,62 @@
+<section class="markdown-tool">
+  <header class="markdown-tool__header">
+    <h1>Markdown Editor</h1>
+    <p>Write Markdown and preview the rendered document instantly.</p>
+  </header>
+
+  <div class="markdown-tool__controls">
+    <button
+      class="markdown-tool__button markdown-tool__button--primary"
+      type="button"
+      (click)="copyMarkdown()"
+    >
+      Copy Markdown
+    </button>
+
+    <button
+      class="markdown-tool__button markdown-tool__button--secondary"
+      type="button"
+      (click)="copyHtml()"
+    >
+      Copy HTML
+    </button>
+
+    <button
+      class="markdown-tool__button markdown-tool__button--secondary"
+      type="button"
+      (click)="loadSample()"
+    >
+      Load Sample
+    </button>
+
+    <button
+      class="markdown-tool__button markdown-tool__button--danger"
+      type="button"
+      (click)="clear()"
+    >
+      Clear
+    </button>
+  </div>
+
+  <div class="markdown-tool__workspace">
+    <section class="markdown-tool__panel">
+      <h2>Markdown</h2>
+
+      <textarea
+        class="markdown-tool__textarea"
+        [(ngModel)]="markdown"
+        spellcheck="false"
+        placeholder="Write Markdown here..."
+      ></textarea>
+    </section>
+
+    <section class="markdown-tool__panel">
+      <h2>Preview</h2>
+
+      <article
+        class="markdown-tool__preview"
+        [innerHTML]="html"
+      ></article>
+    </section>
+  </div>
+</section>

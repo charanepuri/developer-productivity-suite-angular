@@ -1,0 +1,251 @@
+.markdown-tool {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.markdown-tool__header {
+  margin-bottom: 24px;
+}
+
+.markdown-tool__header h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.markdown-tool__header p {
+  margin: 0;
+  color: var(--text-muted, #94a3b8);
+}
+
+.markdown-tool__workspace {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.markdown-tool__panel {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 16px;
+  background: var(--surface-color, #111827);
+}
+
+.markdown-tool__panel h2 {
+  margin: 0 0 16px;
+  font-size: 1rem;
+}
+
+.markdown-tool__textarea {
+  width: 100%;
+  min-height: 430px;
+  box-sizing: border-box;
+  resize: vertical;
+  padding: 16px;
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 10px;
+  outline: none;
+  background: var(--background-color, #0f172a);
+  color: inherit;
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.markdown-tool__textarea:focus,
+.markdown-tool__input:focus {
+  border-color: #2563eb;
+}
+
+.markdown-tool__preview {
+  min-height: 430px;
+  padding: 20px;
+  overflow: auto;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: var(--background-color, #0f172a);
+}
+
+.markdown-tool__preview h1,
+.markdown-tool__preview h2,
+.markdown-tool__preview h3,
+.markdown-tool__preview h4 {
+  margin-top: 1.2em;
+}
+
+.markdown-tool__preview p {
+  line-height: 1.7;
+}
+
+.markdown-tool__preview code {
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: #020617;
+  font-family: "Courier New", monospace;
+}
+
+.markdown-tool__preview pre {
+  padding: 14px;
+  overflow-x: auto;
+  border-radius: 8px;
+  background: #020617;
+}
+
+.markdown-tool__preview blockquote {
+  margin-left: 0;
+  padding-left: 16px;
+  border-left: 4px solid #2563eb;
+  color: var(--text-muted, #94a3b8);
+}
+
+.markdown-tool__preview table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.markdown-tool__preview th,
+.markdown-tool__preview td {
+  padding: 8px 10px;
+  border: 1px solid var(--border-color, #334155);
+  text-align: left;
+}
+
+.markdown-tool__preview img {
+  max-width: 100%;
+}
+
+.markdown-tool__code {
+  margin-top: 16px;
+  padding: 16px;
+  overflow-x: auto;
+  border-radius: 10px;
+  background: #020617;
+  color: #e2e8f0;
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.markdown-tool__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.markdown-tool__button {
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 15px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.markdown-tool__button--primary {
+  background: #2563eb;
+  color: white;
+}
+
+.markdown-tool__button--secondary {
+  background: #334155;
+  color: white;
+}
+
+.markdown-tool__button--danger {
+  background: #7f1d1d;
+  color: white;
+}
+
+.markdown-tool__field {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+
+.markdown-tool__field label {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.markdown-tool__input,
+.markdown-tool__select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 9px;
+  background: var(--background-color, #0f172a);
+  color: inherit;
+  font: inherit;
+}
+
+.markdown-tool__table-wrapper {
+  overflow-x: auto;
+}
+
+.markdown-tool__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.markdown-tool__table th,
+.markdown-tool__table td {
+  padding: 8px;
+  border: 1px solid var(--border-color, #334155);
+}
+
+.markdown-tool__table input {
+  width: 100%;
+  min-width: 100px;
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 6px;
+  background: var(--background-color, #0f172a);
+  color: inherit;
+}
+
+.markdown-tool__toc {
+  display: grid;
+  gap: 8px;
+}
+
+.markdown-tool__toc-item {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--background-color, #0f172a);
+}
+
+.markdown-tool__toc-level-2 {
+  margin-left: 20px;
+}
+
+.markdown-tool__toc-level-3 {
+  margin-left: 40px;
+}
+
+@media (max-width: 900px) {
+  .markdown-tool__workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .markdown-tool__panel {
+    padding: 15px;
+  }
+
+  .markdown-tool__header h1 {
+    font-size: 1.5rem;
+  }
+
+  .markdown-tool__textarea,
+  .markdown-tool__preview {
+    min-height: 320px;
+  }
+}

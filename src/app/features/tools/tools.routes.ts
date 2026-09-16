@@ -205,6 +205,41 @@ export const TOOLS_ROUTES: Routes = [
       .then(m => m.ShadeTintGenerator),
   title: 'Shade & Tint Generator | Developer Productivity Suite'
 },
+
+{
+  path: 'markdown-editor',
+  loadComponent: () =>
+    import('./implementations/markdown/markdown-editor/markdown-editor')
+      .then(m => m.MarkdownEditor),
+  title: 'Markdown Editor | Developer Productivity Suite'
+},
+
+{
+  path: 'markdown-to-html',
+  loadComponent: () =>
+    import('./implementations/markdown/markdown-to-html/markdown-to-html')
+      .then(m => m.MarkdownToHtml),
+  title: 'Markdown to HTML | Developer Productivity Suite'
+},
+
+{
+  path: 'markdown-table-generator',
+  loadComponent: () =>
+    import('./implementations/markdown/markdown-table-generator/markdown-table-generator')
+      .then(m => m.MarkdownTableGenerator),
+  title: 'Markdown Table Generator | Developer Productivity Suite'
+},
+
+{
+  path: 'markdown-toc-generator',
+  loadComponent: () =>
+    import('./implementations/markdown/markdown-toc-generator/markdown-toc-generator')
+      .then(m => m.MarkdownTocGenerator),
+  title: 'Markdown TOC Generator | Developer Productivity Suite'
+},
+
+
+
   {
     path: '',
     loadComponent: () =>

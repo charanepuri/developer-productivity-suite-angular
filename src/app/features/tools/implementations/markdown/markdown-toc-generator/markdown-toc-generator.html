@@ -1,0 +1,66 @@
+<section class="markdown-tool">
+  <header class="markdown-tool__header">
+    <h1>Markdown TOC Generator</h1>
+    <p>Generate a Markdown table of contents from document headings.</p>
+  </header>
+
+  <div class="markdown-tool__controls">
+    <button
+      class="markdown-tool__button markdown-tool__button--primary"
+      type="button"
+      (click)="copy()"
+    >
+      Copy TOC
+    </button>
+
+    <button
+      class="markdown-tool__button markdown-tool__button--secondary"
+      type="button"
+      (click)="loadSample()"
+    >
+      Load Sample
+    </button>
+
+    <button
+      class="markdown-tool__button markdown-tool__button--danger"
+      type="button"
+      (click)="clear()"
+    >
+      Clear
+    </button>
+  </div>
+
+  <div class="markdown-tool__workspace">
+    <section class="markdown-tool__panel">
+      <h2>Markdown Document</h2>
+
+      <textarea
+        class="markdown-tool__textarea"
+        [(ngModel)]="markdown"
+        spellcheck="false"
+        placeholder="Enter Markdown headings..."
+      ></textarea>
+    </section>
+
+    <section class="markdown-tool__panel">
+      <h2>Generated TOC</h2>
+
+      <pre class="markdown-tool__code">{{ toc }}</pre>
+
+      <h2>Detected Headings</h2>
+
+      <div class="markdown-tool__toc">
+        @for (heading of headings; track $index) {
+          <div
+            class="markdown-tool__toc-item"
+            [class.markdown-tool__toc-level-2]="heading.level === 2"
+            [class.markdown-tool__toc-level-3]="heading.level === 3"
+          >
+            <strong>H{{ heading.level }}</strong>
+            {{ heading.text }}
+          </div>
+        }
+      </div>
+    </section>
+  </div>
+</section>

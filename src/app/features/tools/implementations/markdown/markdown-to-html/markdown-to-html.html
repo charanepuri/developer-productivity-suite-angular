@@ -1,0 +1,50 @@
+<section class="markdown-tool">
+  <header class="markdown-tool__header">
+    <h1>Markdown to HTML</h1>
+    <p>Convert Markdown syntax into HTML markup.</p>
+  </header>
+
+  <div class="markdown-tool__controls">
+    <button
+      class="markdown-tool__button markdown-tool__button--primary"
+      type="button"
+      (click)="copy()"
+    >
+      Copy HTML
+    </button>
+
+    <button
+      class="markdown-tool__button markdown-tool__button--danger"
+      type="button"
+      (click)="clear()"
+    >
+      Clear
+    </button>
+  </div>
+
+  <div class="markdown-tool__workspace">
+    <section class="markdown-tool__panel">
+      <h2>Markdown Input</h2>
+
+      <textarea
+        class="markdown-tool__textarea"
+        [(ngModel)]="markdown"
+        spellcheck="false"
+        placeholder="Enter Markdown..."
+      ></textarea>
+    </section>
+
+    <section class="markdown-tool__panel">
+      <h2>Generated HTML</h2>
+
+      <pre class="markdown-tool__code">{{ html }}</pre>
+
+      <h2>Rendered Preview</h2>
+
+      <article
+        class="markdown-tool__preview"
+        [innerHTML]="html"
+      ></article>
+    </section>
+  </div>
+</section>
