@@ -61,14 +61,6 @@ export const routes: Routes = [
 },
 
   {
-    path: 'settings',
-    canActivate: [appReadinessGuard],
-    loadChildren: () =>
-      import('./features/settings/settings.routes')
-        .then(m => m.SETTINGS_ROUTES)
-  },
-
-  {
   path: 'about',
   canActivate: [appReadinessGuard],
   loadChildren: () =>

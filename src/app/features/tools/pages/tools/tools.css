@@ -2,111 +2,151 @@
   display: block;
 }
 
+
+/* =========================================================
+   Tools Page
+   ========================================================= */
+
 .tools {
   width: min(100%, 1400px);
   margin: 0 auto;
-  padding: 48px 32px 64px;
+  padding: 48px 32px 72px;
 }
 
 
-/* Header */
+/* =========================================================
+   Page Header
+   ========================================================= */
 
 .tools__header {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 32px;
-  margin-bottom: 32px;
+  margin-bottom: 30px;
+}
+
+.tools__intro {
+  min-width: 0;
 }
 
 .tools__eyebrow {
   display: inline-block;
   margin-bottom: 10px;
   color: #4da3ff;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
 }
 
 .tools__header h1 {
   margin: 0;
   color: #f5f7fb;
-  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-size: clamp(2.25rem, 5vw, 3.4rem);
   font-weight: 750;
   line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 
 .tools__header p {
+  max-width: 650px;
   margin: 14px 0 0;
   color: #8e98aa;
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.98rem;
+  line-height: 1.65;
 }
 
 
-/* Count */
+/* =========================================================
+   Tool Count
+   ========================================================= */
 
 .tools__count {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
   flex-shrink: 0;
-  padding: 14px 18px;
+  min-width: 110px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 20px;
   border: 1px solid #252b36;
   border-radius: 14px;
   background: #151922;
+  box-shadow: 0 10px 28px rgb(0 0 0 / 12%);
 }
 
 .tools__count strong {
   color: #f5f7fb;
-  font-size: 1.5rem;
+  font-size: 1.45rem;
+  font-weight: 750;
   line-height: 1;
 }
 
 .tools__count span {
-  margin-top: 6px;
+  margin-top: 7px;
   color: #727e91;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 
-/* Toolbar */
+/* =========================================================
+   Category Toolbar
+   ========================================================= */
 
 .tools__toolbar {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 28px;
+  gap: 7px;
+  margin-bottom: 30px;
   padding: 6px;
   border: 1px solid #252b36;
   border-radius: 14px;
   background: #12161e;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
 }
 
 .filter-link {
-  padding: 9px 14px;
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border: 1px solid transparent;
   border-radius: 9px;
   color: #8792a5;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-decoration: none;
+  white-space: nowrap;
   transition:
     color 160ms ease,
-    background 160ms ease;
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
 }
 
 .filter-link:hover {
-  color: #dce4ef;
+  color: #e6ebf3;
   background: #1a202b;
+  border-color: #2a3443;
+}
+
+.filter-link:active {
+  transform: translateY(1px);
 }
 
 .filter-link--active {
   color: #ffffff;
   background: #2458d6;
+  border-color: #3067e7;
 }
 
 
-/* Tools grid */
+/* =========================================================
+   Tools Grid
+   ========================================================= */
 
 .tools__grid {
   display: grid;
@@ -115,9 +155,28 @@
 }
 
 
-/* Tool card */
+/* =========================================================
+   Angular Tool Card Host
+   ========================================================= */
 
-.tool-card {
+.tool-card-host {
+  display: block;
+  min-width: 0;
+}
+
+
+/*
+ * The actual .tool-card exists inside the child
+ * <app-tool-card> component.
+ *
+ * Angular component style encapsulation prevents the parent
+ * stylesheet from reaching those elements normally.
+ *
+ * This scoped bridge is intentionally used here because
+ * the requested change is limited to these two files.
+ */
+
+:host ::ng-deep app-tool-card .tool-card {
   display: flex;
   min-height: 280px;
   flex-direction: column;
@@ -129,59 +188,69 @@
   transition:
     transform 160ms ease,
     border-color 160ms ease,
-    box-shadow 160ms ease;
+    box-shadow 160ms ease,
+    background 160ms ease;
 }
 
-.tool-card:hover {
+:host ::ng-deep app-tool-card .tool-card:hover {
   transform: translateY(-3px);
   border-color: #354050;
+  background: #171c26;
   box-shadow: 0 18px 38px rgb(0 0 0 / 24%);
 }
 
 
-/* Top */
+/* =========================================================
+   Tool Card — Top
+   ========================================================= */
 
-.tool-card__top {
+:host ::ng-deep app-tool-card .tool-card__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
 
-.tool-card__icon {
+:host ::ng-deep app-tool-card .tool-card__icon {
   display: grid;
   width: 48px;
   height: 48px;
+  flex-shrink: 0;
   place-items: center;
   border: 1px solid #293344;
   border-radius: 13px;
   background: #1b2330;
   color: #62adff;
   font-size: 1.2rem;
+  font-weight: 700;
 }
 
-.tool-card__category {
+:host ::ng-deep app-tool-card .tool-card__category {
   color: #6f7c90;
   font-size: 0.72rem;
   font-weight: 600;
+  text-align: right;
 }
 
 
-/* Content */
+/* =========================================================
+   Tool Card — Content
+   ========================================================= */
 
-.tool-card__content {
+:host ::ng-deep app-tool-card .tool-card__content {
   flex: 1;
   padding-top: 22px;
 }
 
-.tool-card__content h2 {
+:host ::ng-deep app-tool-card .tool-card__content h2 {
   margin: 0;
   color: #edf1f7;
   font-size: 1.08rem;
   font-weight: 700;
+  line-height: 1.35;
 }
 
-.tool-card__content p {
+:host ::ng-deep app-tool-card .tool-card__content p {
   margin: 9px 0 0;
   color: #7d889a;
   font-size: 0.85rem;
@@ -189,28 +258,35 @@
 }
 
 
-/* Tags */
+/* =========================================================
+   Tool Card — Tags
+   ========================================================= */
 
-.tool-card__tags {
+:host ::ng-deep app-tool-card .tool-card__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 18px;
 }
 
-.tool-card__tags span {
+:host ::ng-deep app-tool-card .tool-card__tags span {
+  display: inline-flex;
+  align-items: center;
   padding: 4px 8px;
   border: 1px solid #29303c;
   border-radius: 6px;
   color: #8995a8;
   background: #12161d;
   font-size: 0.68rem;
+  line-height: 1.2;
 }
 
 
-/* Link */
+/* =========================================================
+   Tool Card — Open Tool Link
+   ========================================================= */
 
-.tool-card__link {
+:host ::ng-deep app-tool-card .tool-card__link {
   display: inline-flex;
   width: fit-content;
   align-items: center;
@@ -220,15 +296,20 @@
   font-size: 0.84rem;
   font-weight: 650;
   text-decoration: none;
-  transition: gap 160ms ease;
+  transition:
+    gap 160ms ease,
+    color 160ms ease;
 }
 
-.tool-card__link:hover {
+:host ::ng-deep app-tool-card .tool-card__link:hover {
   gap: 12px;
+  color: #82c1ff;
 }
 
 
-/* Empty */
+/* =========================================================
+   Empty State
+   ========================================================= */
 
 .tools__empty {
   grid-column: 1 / -1;
@@ -245,15 +326,18 @@
   height: 48px;
   margin: 0 auto 14px;
   place-items: center;
+  border: 1px solid #29303c;
   border-radius: 50%;
   background: #1b222d;
   color: #7d899c;
+  font-weight: 700;
 }
 
 .tools__empty h2 {
   margin: 0;
   color: #dfe5ed;
   font-size: 1.05rem;
+  font-weight: 700;
 }
 
 .tools__empty p {
@@ -269,42 +353,82 @@
   text-decoration: none;
 }
 
+.tools__empty-link:hover {
+  color: #82c1ff;
+}
 
-/* Responsive */
+
+/* =========================================================
+   Responsive — Tablet
+   ========================================================= */
 
 @media (max-width: 1100px) {
+
   .tools__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
 }
 
+
+/* =========================================================
+   Responsive — Mobile
+   ========================================================= */
+
 @media (max-width: 760px) {
+
   .tools {
-    padding: 32px 20px 48px;
+    padding: 32px 20px 52px;
   }
 
   .tools__header {
     align-items: flex-start;
     flex-direction: column;
+    gap: 20px;
   }
 
   .tools__count {
     align-items: flex-start;
   }
 
+  .tools__toolbar {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding: 6px;
+    scrollbar-width: thin;
+  }
+
+  .filter-link {
+    flex-shrink: 0;
+  }
+
   .tools__grid {
     grid-template-columns: 1fr;
   }
+
+  :host ::ng-deep app-tool-card .tool-card {
+    min-height: 250px;
+  }
+
 }
 
+
+/* =========================================================
+   Responsive — Small Mobile
+   ========================================================= */
+
 @media (max-width: 480px) {
+
   .tools {
     padding: 24px 16px 40px;
   }
 
-  .tool-card {
-    min-height: 250px;
-    padding: 20px;
+  .tools__header h1 {
+    font-size: 2.15rem;
+  }
+
+  .tools__header p {
+    font-size: 0.9rem;
   }
 
   .tools__toolbar {
@@ -312,6 +436,20 @@
   }
 
   .filter-link {
-    padding: 8px 10px;
+    min-height: 34px;
+    padding: 7px 10px;
+    font-size: 0.75rem;
   }
+
+  :host ::ng-deep app-tool-card .tool-card {
+    min-height: 240px;
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  :host ::ng-deep app-tool-card .tool-card__icon {
+    width: 44px;
+    height: 44px;
+  }
+
 }

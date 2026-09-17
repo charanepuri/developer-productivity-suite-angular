@@ -3,7 +3,7 @@
   <!-- Page Header -->
   <header class="tools__header">
 
-    <div>
+    <div class="tools__intro">
       <span class="tools__eyebrow">
         DEVELOPER PRODUCTIVITY SUITE
       </span>
@@ -24,7 +24,7 @@
 
 
   <!-- Category Filter -->
-  <section
+  <nav
     class="tools__toolbar"
     aria-label="Tool category filters"
   >
@@ -39,7 +39,6 @@
       All Tools
     </a>
 
-
     <a
       class="filter-link"
       routerLink="/tools"
@@ -52,7 +51,6 @@
     >
       Text
     </a>
-
 
     <a
       class="filter-link"
@@ -67,7 +65,6 @@
       JSON
     </a>
 
-
     <a
       class="filter-link"
       routerLink="/tools"
@@ -80,7 +77,6 @@
     >
       Security
     </a>
-
 
     <a
       class="filter-link"
@@ -95,7 +91,6 @@
       CSS
     </a>
 
-
     <a
       class="filter-link"
       routerLink="/tools"
@@ -108,7 +103,6 @@
     >
       Color
     </a>
-
 
     <a
       class="filter-link"
@@ -123,7 +117,6 @@
       Markdown
     </a>
 
-
     <a
       class="filter-link"
       routerLink="/tools"
@@ -136,7 +129,6 @@
     >
       Developer
     </a>
-
 
     <a
       class="filter-link"
@@ -151,7 +143,7 @@
       Date &amp; Time
     </a>
 
-  </section>
+  </nav>
 
 
   <!-- Tools Grid -->
@@ -167,6 +159,7 @@
         @for (tool of tools; track tool.id) {
 
           <app-tool-card
+            class="tool-card-host"
             [tool]="tool"
           />
 

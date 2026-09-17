@@ -40,11 +40,6 @@ export class NavigationService {
   icon: '◷'
 },
     {
-      label: 'Settings',
-      route: '/settings',
-      icon: '⚙'
-    },
-    {
   label: 'About',
   route: '/about',
   icon: 'ⓘ'

@@ -1,122 +1,55 @@
-import {
-  DOCUMENT
-} from '@angular/common';
+import { Injectable, inject } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
-import {
-  inject,
-  Injectable
-} from '@angular/core';
-
-import {
-  BehaviorSubject
-} from 'rxjs';
-
-import {
-  StorageService
-} from './storage.service';
-
-import {
-  ThemeMode
-} from '../models/theme-mode.type';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  private readonly storageService =
-    inject(StorageService);
+  private readonly storageService = inject(StorageService);
 
-  private readonly document =
-    inject(DOCUMENT);
-
-  private readonly themeStorageKey =
-    'dps-theme';
-
-  private readonly themeSubject =
-    new BehaviorSubject<ThemeMode>(
+  private readonly darkModeSubject =
+    new BehaviorSubject<boolean>(
       this.loadTheme()
     );
 
-  readonly theme$ =
-    this.themeSubject.asObservable();
+  readonly darkMode$ =
+    this.darkModeSubject.asObservable();
 
   constructor() {
-    this.applyTheme(this.themeSubject.value);
+    this.applyTheme(this.darkModeSubject.value);
   }
 
-  getTheme(): ThemeMode {
-    return this.themeSubject.value;
-  }
+  toggle(): void {
+    const nextMode = !this.darkModeSubject.value;
 
-  setTheme(theme: ThemeMode): void {
-    this.themeSubject.next(theme);
+    this.darkModeSubject.next(nextMode);
 
     this.storageService.set(
-      this.themeStorageKey,
-      theme
+      'dps-theme',
+      nextMode
     );
 
-    this.applyTheme(theme);
+    this.applyTheme(nextMode);
   }
 
-  toggleDarkMode(): void {
-    const currentTheme =
-      this.themeSubject.value;
-
-    this.setTheme(
-      currentTheme === 'dark'
-        ? 'light'
-        : 'dark'
-    );
+  isDarkMode(): boolean {
+    return this.darkModeSubject.value;
   }
 
-  resetTheme(): void {
-    this.setTheme('system');
+  private applyTheme(isDark: boolean): void {
+    const root = document.documentElement;
+
+    root.classList.toggle('dark', isDark);
+    root.classList.toggle('light', !isDark);
   }
 
-  private loadTheme(): ThemeMode {
-    const savedTheme =
-      this.storageService.get<string>(
-        this.themeStorageKey
-      );
-
-    if (
-      savedTheme === 'dark' ||
-      savedTheme === 'light' ||
-      savedTheme === 'system'
-    ) {
-      return savedTheme;
-    }
-
-    return 'system';
-  }
-
-  private applyTheme(theme: ThemeMode): void {
-    const root =
-      this.document.documentElement;
-
-    root.classList.remove(
-      'dark',
-      'light'
-    );
-
-    if (theme === 'dark') {
-      root.classList.add('dark');
-      return;
-    }
-
-    if (theme === 'light') {
-      root.classList.add('light');
-      return;
-    }
-
-    const prefersDark =
-      globalThis.matchMedia?.(
-        '(prefers-color-scheme: dark)'
-      ).matches ?? false;
-
-    root.classList.add(
-      prefersDark ? 'dark' : 'light'
+  private loadTheme(): boolean {
+    return (
+      this.storageService.get<boolean>(
+        'dps-theme'
+      ) ?? true
     );
   }
 }
