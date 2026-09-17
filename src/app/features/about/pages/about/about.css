@@ -1,50 +1,24 @@
-/* =========================================================
-   ABOUT PAGE
-   ========================================================= */
-
 :host {
   display: block;
-
   width: 100%;
   min-width: 0;
 }
 
-
-/* =========================================================
-   PAGE CONTAINER
-   ========================================================= */
-
 .about-page {
   width: min(100%, 1400px);
-
-  min-width: 0;
   max-width: 100%;
-
-  margin: 0 auto;
-
+  min-width: 0;
+  margin: auto;
   padding: 48px 32px 72px;
-
   box-sizing: border-box;
-
   overflow-wrap: anywhere;
 }
 
-
-/* =========================================================
-   HERO
-   ========================================================= */
-
 .about-hero {
   display: grid;
-
-  grid-template-columns:
-    minmax(0, 1fr)
-    minmax(200px, 240px);
-
+  grid-template-columns: minmax(0, 1fr) minmax(200px, 240px);
   align-items: center;
-
   gap: 3rem;
-
   margin-bottom: 64px;
 }
 
@@ -55,236 +29,179 @@
 .about-hero__eyebrow,
 .about-section__eyebrow {
   display: inline-block;
-
   color: var(--accent-color, #4da3ff);
-
-  font-size: 0.72rem;
-
+  font-size: .72rem;
   font-weight: 700;
-
-  letter-spacing: 0.12em;
+  letter-spacing: .12em;
 }
 
 .about-hero h1 {
   margin: 10px 0 0;
-
   color: var(--text-primary, #f5f7fb);
-
   font-size: clamp(2.4rem, 5vw, 4rem);
-
   font-weight: 750;
-
   line-height: 1.05;
 }
 
 .about-hero h1 span {
   display: block;
-
   color: var(--accent-color, #4da3ff);
 }
 
 .about-hero__description {
   max-width: 780px;
-
   margin: 18px 0 0;
-
   color: var(--text-secondary, #8e98aa);
-
-  font-size: 0.98rem;
-
+  font-size: .98rem;
   line-height: 1.75;
 }
 
-
-/* =========================================================
-   HERO VISUAL
-   ========================================================= */
-
 .about-hero__visual {
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
-
   min-height: 220px;
-
   padding: 28px 20px;
-
   border: 1px solid var(--border-color, #252b36);
-
   border-radius: 22px;
-
-  background:
-    linear-gradient(
-      145deg,
-      var(--surface-elevated, #1d2532),
-      var(--surface-color, #151922)
-    );
-
+  background: linear-gradient(145deg, var(--surface-elevated, #1d2532), var(--surface-color, #151922));
   text-align: center;
-
   box-sizing: border-box;
 }
 
-.about-hero__icon {
+.about-hero__icon,
+.about-philosophy__icon {
   display: grid;
+  place-items: center;
+  background: var(--surface-elevated, #1d2532);
+  color: var(--accent-color, #4da3ff);
+}
 
+.about-hero__icon {
   width: 76px;
   height: 76px;
-
-  place-items: center;
-
   margin-bottom: 18px;
-
   border: 1px solid var(--border-color, #303949);
-
   border-radius: 20px;
-
   background: var(--surface-color, #151922);
-
-  color: var(--accent-color, #4da3ff);
-
   font-size: 1.6rem;
-
   font-weight: 700;
 }
 
 .about-hero__visual-label {
   color: var(--text-secondary, #8e98aa);
-
-  font-size: 0.68rem;
-
+  font-size: .68rem;
   font-weight: 700;
-
-  letter-spacing: 0.12em;
+  letter-spacing: .12em;
 }
 
 .about-hero__visual strong {
   margin-top: 7px;
-
   color: var(--text-primary, #f5f7fb);
-
   font-size: 1.35rem;
 }
-
-
-/* =========================================================
-   SECTION
-   ========================================================= */
 
 .about-section {
   width: 100%;
   min-width: 0;
-
   margin-top: 64px;
 }
 
 .about-section__header {
   max-width: 850px;
-
   margin-bottom: 24px;
 }
 
 .about-section__header h2 {
   margin: 8px 0 0;
-
   color: var(--text-primary, #f5f7fb);
-
   font-size: 1.7rem;
-
   line-height: 1.2;
 }
 
 .about-section__header p {
   margin: 9px 0 0;
-
   color: var(--text-secondary, #8e98aa);
-
-  font-size: 0.9rem;
-
+  font-size: .9rem;
   line-height: 1.65;
 }
 
-
-/* =========================================================
-   OVERVIEW CARDS
-   ========================================================= */
+.about-overview,
+.version-list,
+.technology-grid,
+.about-stats {
+  display: grid;
+  gap: 16px;
+}
 
 .about-overview {
-  display: grid;
-
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 
-  gap: 16px;
+.about-card,
+.version-card,
+.technology-card,
+.about-stat,
+.roadmap-card,
+.about-philosophy {
+  border: 1px solid var(--border-color, #252b36);
+  background: var(--surface-color, #151922);
+  box-sizing: border-box;
 }
 
 .about-card {
   display: flex;
-
   align-items: flex-start;
-
   gap: 14px;
-
   min-width: 0;
-
   padding: 20px;
-
-  border: 1px solid var(--border-color, #252b36);
-
   border-radius: 16px;
+}
 
-  background: var(--surface-color, #151922);
-
-  box-sizing: border-box;
+.about-card__icon,
+.version-card__number {
+  display: grid;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--surface-elevated, #1d2532);
+  color: var(--accent-color, #4da3ff);
 }
 
 .about-card__icon {
-  display: grid;
-
-  flex: 0 0 42px;
-
-  width: 42px;
-  height: 42px;
-
-  place-items: center;
-
-  border-radius: 11px;
-
-  background: var(--surface-elevated, #1d2532);
-
-  color: var(--accent-color, #4da3ff);
-
   font-size: 1rem;
 }
 
-.about-card > div {
+.about-card > div,
+.version-card__content {
   min-width: 0;
+}
+
+.about-card h3,
+.version-card h3,
+.technology-card h3 {
+  color: var(--text-primary, #edf1f7);
 }
 
 .about-card h3 {
   margin: 0;
-
-  color: var(--text-primary, #edf1f7);
-
   font-size: 1rem;
+}
+
+.about-card p,
+.version-card p,
+.technology-card p {
+  color: var(--text-secondary, #788396);
 }
 
 .about-card p {
   margin: 7px 0 0;
-
-  color: var(--text-secondary, #788396);
-
-  font-size: 0.82rem;
-
+  font-size: .82rem;
   line-height: 1.55;
 }
-
-
-/* =========================================================
-   ROADMAP
-   ========================================================= */
 
 .about-roadmap {
   margin-top: 72px;
@@ -292,82 +209,44 @@
 
 .roadmap-card {
   width: 100%;
-
   padding: 14px;
-
-  border: 1px solid var(--border-color, #252b36);
-
   border-radius: 20px;
-
-  background: var(--surface-color, #151922);
-
-  box-sizing: border-box;
 }
 
 .roadmap-card__image-wrapper {
   width: 100%;
-
   overflow: hidden;
-
   border-radius: 14px;
-
   background: #0b1120;
 }
 
 .roadmap-card__image {
   display: block;
-
   width: 100%;
   height: auto;
-
   max-width: 100%;
-
   object-fit: contain;
 }
 
 .roadmap-card__caption {
   margin: 12px 4px 2px;
-
   color: var(--text-secondary, #8e98aa);
-
-  font-size: 0.78rem;
-
+  font-size: .78rem;
   line-height: 1.5;
-
   text-align: center;
 }
 
-
-/* =========================================================
-   VERSION JOURNEY
-   ========================================================= */
-
 .version-list {
-  display: grid;
-
   grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  gap: 16px;
 }
 
 .version-card {
   display: flex;
-
   align-items: flex-start;
-
   gap: 16px;
-
   min-width: 0;
-
   padding: 20px;
-
-  border: 1px solid var(--border-color, #252b36);
-
   border-radius: 16px;
-
-  background: var(--surface-color, #151922);
-
-  box-sizing: border-box;
 }
 
 .version-card--current {
@@ -375,239 +254,116 @@
 }
 
 .version-card__number {
-  display: grid;
-
-  flex: 0 0 42px;
-
-  width: 42px;
-  height: 42px;
-
-  place-items: center;
-
-  border-radius: 11px;
-
-  background: var(--surface-elevated, #1d2532);
-
-  color: var(--accent-color, #4da3ff);
-
-  font-size: 0.8rem;
-
+  font-size: .8rem;
   font-weight: 750;
-}
-
-.version-card__content {
-  min-width: 0;
 }
 
 .version-card__label {
   color: var(--accent-color, #4da3ff);
-
-  font-size: 0.65rem;
-
+  font-size: .65rem;
   font-weight: 700;
-
-  letter-spacing: 0.08em;
+  letter-spacing: .08em;
 }
 
 .version-card h3 {
   margin: 6px 0 0;
-
-  color: var(--text-primary, #edf1f7);
-
   font-size: 1rem;
-
   line-height: 1.3;
 }
 
 .version-card p {
   margin: 7px 0 0;
-
-  color: var(--text-secondary, #788396);
-
-  font-size: 0.82rem;
-
+  font-size: .82rem;
   line-height: 1.55;
 }
 
-
-/* =========================================================
-   TECHNOLOGY GRID
-   ========================================================= */
-
 .technology-grid {
-  display: grid;
-
   grid-template-columns: repeat(4, minmax(0, 1fr));
-
-  gap: 14px;
 }
 
 .technology-card {
   min-width: 0;
-
   padding: 18px;
-
-  border: 1px solid var(--border-color, #252b36);
-
   border-radius: 15px;
-
-  background: var(--surface-color, #151922);
-
-  box-sizing: border-box;
 }
 
 .technology-card > span {
   color: var(--accent-color, #4da3ff);
-
-  font-size: 0.68rem;
-
+  font-size: .68rem;
   font-weight: 700;
 }
 
 .technology-card h3 {
   margin: 8px 0 0;
-
-  color: var(--text-primary, #edf1f7);
-
-  font-size: 0.95rem;
-
+  font-size: .95rem;
   line-height: 1.3;
 }
 
 .technology-card p {
   margin: 7px 0 0;
-
-  color: var(--text-secondary, #788396);
-
-  font-size: 0.78rem;
-
+  font-size: .78rem;
   line-height: 1.5;
 }
 
-
-/* =========================================================
-   STATISTICS
-   ========================================================= */
-
 .about-stats {
-  display: grid;
-
   grid-template-columns: repeat(4, minmax(0, 1fr));
-
-  gap: 16px;
 }
 
 .about-stat {
   min-width: 0;
-
   padding: 24px 18px;
-
-  border: 1px solid var(--border-color, #252b36);
-
   border-radius: 16px;
-
-  background: var(--surface-color, #151922);
-
   text-align: center;
-
-  box-sizing: border-box;
 }
 
 .about-stat strong {
   display: block;
-
   color: var(--accent-color, #4da3ff);
-
   font-size: 2rem;
-
   line-height: 1;
 }
 
 .about-stat span {
   display: block;
-
   margin-top: 9px;
-
   color: var(--text-secondary, #8e98aa);
-
-  font-size: 0.78rem;
+  font-size: .78rem;
 }
-
-
-/* =========================================================
-   PROJECT PHILOSOPHY
-   ========================================================= */
 
 .about-philosophy {
   display: grid;
-
   grid-template-columns: 76px minmax(0, 1fr);
-
   gap: 24px;
-
   align-items: flex-start;
-
   margin-top: 72px;
-
   padding: 30px;
-
-  border: 1px solid var(--border-color, #252b36);
-
   border-radius: 20px;
-
-  background: var(--surface-color, #151922);
-
-  box-sizing: border-box;
 }
 
 .about-philosophy__icon {
-  display: grid;
-
   width: 76px;
   height: 76px;
-
-  place-items: center;
-
   border-radius: 18px;
-
-  background: var(--surface-elevated, #1d2532);
-
-  color: var(--accent-color, #4da3ff);
-
   font-size: 1.5rem;
-
   font-weight: 700;
 }
 
 .about-philosophy h2 {
   margin: 8px 0 0;
-
   color: var(--text-primary, #f5f7fb);
-
   font-size: 1.5rem;
-
   line-height: 1.25;
 }
 
 .about-philosophy p {
   max-width: 850px;
-
   margin: 12px 0 0;
-
   color: var(--text-secondary, #8e98aa);
-
-  font-size: 0.9rem;
-
+  font-size: .9rem;
   line-height: 1.7;
 }
 
-
-/* =========================================================
-   LARGE TABLET
-   ========================================================= */
-
-@media (max-width: 1100px) {
-
+@media (max-width:1100px) {
   .about-page {
     padding: 40px 28px 60px;
   }
@@ -616,53 +372,34 @@
     gap: 2rem;
   }
 
-  .technology-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
+  .technology-grid,
   .about-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-
-/* =========================================================
-   TABLET
-   768 × 1024
-   ========================================================= */
-
-@media (max-width: 900px) {
-
+@media (max-width:900px) {
   .about-page {
     padding: 32px 20px 52px;
   }
 
   .about-hero {
     grid-template-columns: 1fr;
-
     gap: 24px;
-
     margin-bottom: 48px;
   }
 
   .about-hero__visual {
     width: min(100%, 280px);
-
     min-height: 190px;
   }
 
-  .about-overview {
-    grid-template-columns: 1fr;
-  }
-
+  .about-overview,
   .version-list {
     grid-template-columns: 1fr;
   }
 
-  .technology-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
+  .technology-grid,
   .about-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -671,23 +408,13 @@
     margin-top: 52px;
   }
 
-  .about-roadmap {
-    margin-top: 56px;
-  }
-
+  .about-roadmap,
   .about-philosophy {
     margin-top: 56px;
   }
 }
 
-
-/* =========================================================
-   MOBILE
-   390 × 844
-   ========================================================= */
-
-@media (max-width: 640px) {
-
+@media (max-width:640px) {
   .about-page {
     padding: 28px 16px 44px;
   }
@@ -698,42 +425,32 @@
 
   .about-hero__eyebrow,
   .about-section__eyebrow {
-    font-size: 0.66rem;
-
-    letter-spacing: 0.1em;
+    font-size: .66rem;
+    letter-spacing: .1em;
   }
 
   .about-hero h1 {
     font-size: 2rem;
-
     line-height: 1.08;
   }
 
   .about-hero__description {
     margin-top: 14px;
-
-    font-size: 0.88rem;
-
+    font-size: .88rem;
     line-height: 1.6;
   }
 
   .about-hero__visual {
     width: 100%;
-
     min-height: 170px;
-
     padding: 22px;
   }
 
   .about-hero__icon {
     width: 64px;
     height: 64px;
-
     margin-bottom: 14px;
   }
-
-
-  /* Sections */
 
   .about-section {
     margin-top: 42px;
@@ -748,11 +465,8 @@
   }
 
   .about-section__header p {
-    font-size: 0.84rem;
+    font-size: .84rem;
   }
-
-
-  /* Cards */
 
   .about-card {
     padding: 16px;
@@ -760,13 +474,9 @@
 
   .about-card__icon {
     flex-basis: 40px;
-
     width: 40px;
     height: 40px;
   }
-
-
-  /* Roadmap */
 
   .about-roadmap {
     margin-top: 48px;
@@ -774,48 +484,31 @@
 
   .roadmap-card {
     padding: 8px;
-
     border-radius: 15px;
   }
 
   .roadmap-card__image-wrapper {
     border-radius: 10px;
-
-    /*
-     * Keep the complete roadmap visible.
-     * Never crop the roadmap on mobile.
-     */
-    overflow: hidden;
   }
 
   .roadmap-card__caption {
     margin-top: 10px;
-
-    font-size: 0.7rem;
+    font-size: .7rem;
   }
-
-
-  /* Versions */
 
   .version-card {
     gap: 12px;
-
     padding: 16px;
   }
 
   .version-card__number {
     flex-basis: 38px;
-
     width: 38px;
     height: 38px;
   }
 
-
-  /* Technologies */
-
   .technology-grid {
     grid-template-columns: 1fr;
-
     gap: 10px;
   }
 
@@ -823,12 +516,8 @@
     padding: 16px;
   }
 
-
-  /* Statistics */
-
   .about-stats {
     grid-template-columns: 1fr 1fr;
-
     gap: 10px;
   }
 
@@ -840,16 +529,10 @@
     font-size: 1.7rem;
   }
 
-
-  /* Philosophy */
-
   .about-philosophy {
     grid-template-columns: 1fr;
-
     gap: 18px;
-
     margin-top: 48px;
-
     padding: 22px;
   }
 
@@ -863,18 +546,11 @@
   }
 
   .about-philosophy p {
-    font-size: 0.84rem;
+    font-size: .84rem;
   }
 }
 
-
-/* =========================================================
-   SMALL MOBILE
-   360 × 800
-   ========================================================= */
-
-@media (max-width: 480px) {
-
+@media (max-width:480px) {
   .about-page {
     padding: 24px 14px 38px;
   }
@@ -895,10 +571,7 @@
     padding: 18px 14px;
   }
 
-  .version-card {
-    padding: 14px;
-  }
-
+  .version-card,
   .technology-card {
     padding: 14px;
   }
@@ -908,14 +581,7 @@
   }
 }
 
-
-/* =========================================================
-   VERY SMALL SCREENS
-   360px AND BELOW
-   ========================================================= */
-
-@media (max-width: 360px) {
-
+@media (max-width:360px) {
   .about-page {
     padding-right: 12px;
     padding-left: 12px;
@@ -926,7 +592,7 @@
   }
 
   .about-hero__description {
-    font-size: 0.83rem;
+    font-size: .83rem;
   }
 
   .roadmap-card {
@@ -934,24 +600,16 @@
   }
 
   .roadmap-card__caption {
-    font-size: 0.66rem;
+    font-size: .66rem;
   }
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
+@media (prefers-reduced-motion:reduce) {
   .about-page *,
   .about-page *::before,
   .about-page *::after {
-    animation-duration: 0.01ms !important;
-
+    animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
-
-    transition-duration: 0.01ms !important;
+    transition-duration: .01ms !important;
   }
 }
