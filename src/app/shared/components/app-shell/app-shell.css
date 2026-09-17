@@ -1,23 +1,36 @@
+/* =========================================================
+   APP SHELL
+   ========================================================= */
+
 :host {
   display: block;
+
   width: 100%;
-  height: 100vh;
-  height: 100dvh;
-  overflow: hidden;
+  min-width: 0;
+
+  /*
+   * Important:
+   * Do not lock the application to the viewport.
+   * The browser/page should be allowed to scroll naturally.
+   */
+  min-height: 100%;
 }
 
+
+/* =========================================================
+   APPLICATION CONTAINER
+   ========================================================= */
+
 .app-shell {
+  display: flex;
+  flex-direction: column;
+
   width: 100%;
-  height: 100vh;
-  height: 100dvh;
-  min-height: 0;
+  min-width: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
 
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
-
-  overflow: hidden;
-
-  background: var(--background-color, #0b1120);
+  background: var(--background-color, #0f141c);
   color: var(--text-color, #e5e7eb);
 }
 
@@ -27,48 +40,39 @@
    ========================================================= */
 
 .app-shell__body {
-  min-width: 0;
-  min-height: 0;
-
   display: flex;
   align-items: stretch;
 
-  overflow: hidden;
+  width: 100%;
+  min-width: 0;
+
+  /*
+   * Do NOT use overflow: hidden here.
+   * The page should scroll naturally.
+   */
 }
 
 
 /* =========================================================
-   SIDEBAR SCROLL AREA
+   SIDEBAR
    ========================================================= */
 
 .app-shell__body app-sidebar {
-  min-height: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
+  flex: 0 0 auto;
 
-  scrollbar-width: thin;
+  min-width: 0;
 
-  overscroll-behavior: contain;
-}
-
-
-/* Sidebar scrollbar */
-
-.app-shell__body app-sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.app-shell__body app-sidebar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.app-shell__body app-sidebar::-webkit-scrollbar-thumb {
-  background: var(--border-color, #263244);
-  border-radius: 999px;
-}
-
-.app-shell__body app-sidebar::-webkit-scrollbar-thumb:hover {
-  background: var(--muted-text-color, #64748b);
+  /*
+   * Sidebar participates in normal document flow.
+   *
+   * Do NOT use:
+   * position: fixed;
+   * position: sticky;
+   * height: 100vh;
+   * overflow-y: auto;
+   *
+   * on the shell level.
+   */
 }
 
 
@@ -79,55 +83,106 @@
 .app-shell__main {
   flex: 1 1 auto;
 
+  width: 100%;
   min-width: 0;
-  min-height: 0;
 
   padding: 1.5rem;
 
-  overflow-x: hidden;
-  overflow-y: auto;
-
-  overscroll-behavior: contain;
-
-  scrollbar-width: thin;
+  /*
+   * Prevent long URLs, code strings and unbreakable content
+   * from creating horizontal page overflow.
+   */
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 
 /* =========================================================
-   MAIN CONTENT SCROLLBAR
+   FOCUS
    ========================================================= */
 
-.app-shell__main::-webkit-scrollbar {
-  width: 8px;
-}
-
-.app-shell__main::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.app-shell__main::-webkit-scrollbar-thumb {
-  background: var(--border-color, #263244);
-  border-radius: 999px;
-}
-
-.app-shell__main::-webkit-scrollbar-thumb:hover {
-  background: var(--muted-text-color, #64748b);
+.app-shell__main:focus {
+  outline: none;
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   LARGE TABLET / SMALL DESKTOP
    ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .app-shell__main {
     padding: 1.25rem;
   }
 }
 
 
+/* =========================================================
+   TABLET
+   768 × 1024
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .app-shell__main {
+    padding: 1.125rem;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   390 × 844
+   ========================================================= */
+
 @media (max-width: 640px) {
+  .app-shell {
+    min-height: 100%;
+  }
+
+  .app-shell__body {
+    /*
+     * Keep the normal document flow.
+     * Do not create an independent scrolling container.
+     */
+    display: flex;
+    flex-direction: column;
+  }
+
   .app-shell__main {
     padding: 1rem;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   360 × 800
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .app-shell__main {
+    padding: 0.875rem;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 360px) {
+  .app-shell__main {
+    padding: 0.75rem;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .app-shell__main {
+    scroll-behavior: auto;
   }
 }
