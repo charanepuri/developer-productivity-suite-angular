@@ -1,49 +1,96 @@
-import { AsyncPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import {
+  AsyncPipe
+} from '@angular/common';
 
-import { CategoryService } from '../../../../core/services/category.service';
-import { FavoritesService } from '../../../../core/services/favorites.service';
-import { RecentToolsService } from '../../../../core/services/recent-tools.service';
-import { ToolService } from '../../../../core/services/tool.service';
-import { Tool } from '../../../../core/models/tool.model';
+import {
+  Component,
+  inject
+} from '@angular/core';
+
+import {
+  RouterLink
+} from '@angular/router';
+
+import {
+  map
+} from 'rxjs';
+
+import {
+  Tool
+} from '../../../../core/models/tool.model';
+
+import {
+  ToolService
+} from '../../../../core/services/tool.service';
+
+import {
+  FavoritesService
+} from '../../../../core/services/favorites.service';
+
+import {
+  RecentToolsService
+} from '../../../../core/services/recent-tools.service';
 
 
 @Component({
   selector: 'app-dashboard',
-  imports: [AsyncPipe],
+  imports: [
+    AsyncPipe,
+    RouterLink
+  ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })
-
 export class Dashboard {
-  private readonly toolService = inject(ToolService);
-  private readonly categoryService = inject(CategoryService);
-  private readonly favoritesService = inject(FavoritesService);
-  private readonly recentToolsService = inject(RecentToolsService);
 
-  readonly toolCount = this.toolService.getToolCount();
-  readonly categoryCount = this.categoryService.getCategoryCount();
+  private readonly toolService =
+    inject(ToolService);
 
-  readonly favoritesCount$ =
+  private readonly favoritesService =
+    inject(FavoritesService);
+
+  private readonly recentToolsService =
+    inject(RecentToolsService);
+
+
+  /*
+   * Dashboard statistics
+   */
+
+  readonly totalTools =
+    this.toolService.getToolCount();
+
+  readonly totalCategories =
+    this.toolService.getCategoryCount();
+
+
+  /*
+   * Favorites
+   */
+
+  readonly favoriteCount$ =
     this.favoritesService.count$;
 
-  readonly recentTools$ = this.recentToolsService.recentTools$.pipe(
-    map(ids =>
-      ids
-        .map(id => this.toolService.getToolById(id))
-        .filter((tool): tool is Tool => tool !== undefined)
-    )
-  );
 
-  readonly recentToolsCount$ =
+  /*
+   * Recently Used
+   *
+   * RecentToolsService stores tool IDs.
+   * Convert those IDs into actual Tool objects
+   * for the dashboard UI.
+   */
+
+  readonly recentTools$ =
     this.recentToolsService.recentTools$.pipe(
-      map(tools => tools.length)
+      map(toolIds =>
+        toolIds
+          .map(id =>
+            this.toolService.getToolById(id)
+          )
+          .filter(
+            (tool): tool is Tool =>
+              tool !== undefined
+          )
+      )
     );
-
-    getTool(
-  toolId: string
-) {
-  return this.toolService.getToolById(toolId);
-}
 }

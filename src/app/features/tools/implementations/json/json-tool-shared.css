@@ -4,7 +4,7 @@
 
 .tool-page {
   width: min(100%, 1200px);
-  margin: 0 auto;
+  margin: auto;
   padding: 48px 32px 64px;
 }
 
@@ -14,15 +14,15 @@
 
 .tool-page__header > span {
   color: #4da3ff;
-  font-size: 0.75rem;
+  font-size: .75rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: .12em;
 }
 
 .tool-page__header h1 {
   margin: 10px 0 0;
   color: #f5f7fb;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem,4vw,3rem);
 }
 
 .tool-page__header p {
@@ -34,16 +34,21 @@
 
 .tool-page__workspace {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2,minmax(0,1fr));
   gap: 20px;
+}
+
+.tool-panel,
+.options-panel,
+.stat-card {
+  border: 1px solid #252b36;
+  background: #151922;
 }
 
 .tool-panel {
   min-width: 0;
   padding: 20px;
-  border: 1px solid #252b36;
   border-radius: 18px;
-  background: #151922;
 }
 
 .tool-panel__header {
@@ -54,9 +59,10 @@
   margin-bottom: 14px;
 }
 
-.tool-panel__header label {
+.tool-panel__header label,
+.options-panel label {
   color: #e8edf4;
-  font-size: 0.9rem;
+  font-size: .85rem;
   font-weight: 650;
 }
 
@@ -67,32 +73,40 @@
   background: #11151c;
   color: #b8c2d1;
   cursor: pointer;
-  font-size: 0.78rem;
+  font-size: .78rem;
 }
 
 .tool-panel__header button:hover:not(:disabled) {
   border-color: #3f8cff;
-  color: #ffffff;
+  color: #fff;
 }
 
-.tool-panel__header button:disabled {
+.tool-panel__header button:disabled,
+.tool-action:disabled {
   cursor: not-allowed;
-  opacity: 0.45;
+  opacity: .45;
+}
+
+textarea,
+select {
+  box-sizing: border-box;
+  font: inherit;
 }
 
 textarea {
   display: block;
   width: 100%;
+  min-height: 220px;
   box-sizing: border-box;
   resize: vertical;
+  padding: 14px;
   border: 1px solid #29303c;
   border-radius: 12px;
-  outline: none;
+  outline: 0;
   background: #10141b;
   color: #e8edf4;
-  padding: 14px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.84rem;
+  font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  font-size: .84rem;
   line-height: 1.55;
 }
 
@@ -100,30 +114,9 @@ textarea::placeholder {
   color: #5f6979;
 }
 
-textarea:focus {
+textarea:focus,
+select:focus {
   border-color: #3f8cff;
-}
-
-.status-badge {
-  padding: 5px 9px;
-  border: 1px solid #303846;
-  border-radius: 999px;
-  background: #11151c;
-  color: #b8c2d1;
-  font-size: 0.72rem;
-  font-weight: 700;
-}
-
-.status-badge--success {
-  border-color: #263b2d;
-  background: #142019;
-  color: #71d99a;
-}
-
-.status-badge--error {
-  border-color: #4b2929;
-  background: #211516;
-  color: #ff8585;
 }
 
 .tool-action {
@@ -133,18 +126,13 @@ textarea:focus {
   border: 0;
   border-radius: 10px;
   background: #2458d6;
-  color: #ffffff;
+  color: #fff;
   cursor: pointer;
   font-weight: 650;
 }
 
 .tool-action:hover:not(:disabled) {
   background: #2d68f0;
-}
-
-.tool-action:disabled {
-  cursor: not-allowed;
-  opacity: 0.45;
 }
 
 .tool-action--secondary {
@@ -168,15 +156,7 @@ textarea:focus {
   gap: 20px;
   margin-top: 20px;
   padding: 18px 20px;
-  border: 1px solid #252b36;
   border-radius: 18px;
-  background: #151922;
-}
-
-.options-panel label {
-  color: #e8edf4;
-  font-size: 0.82rem;
-  font-weight: 650;
 }
 
 .options-panel select {
@@ -184,15 +164,10 @@ textarea:focus {
   padding: 9px 11px;
   border: 1px solid #303846;
   border-radius: 9px;
-  outline: none;
+  outline: 0;
   background: #11151c;
   color: #b8c2d1;
-  font: inherit;
-  font-size: 0.78rem;
-}
-
-.options-panel select:focus {
-  border-color: #3f8cff;
+  font-size: .78rem;
 }
 
 .error-panel {
@@ -205,16 +180,40 @@ textarea:focus {
 
 .error-panel strong {
   color: #ff8585;
-  font-size: 0.85rem;
+  font-size: .85rem;
 }
 
 .error-panel p {
   margin: 8px 0 0;
   color: #c18c8c;
-  font-family: ui-monospace, monospace;
-  font-size: 0.78rem;
+  font-family: ui-monospace,monospace;
+  font-size: .78rem;
   line-height: 1.5;
-  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.status-badge,
+.type-badge {
+  display: inline-block;
+  padding: 5px 9px;
+  border: 1px solid #303846;
+  border-radius: 999px;
+  background: #11151c;
+  color: #b8c2d1;
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.status-badge--success {
+  border-color: #263b2d;
+  background: #142019;
+  color: #71d99a;
+}
+
+.status-badge--error {
+  border-color: #4b2929;
+  background: #211516;
+  color: #ff8585;
 }
 
 .validation-panel {
@@ -244,7 +243,7 @@ textarea:focus {
   place-items: center;
   border-radius: 50%;
   background: #202733;
-  color: #ffffff;
+  color: #fff;
   font-weight: 800;
 }
 
@@ -260,50 +259,45 @@ textarea:focus {
 
 .validation-panel strong {
   color: #e8edf4;
-  font-size: 0.9rem;
+  font-size: .9rem;
 }
 
 .validation-panel p {
   margin: 5px 0 0;
   color: #8e98aa;
-  font-size: 0.78rem;
+  font-size: .78rem;
 }
 
 .type-badge {
   margin-left: auto;
-  padding: 5px 9px;
-  border: 1px solid #303846;
   border-radius: 7px;
-  background: #11151c;
   color: #4da3ff;
-  font-family: ui-monospace, monospace;
-  font-size: 0.7rem;
+  font-family: ui-monospace,monospace;
+  font-size: .7rem;
 }
 
 .statistics {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3,minmax(0,1fr));
   gap: 12px;
   margin-top: 20px;
 }
 
 .stat-card {
   padding: 18px;
-  border: 1px solid #252b36;
   border-radius: 14px;
-  background: #151922;
 }
 
 .stat-card span {
   display: block;
   margin-bottom: 8px;
   color: #8e98aa;
-  font-size: 0.76rem;
+  font-size: .76rem;
 }
 
 .stat-card strong {
   color: #f5f7fb;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }
 
 .tree-view {
@@ -318,7 +312,7 @@ textarea:focus {
 
 .tree-node {
   display: grid;
-  grid-template-columns: minmax(90px, 0.6fr) minmax(160px, 1.2fr) 70px minmax(100px, 1fr);
+  grid-template-columns: minmax(90px,.6fr) minmax(160px,1.2fr) 70px minmax(100px,1fr);
   gap: 12px;
   align-items: center;
   padding: 9px 10px;
@@ -331,33 +325,32 @@ textarea:focus {
 
 .tree-node__key {
   color: #e8edf4;
-  font-family: ui-monospace, monospace;
-  font-size: 0.78rem;
+  font-family: ui-monospace,monospace;
+  font-size: .78rem;
   font-weight: 650;
 }
 
-.tree-node__path {
+.tree-node__path,
+.tree-node__value {
   overflow: hidden;
-  color: #707b8d;
-  font-family: ui-monospace, monospace;
-  font-size: 0.7rem;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-family: ui-monospace,monospace;
+  font-size: .7rem;
+}
+
+.tree-node__path {
+  color: #707b8d;
 }
 
 .tree-node__type {
   color: #71d99a;
-  font-family: ui-monospace, monospace;
-  font-size: 0.7rem;
+  font-family: ui-monospace,monospace;
+  font-size: .7rem;
 }
 
 .tree-node__value {
-  overflow: hidden;
   color: #b8c2d1;
-  font-family: ui-monospace, monospace;
-  font-size: 0.7rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .empty-state {
@@ -367,7 +360,7 @@ textarea:focus {
   padding: 20px;
   color: #707b8d;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: .8rem;
 }
 
 .key-table-wrapper {
@@ -390,7 +383,7 @@ textarea:focus {
   border-bottom: 1px solid #29303c;
   background: #151922;
   color: #8e98aa;
-  font-size: 0.7rem;
+  font-size: .7rem;
   text-align: left;
   white-space: nowrap;
 }
@@ -399,8 +392,8 @@ textarea:focus {
   padding: 11px 12px;
   border-bottom: 1px solid #1e2530;
   color: #d7dde6;
-  font-family: ui-monospace, monospace;
-  font-size: 0.7rem;
+  font-family: ui-monospace,monospace;
+  font-size: .7rem;
   vertical-align: top;
 }
 
@@ -412,17 +405,19 @@ textarea:focus {
 .value-cell {
   max-width: 220px;
   overflow: hidden;
-  color: #707b8d !important;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.path-cell {
+  color: #707b8d !important;
 }
 
 .value-cell {
   color: #b8c2d1 !important;
 }
 
-
-@media (max-width: 900px) {
+@media (max-width:900px) {
   .tree-node {
     grid-template-columns: 1fr 1fr;
   }
@@ -436,16 +431,12 @@ textarea:focus {
   }
 }
 
-
-@media (max-width: 760px) {
+@media (max-width:760px) {
   .tool-page {
     padding: 32px 20px 48px;
   }
 
-  .tool-page__workspace {
-    grid-template-columns: 1fr;
-  }
-
+  .tool-page__workspace,
   .statistics {
     grid-template-columns: 1fr;
   }
@@ -464,8 +455,7 @@ textarea:focus {
   }
 }
 
-
-@media (max-width: 480px) {
+@media (max-width:480px) {
   .tool-page {
     padding: 24px 16px 40px;
   }

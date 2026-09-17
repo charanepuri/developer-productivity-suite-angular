@@ -3,8 +3,8 @@
 }
 
 .tool-page {
-  width: min(100%, 1200px);
-  margin: 0 auto;
+  width: min(100%,1200px);
+  margin: auto;
   padding: 48px 32px 64px;
 }
 
@@ -14,15 +14,15 @@
 
 .tool-page__header > span {
   color: #4da3ff;
-  font-size: 0.75rem;
+  font-size: .75rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: .12em;
 }
 
 .tool-page__header h1 {
   margin: 10px 0 0;
   color: #f5f7fb;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem,4vw,3rem);
 }
 
 .tool-page__header p {
@@ -34,16 +34,21 @@
 
 .tool-page__workspace {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2,minmax(0,1fr));
   gap: 20px;
+}
+
+.tool-panel,
+.options-panel,
+.stat-card {
+  border: 1px solid #252b36;
+  background: #151922;
 }
 
 .tool-panel {
   min-width: 0;
   padding: 20px;
-  border: 1px solid #252b36;
   border-radius: 18px;
-  background: #151922;
 }
 
 .tool-panel__header {
@@ -54,10 +59,15 @@
   margin-bottom: 14px;
 }
 
-.tool-panel__header label {
+.tool-panel__header label,
+.options-panel__header h2,
+.control label {
   color: #e8edf4;
-  font-size: 0.9rem;
   font-weight: 650;
+}
+
+.tool-panel__header label {
+  font-size: .9rem;
 }
 
 .tool-panel__header button {
@@ -67,17 +77,18 @@
   background: #11151c;
   color: #b8c2d1;
   cursor: pointer;
-  font-size: 0.78rem;
+  font-size: .78rem;
 }
 
 .tool-panel__header button:hover:not(:disabled) {
   border-color: #3f8cff;
-  color: #ffffff;
+  color: #fff;
 }
 
-.tool-panel__header button:disabled {
+.tool-panel__header button:disabled,
+.tool-action:disabled {
   cursor: not-allowed;
-  opacity: 0.45;
+  opacity: .45;
 }
 
 textarea,
@@ -91,12 +102,12 @@ textarea {
   display: block;
   width: 100%;
   resize: vertical;
+  padding: 14px;
   border: 1px solid #29303c;
   border-radius: 12px;
-  outline: none;
+  outline: 0;
   background: #10141b;
   color: #e8edf4;
-  padding: 14px;
   line-height: 1.55;
 }
 
@@ -118,24 +129,13 @@ input::placeholder {
   border: 0;
   border-radius: 10px;
   background: #2458d6;
-  color: #ffffff;
+  color: #fff;
   cursor: pointer;
   font-weight: 650;
 }
 
 .tool-action:hover:not(:disabled) {
   background: #2d68f0;
-}
-
-.tool-action:disabled {
-  cursor: not-allowed;
-  opacity: 0.45;
-}
-
-.button-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
 }
 
 .tool-action--secondary {
@@ -146,12 +146,16 @@ input::placeholder {
   background: #293342;
 }
 
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
 .options-panel {
   margin-top: 20px;
   padding: 20px;
-  border: 1px solid #252b36;
   border-radius: 18px;
-  background: #151922;
 }
 
 .options-panel__header {
@@ -160,19 +164,18 @@ input::placeholder {
 
 .options-panel__header h2 {
   margin: 0;
-  color: #f5f7fb;
   font-size: 1rem;
 }
 
 .options-panel__header p {
   margin: 5px 0 0;
   color: #707b8d;
-  font-size: 0.78rem;
+  font-size: .78rem;
 }
 
 .control-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2,minmax(0,1fr));
   gap: 14px;
 }
 
@@ -183,9 +186,7 @@ input::placeholder {
 }
 
 .control label {
-  color: #e8edf4;
-  font-size: 0.8rem;
-  font-weight: 650;
+  font-size: .8rem;
 }
 
 .control input,
@@ -194,7 +195,7 @@ input::placeholder {
   padding: 10px 11px;
   border: 1px solid #303846;
   border-radius: 9px;
-  outline: none;
+  outline: 0;
   background: #11151c;
   color: #b8c2d1;
 }
@@ -212,7 +213,7 @@ input::placeholder {
   gap: 8px;
   color: #b8c2d1;
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: .8rem;
 }
 
 .checkbox-option input {
@@ -220,12 +221,13 @@ input::placeholder {
 }
 
 .status-badge {
+  display: inline-block;
   padding: 5px 9px;
   border: 1px solid #303846;
   border-radius: 999px;
   background: #11151c;
   color: #b8c2d1;
-  font-size: 0.72rem;
+  font-size: .72rem;
   font-weight: 700;
 }
 
@@ -251,14 +253,15 @@ input::placeholder {
 
 .error-panel strong {
   color: #ff8585;
-  font-size: 0.85rem;
+  font-size: .85rem;
 }
 
 .error-panel p {
   margin: 8px 0 0;
   color: #c18c8c;
-  font-size: 0.78rem;
+  font-size: .78rem;
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .result-box {
@@ -269,30 +272,28 @@ input::placeholder {
   border-radius: 12px;
   background: #10141b;
   color: #e8edf4;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.82rem;
+  font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  font-size: .82rem;
   line-height: 1.55;
 }
 
 .statistics {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3,minmax(0,1fr));
   gap: 12px;
   margin-top: 20px;
 }
 
 .stat-card {
   padding: 18px;
-  border: 1px solid #252b36;
   border-radius: 14px;
-  background: #151922;
 }
 
 .stat-card span {
   display: block;
   margin-bottom: 8px;
   color: #8e98aa;
-  font-size: 0.76rem;
+  font-size: .76rem;
 }
 
 .stat-card strong {
@@ -300,22 +301,19 @@ input::placeholder {
   font-size: 1.5rem;
 }
 
-@media (max-width: 760px) {
+@media (max-width:760px) {
   .tool-page {
     padding: 32px 20px 48px;
   }
 
-  .tool-page__workspace {
-    grid-template-columns: 1fr;
-  }
-
+  .tool-page__workspace,
   .control-grid,
   .statistics {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width:480px) {
   .tool-page {
     padding: 24px 16px 40px;
   }

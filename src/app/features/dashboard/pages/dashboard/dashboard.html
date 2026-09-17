@@ -1,187 +1,201 @@
 <section class="dashboard">
 
-  <header class="dashboard__header">
-    <div>
+  <!-- Hero -->
+
+  <header class="dashboard__hero">
+
+    <div class="dashboard__hero-content">
+
       <span class="dashboard__eyebrow">
         DEVELOPER PRODUCTIVITY SUITE
       </span>
 
-      <h1>Dashboard</h1>
+      <h1>
+        Developer Productivity,
+        <span>One Workspace.</span>
+      </h1>
 
       <p>
-        Your centralized workspace for developer productivity tools.
+        A centralized collection of practical
+        developer tools designed to make everyday
+        development tasks faster and easier.
       </p>
-    </div>
-  </header>
 
+      <div class="dashboard__actions">
 
-  <section class="dashboard__stats" aria-label="Application statistics">
-
-    <article class="stat-card">
-      <span class="stat-card__label">Tools</span>
-
-      <strong class="stat-card__value">
-        {{ toolCount }}
-      </strong>
-
-      <span class="stat-card__description">
-        Available tools
-      </span>
-    </article>
-
-
-    <article class="stat-card">
-      <span class="stat-card__label">Categories</span>
-
-      <strong class="stat-card__value">
-        {{ categoryCount }}
-      </strong>
-
-      <span class="stat-card__description">
-        Tool categories
-      </span>
-    </article>
-
-
-    <article class="stat-card">
-      <span class="stat-card__label">Favorites</span>
-
-      <strong class="stat-card__value">
-        {{ favoritesCount$ | async }}
-      </strong>
-
-      <span class="stat-card__description">
-        Saved tools
-      </span>
-    </article>
-
-
-    <article class="stat-card">
-      <span class="stat-card__label">Recently Used</span>
-
-      <strong class="stat-card__value">
-        {{ recentToolsCount$ | async }}
-      </strong>
-
-      <span class="stat-card__description">
-        Recent tools
-      </span>
-    </article>
-
-  </section>
-
-  <section class="dashboard-section">
-
-  <div class="dashboard-section__header">
-
-    <div>
-      <span class="eyebrow">
-        QUICK ACCESS
-      </span>
-
-      <h2>
-        Recently Used
-      </h2>
-    </div>
-
-    <a
-      routerLink="/tools"
-      class="dashboard-section__link"
-    >
-      View All Tools
-      <span aria-hidden="true">→</span>
-    </a>
-
-  </div>
-
-
-  @if (recentTools$ | async; as recentIds) {
-
-    @if (recentIds.length > 0) {
-
-      <div class="recent-tools">
-
-        @for (
-          toolId of recentIds;
-          track toolId
-        ) {
-
-          @if (getTool(toolId); as tool) {
-
-            <a
-              class="recent-tool"
-              [routerLink]="tool.route"
-            >
-
-              <div class="recent-tool__icon">
-                {{ tool.icon }}
-              </div>
-
-              <div class="recent-tool__content">
-
-                <span>
-                  {{ tool.category }}
-                </span>
-
-                <strong>
-                  {{ tool.name }}
-                </strong>
-
-              </div>
-
-              <span
-                class="recent-tool__arrow"
-                aria-hidden="true"
-              >
-                →
-              </span>
-
-            </a>
-
-          }
-
-        }
-
-      </div>
-
-    } @else {
-
-      <div class="recent-empty">
-
-        <span aria-hidden="true">
-          ◷
-        </span>
-
-        <p>
-          Your recently used tools will appear here.
-        </p>
-
-        <a routerLink="/tools">
+        <a
+          routerLink="/tools"
+          class="dashboard__primary-action"
+        >
           Explore Tools
+          <span aria-hidden="true">→</span>
+        </a>
+
+        <a
+          routerLink="/categories"
+          class="dashboard__secondary-action"
+        >
+          Browse Categories
         </a>
 
       </div>
 
-    }
+    </div>
 
-  }
+  </header>
 
-</section>
 
-  <section class="dashboard__recent">
+  <!-- Statistics -->
 
-    <div class="section-heading">
+  <section
+    class="dashboard__stats"
+    aria-label="Developer Productivity Suite statistics"
+  >
+
+    <article class="stat-card">
+
+      <span
+        class="stat-card__icon"
+        aria-hidden="true"
+      >
+        ⚙
+      </span>
+
       <div>
-        <span class="section-heading__eyebrow">
+        <strong>
+          {{ totalTools }}
+        </strong>
+
+        <span>
+          Tools
+        </span>
+      </div>
+
+    </article>
+
+
+    <article class="stat-card">
+
+      <span
+        class="stat-card__icon"
+        aria-hidden="true"
+      >
+        ▦
+      </span>
+
+      <div>
+        <strong>
+          {{ totalCategories }}
+        </strong>
+
+        <span>
+          Categories
+        </span>
+      </div>
+
+    </article>
+
+
+    <article class="stat-card">
+
+      <span
+        class="stat-card__icon"
+        aria-hidden="true"
+      >
+        ★
+      </span>
+
+      <div>
+
+        @if (favoriteCount$ | async; as favoriteCount) {
+
+          <strong>
+            {{ favoriteCount }}
+          </strong>
+
+        } @else {
+
+          <strong>
+            0
+          </strong>
+
+        }
+
+        <span>
+          Favorites
+        </span>
+
+      </div>
+
+    </article>
+
+
+    <article class="stat-card">
+
+      <span
+        class="stat-card__icon"
+        aria-hidden="true"
+      >
+        ◷
+      </span>
+
+      <div>
+
+        @if (recentTools$ | async; as recentTools) {
+
+          <strong>
+            {{ recentTools.length }}
+          </strong>
+
+        } @else {
+
+          <strong>
+            0
+          </strong>
+
+        }
+
+        <span>
+          Recently Used
+        </span>
+
+      </div>
+
+    </article>
+
+  </section>
+
+
+  <!-- Recently Used -->
+
+  <section class="dashboard__section">
+
+    <div class="dashboard__section-header">
+
+      <div>
+
+        <span class="dashboard__section-eyebrow">
           ACTIVITY
         </span>
 
-        <h2>Recently Used</h2>
+        <h2>
+          Recently Used
+        </h2>
 
         <p>
-          Your most recently used productivity tools.
+          Quickly access the tools you have used recently.
         </p>
+
       </div>
+
+      <a
+        routerLink="/recent"
+        class="dashboard__section-link"
+      >
+        View All
+        <span aria-hidden="true">→</span>
+      </a>
+
     </div>
 
 
@@ -189,27 +203,51 @@
 
       @if (recentTools.length > 0) {
 
-        <div class="recent-tools">
+        <div class="dashboard__recent-grid">
 
-          @for (tool of recentTools; track tool.id) {
+          @for (
+            tool of recentTools;
+            track tool.id
+          ) {
 
-            <article class="recent-tool">
+            <article class="recent-tool-card">
 
-              <div class="recent-tool__icon">
-                {{ tool.icon }}
-              </div>
+              <div class="recent-tool-card__top">
 
-              <div class="recent-tool__content">
+                <div
+                  class="recent-tool-card__icon"
+                  aria-hidden="true"
+                >
+                  {{ tool.icon }}
+                </div>
 
-                <h3>{{ tool.name }}</h3>
-
-                <p>{{ tool.description }}</p>
-
-                <span class="recent-tool__category">
+                <span class="recent-tool-card__category">
                   {{ tool.category }}
                 </span>
 
               </div>
+
+
+              <div class="recent-tool-card__content">
+
+                <h3>
+                  {{ tool.name }}
+                </h3>
+
+                <p>
+                  {{ tool.description }}
+                </p>
+
+              </div>
+
+
+              <a
+                class="recent-tool-card__link"
+                [routerLink]="tool.route"
+              >
+                Open Tool
+                <span aria-hidden="true">→</span>
+              </a>
 
             </article>
 
@@ -219,23 +257,205 @@
 
       } @else {
 
-        <div class="empty-state">
+        <div class="dashboard__empty">
 
-          <div class="empty-state__icon">
+          <div
+            class="dashboard__empty-icon"
+            aria-hidden="true"
+          >
             ◷
           </div>
 
-          <h3>No recently used tools</h3>
+          <h3>
+            No Recently Used Tools
+          </h3>
 
           <p>
-            Tools you use will appear here.
+            Open a productivity tool and it will
+            appear here automatically.
           </p>
+
+          <a
+            routerLink="/tools"
+            class="dashboard__empty-link"
+          >
+            Explore Tools
+            <span aria-hidden="true">→</span>
+          </a>
 
         </div>
 
       }
 
     }
+
+  </section>
+
+
+  <!-- Quick Access -->
+
+  <section class="dashboard__section">
+
+    <div class="dashboard__section-header">
+
+      <div>
+
+        <span class="dashboard__section-eyebrow">
+          QUICK ACCESS
+        </span>
+
+        <h2>
+          Get Started
+        </h2>
+
+        <p>
+          Jump directly into the main areas of DPS.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="dashboard__quick-grid">
+
+      <a
+        routerLink="/tools"
+        class="quick-card"
+      >
+
+        <span
+          class="quick-card__icon"
+          aria-hidden="true"
+        >
+          ⚙
+        </span>
+
+        <div>
+
+          <h3>
+            All Tools
+          </h3>
+
+          <p>
+            Explore all {{ totalTools }}
+            productivity tools.
+          </p>
+
+        </div>
+
+        <span
+          class="quick-card__arrow"
+          aria-hidden="true"
+        >
+          →
+        </span>
+
+      </a>
+
+
+      <a
+        routerLink="/categories"
+        class="quick-card"
+      >
+
+        <span
+          class="quick-card__icon"
+          aria-hidden="true"
+        >
+          ▦
+        </span>
+
+        <div>
+
+          <h3>
+            Categories
+          </h3>
+
+          <p>
+            Browse tools by category.
+          </p>
+
+        </div>
+
+        <span
+          class="quick-card__arrow"
+          aria-hidden="true"
+        >
+          →
+        </span>
+
+      </a>
+
+
+      <a
+        routerLink="/favorites"
+        class="quick-card"
+      >
+
+        <span
+          class="quick-card__icon"
+          aria-hidden="true"
+        >
+          ★
+        </span>
+
+        <div>
+
+          <h3>
+            Favorites
+          </h3>
+
+          <p>
+            Access your saved tools.
+          </p>
+
+        </div>
+
+        <span
+          class="quick-card__arrow"
+          aria-hidden="true"
+        >
+          →
+        </span>
+
+      </a>
+
+
+      <a
+        routerLink="/recent"
+        class="quick-card"
+      >
+
+        <span
+          class="quick-card__icon"
+          aria-hidden="true"
+        >
+          ◷
+        </span>
+
+        <div>
+
+          <h3>
+            Recently Used
+          </h3>
+
+          <p>
+            Return to your recent tools.
+          </p>
+
+        </div>
+
+        <span
+          class="quick-card__arrow"
+          aria-hidden="true"
+        >
+          →
+        </span>
+
+      </a>
+
+    </div>
 
   </section>
 
