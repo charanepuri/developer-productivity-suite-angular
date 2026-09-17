@@ -608,7 +608,7 @@ https://developer-productivity-suite-angula.vercel.app/dashboard
 
 Project documentation will be maintained separately as the project progresses.
 
-**Documentation:** Coming Soon
+**Documentation:** [Document Link](public/documentation/Developer_Productivity_Suite_Angular_Documentation.pdf)
 
 ---
 
